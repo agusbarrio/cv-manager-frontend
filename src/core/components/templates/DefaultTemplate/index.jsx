@@ -1,14 +1,12 @@
 import { Stack, useTheme } from '@mui/material';
 import Icon from '../../dataDisplay/Icon';
-import PublicLayout from '../../layouts/PublicLayout';
+import DefaultLayout from '../../layouts/DefaultLayout';
 import PropTypes from 'prop-types';
-import useDevice from '../../../hooks/useDevice';
 
-function PublicTemplate({ children }) {
+function DefaultTemplate({ children }) {
   const theme = useTheme();
-  const { isMobile } = useDevice();
   return (
-    <PublicLayout
+    <DefaultLayout
       header={
         <Stack
           direction="row"
@@ -23,10 +21,7 @@ function PublicTemplate({ children }) {
             alignItems="center"
             spacing={2}
           >
-            <Icon
-              color={theme.palette.primary.contrastText}
-              size={isMobile ? '2rem' : '5rem'}
-            >
+            <Icon color={theme.palette.primary.contrastText} size={'2rem'}>
               work
             </Icon>
           </Stack>
@@ -41,12 +36,12 @@ function PublicTemplate({ children }) {
       }}
     >
       {children}
-    </PublicLayout>
+    </DefaultLayout>
   );
 }
 
-PublicTemplate.propTypes = {
+DefaultTemplate.propTypes = {
   children: PropTypes.any,
 };
 
-export default PublicTemplate;
+export default DefaultTemplate;
