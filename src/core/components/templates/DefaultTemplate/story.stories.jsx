@@ -1,13 +1,13 @@
-import PublicTemplate from './index';
+import DefaultTemplate from './index';
 
 export default {
   title: 'Core/Components/Templates/DefaultTemplate',
-  component: PublicTemplate,
+  component: DefaultTemplate,
   argTypes: {},
 };
 
 function Template(args) {
-  return <PublicTemplate {...args} />;
+  return <DefaultTemplate {...args} />;
 }
 
 export const Example = Template.bind({});
