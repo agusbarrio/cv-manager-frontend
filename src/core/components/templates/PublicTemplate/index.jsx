@@ -38,6 +38,7 @@ function PublicTemplate({ children }) {
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
+        p: 2,
       }}
     >
       {children}

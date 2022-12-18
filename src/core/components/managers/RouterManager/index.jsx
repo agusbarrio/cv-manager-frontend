@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import { useCallback } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import ProtectedRoute from './ProtectedRoute';
