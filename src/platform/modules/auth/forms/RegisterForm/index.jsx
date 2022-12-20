@@ -1,19 +1,19 @@
 import Form from '../../../../../core/components/inputs/Form';
-import { object, string, ref } from 'yup';
 import ControllerInput from '../../../../../core/components/inputs/Form/controllers/ControllerInput';
 import TextInput from '../../../../../core/components/inputs/TextInput';
 import PasswordInput from '../../../../../core/components/inputs/PasswordInput';
 import useLocale from '../../../../../core/contexts/LocaleContext/useLocale';
 import AUTH_TEXTS from '../../constants/texts';
+import useValidator from '../../../core/hooks/useValidator';
 function RegisterForm({ onSubmit }) {
   const { translate } = useLocale();
-  let schema = object({
-    email: string().email().required(),
-    password: string().required(),
-    repeatPassword: string()
-      .required()
-      .oneOf([ref('password')]),
+  const validator = useValidator();
+  const schema = validator.form({
+    email: validator.email(),
+    password: validator.password(),
+    repeatPassword: validator.equalTo('password'),
   });
+
   return (
     <Form schema={schema} onSubmit={onSubmit}>
       <ControllerInput
