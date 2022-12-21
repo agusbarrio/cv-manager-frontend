@@ -26,7 +26,7 @@ function RouterManager({ routes }) {
   }, []);
 
   return (
-    <BrowserRouter basename={process.env.PUBLIC_URL}>
+    <BrowserRouter>
       <Routes>
         {routes.map((route) => {
           return (
