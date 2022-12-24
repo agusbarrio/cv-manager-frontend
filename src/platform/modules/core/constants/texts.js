@@ -22,6 +22,12 @@ const CORE_TEXTS = {
   VALIDATIONS_EQUAL_TO: {
     es: 'Los datos ingresados no coinciden',
   },
+  ERROR_404_TITLE: {
+    es: 'Página no encontrada',
+  },
+  GO_RAIZ: {
+    es: 'Volver al inicio',
+  },
 };
 
 export default CORE_TEXTS;
