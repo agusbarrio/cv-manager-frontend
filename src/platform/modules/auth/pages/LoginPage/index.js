@@ -15,7 +15,7 @@ function LoginPage() {
   return (
     <Grid container spacing={2}>
       <Grid item xs={12}>
-        <Typography variant="h2" component="h1">
+        <Typography variant="h3" component="h1">
           {translate(AUTH_TEXTS.LOGIN_PAGE_TITLE)}
         </Typography>
       </Grid>

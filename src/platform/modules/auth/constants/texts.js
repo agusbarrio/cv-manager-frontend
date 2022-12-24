@@ -38,6 +38,18 @@ const AUTH_TEXTS = {
   REGISTER_PAGE_GO_LOGIN: {
     es: '¿Ya tenés una cuenta?',
   },
+  RECOVER_PAGE_GO_LOGIN: {
+    es: 'Volver',
+  },
+  RECOVER_PASSWORD_PAGE_TITLE: {
+    es: 'Recuperar contraseña',
+  },
+  RECOVER_PASSWORD_PAGE_DESCRIPTION: {
+    es: 'Vas a recibir un correo electrónico con un enlace para reestablecer tu contraseña',
+  },
+  RECOVER_PASSWORD_FORM_SUBMIT: {
+    es: 'Enviar',
+  },
 };
 
 export default AUTH_TEXTS;
