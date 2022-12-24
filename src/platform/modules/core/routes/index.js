@@ -1,8 +1,17 @@
 import PublicTemplate from '../../../../core/components/templates/PublicTemplate';
 import Error404Page from '../pages/Error404Page';
+import RaizPage from '../pages/RaizPage';
 import corePaths from './paths';
 
 const coreRoutes = [
+  {
+    path: corePaths.raiz,
+    exact: true,
+    content: {
+      render: RaizPage,
+      Template: PublicTemplate,
+    },
+  },
   {
     path: corePaths.error404,
     exact: true,
