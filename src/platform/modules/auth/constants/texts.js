@@ -2,23 +2,41 @@ const AUTH_TEXTS = {
   REGISTER_PAGE_TITLE: {
     es: 'Registráte',
   },
-  REGISTER_FORM_EMAIL_LABEL: {
+  LOGIN_PAGE_TITLE: {
+    es: 'Iniciá sesión',
+  },
+  FORM_EMAIL_LABEL: {
     es: 'Correo electrónico',
   },
-  REGISTER_FORM_EMAIL_PLACEHOLDER: {
+  FORM_EMAIL_PLACEHOLDER: {
     es: 'Escribí tu correo electrónico',
   },
-  REGISTER_FORM_PASSWORD_LABEL: {
+  FORM_PASSWORD_LABEL: {
     es: 'Contraseña',
   },
-  REGISTER_FORM_PASSWORD_PLACEHOLDER: {
+  FORM_PASSWORD_PLACEHOLDER: {
     es: 'Escribí tu contraseña',
   },
-  REGISTER_FORM_REPEAT_PASSWORD_LABEL: {
+  FORM_REPEAT_PASSWORD_LABEL: {
     es: 'Repetir contraseña',
   },
-  REGISTER_FORM_REPEAT_PASSWORD_PLACEHOLDER: {
+  FORM_REPEAT_PASSWORD_PLACEHOLDER: {
     es: 'Volvé a escribir tu contraseña',
+  },
+  LOGIN_FORM_SUBMIT: {
+    es: 'Ingresá',
+  },
+  REGISTER_FORM_SUBMIT: {
+    es: 'Registráte',
+  },
+  LOGIN_PAGE_GO_REGISTER: {
+    es: '¿Aún no tenés una cuenta?',
+  },
+  LOGIN_PAGE_GO_RECOVER_PASSWORD: {
+    es: '¿Olvidaste tu contraseña?',
+  },
+  REGISTER_PAGE_GO_LOGIN: {
+    es: '¿Ya tenés una cuenta?',
   },
 };
 

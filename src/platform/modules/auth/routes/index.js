@@ -1,15 +1,13 @@
 import authPaths from './paths';
 import PublicTemplate from '../../../../core/components/templates/PublicTemplate';
 import RegisterPage from '../pages/RegisterPage';
+import LoginPage from '../pages/LoginPage';
 const authRoutes = [
   {
     path: authPaths.login,
     exact: true,
     content: {
-      render: () => {
-        //TODO hacer pagina de login
-        return <div>Login</div>;
-      },
+      render: LoginPage,
       Template: PublicTemplate,
     },
   },
