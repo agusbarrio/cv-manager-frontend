@@ -1,20 +1,19 @@
-import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
 import PropTypes from 'prop-types';
 import Icon from '../../dataDisplay/Icon';
+import IconButton from '@mui/material/IconButton';
 
 /**
  * Material Button Icon
  * @param {*} param0
  * @returns
  */
-function ButtonIcon({ tooltip, placement, icon, iconProps, ...props }) {
+function ButtonIcon({ tooltip, placement, children, iconProps, ...props }) {
   const btnChildren = (
     <IconButton {...props}>
-      <Icon {...iconProps}>{icon}</Icon>
+      <Icon {...iconProps}>{children}</Icon>
     </IconButton>
   );
-
   return (
     <>
       {tooltip ? (

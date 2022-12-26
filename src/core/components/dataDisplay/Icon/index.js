@@ -2,7 +2,7 @@ import { Icon as MaterialIcon } from '@mui/material';
 import PropTypes from 'prop-types';
 function Icon({
   children,
-  size = '2rem',
+  size,
   variant = 'outlined',
   color,
   sx = {},
@@ -11,6 +11,7 @@ function Icon({
   return (
     <MaterialIcon
       className={`material-icons-${variant}`}
+      color={color}
       sx={{ fontSize: size, color, ...sx }}
       {...props}
     >

@@ -15,3 +15,8 @@ Example.args = {
   color: '#f00',
   children: 'work',
 };
+export const Example2 = Template.bind({});
+Example2.args = {
+  color: 'primary',
+  children: 'work',
+};

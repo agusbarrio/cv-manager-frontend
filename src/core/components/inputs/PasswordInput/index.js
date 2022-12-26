@@ -14,13 +14,7 @@ function PasswordInput({ ...props }) {
   return (
     <TextInput
       type={type}
-      endAdornment={
-        <ButtonIcon
-          onClick={handleClick}
-          icon={icon}
-          iconProps={{ color: 'primary' }}
-        ></ButtonIcon>
-      }
+      endAdornment={<ButtonIcon onClick={handleClick}>{icon}</ButtonIcon>}
       {...props}
     ></TextInput>
   );
