@@ -1,6 +1,6 @@
 import RouterManager from '../../core/components/managers/RouterManager';
 import LocaleProvider from '../../core/contexts/LocaleContext/LocaleProvider';
-import SnackbarProvider from '../../core/contexts/SnackbarProvider/SnackbarProvider';
+import SnackbarProvider from '../../core/contexts/SnackbarContext/SnackbarProvider';
 import './App.css';
 import routes from './routes';
 
