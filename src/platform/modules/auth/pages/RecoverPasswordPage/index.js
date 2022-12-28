@@ -10,7 +10,6 @@ function RecoverPasswordPage() {
   const { translate } = useLocale();
   const handleSubmit = useCallback((data) => {
     //TODO consumir servicio de recuperar contraseña
-    console.log(data);
   }, []);
   return (
     <Grid container spacing={2}>

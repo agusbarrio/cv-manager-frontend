@@ -9,7 +9,6 @@ function RegisterPage() {
   const { translate } = useLocale();
   const handleSubmit = useCallback((data) => {
     //TODO consumir servicio de registración
-    console.log(data);
   }, []);
   return (
     <Grid container spacing={2}>

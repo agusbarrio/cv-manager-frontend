@@ -6,7 +6,6 @@ import ButtonIcon from '../../components/inputs/ButtonIcon';
 function useSnackbar() {
   const { enqueueSnackbar, closeSnackbar } = useSnackbarNotistack();
   const theme = useTheme();
-  console.log(theme);
   const autoHideDuration = 5000;
   const CloseButton = useCallback(
     ({ iconColor, onClick }) => (

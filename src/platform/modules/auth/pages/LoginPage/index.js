@@ -10,7 +10,6 @@ function LoginPage() {
   const { translate } = useLocale();
   const handleSubmit = useCallback((data) => {
     //TODO consumir servicio de login
-    console.log(data);
   }, []);
   return (
     <Grid container spacing={2}>
