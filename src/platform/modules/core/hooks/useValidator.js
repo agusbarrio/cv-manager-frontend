@@ -98,7 +98,16 @@ function useValidator() {
     },
     [string, translate]
   );
-  return { form, string, email, password, equalTo };
+
+  const publicString = useCallback(
+    (config) => {
+      const configResult = _.merge(DEFAULT_VALIDATIONS.PUBLIC_STRING, config);
+      let yupElement = string(null, configResult);
+      return yupElement;
+    },
+    [string]
+  );
+  return { form, string: publicString, email, password, equalTo };
 }
 
 export default useValidator;

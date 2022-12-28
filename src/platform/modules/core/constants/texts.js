@@ -28,6 +28,12 @@ const CORE_TEXTS = {
   GO_RAIZ: {
     es: 'Volver al inicio',
   },
+  GENERIC_ERROR: {
+    es: 'Ha ocurrido un error',
+  },
+  GENERIC_SUCCESS: {
+    es: 'Operación exitosa',
+  },
 };
 
 export default CORE_TEXTS;

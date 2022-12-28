@@ -40,6 +40,12 @@ const DEFAULT_VALIDATIONS = {
       message: CORE_TEXTS.VALIDATIONS_EQUAL_TO,
     },
   },
+  PUBLIC_STRING: {
+    required: {
+      value: true,
+      message: CORE_TEXTS.VALIDATIONS_REQUIRED,
+    },
+  },
 };
 
 export default DEFAULT_VALIDATIONS;

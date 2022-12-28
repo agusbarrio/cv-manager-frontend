@@ -1,0 +1,7 @@
+const FETCH_ERROR_TYPES = {
+  SERVER: 'SERVER',
+  CLIENT: 'CLIENT',
+  OTHER: 'OTHER',
+};
+
+export default FETCH_ERROR_TYPES;
