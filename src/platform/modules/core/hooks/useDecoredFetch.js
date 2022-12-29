@@ -4,8 +4,10 @@ import { useCallback, useMemo } from 'react';
 import useLocale from '../../../../core/contexts/LocaleContext/useLocale';
 import CORE_TEXTS from '../constants/texts';
 import _ from 'lodash';
+import FETCH_ERROR_TYPES from '../../../../core/constants/fetchErrorTypes';
 function useDecoredFetch() {
-  const { success, error } = useSnackbar();
+  const { success: successNotification, error: errorNotification } =
+    useSnackbar();
   const { translate } = useLocale();
 
   const defaultConfig = useMemo(
@@ -13,7 +15,8 @@ function useDecoredFetch() {
       successMessage: translate(CORE_TEXTS.GENERIC_SUCCESS),
       showSuccessMessage: true,
       showErrorMessage: true,
-      errorMessage: translate(CORE_TEXTS.GENERIC_ERROR),
+      errorMessage: null,
+      defaultErrorMessage: translate(CORE_TEXTS.GENERIC_ERROR),
     }),
     [translate]
   );
@@ -24,14 +27,26 @@ function useDecoredFetch() {
       return {
         successHandler: () => {
           if (resultConfig?.showSuccessMessage)
-            success(resultConfig?.successMessage);
+            successNotification(resultConfig?.successMessage);
         },
-        errorHandler: () => {
-          if (resultConfig?.showErrorMessage) error(resultConfig?.errorMessage);
+        errorHandler: ({ error, type }) => {
+          if (resultConfig?.showErrorMessage) {
+            let resultErrorMessage = resultConfig.defaultErrorMessage;
+            if (type === FETCH_ERROR_TYPES.SERVER) {
+              const errorCode = _.get(error, 'response.data.errorCode');
+              if (!!CORE_TEXTS.SERVER_ERRORS[errorCode])
+                resultErrorMessage = translate(
+                  CORE_TEXTS.SERVER_ERRORS[errorCode]
+                );
+            }
+            if (!!resultConfig.errorMessage)
+              resultErrorMessage = resultConfig.errorMessage;
+            errorNotification(resultErrorMessage);
+          }
         },
       };
     },
-    [defaultConfig, error, success]
+    [defaultConfig, errorNotification, successNotification, translate]
   );
 
   const {

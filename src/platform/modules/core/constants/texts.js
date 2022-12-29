@@ -1,4 +1,21 @@
 const CORE_TEXTS = {
+  SERVER_ERRORS: {
+    //Generic errors
+    E500: { es: 'Error interno del servidor.' },
+    E400: { es: 'Petición incorrecta' },
+    E401: { es: 'No autorizado' },
+    E403: { es: 'Prohibido' },
+    E404: { es: 'No encontrado.' },
+    E409: { es: 'Conflicto' },
+    E422: { es: 'Entidad no procesable' },
+    //Custom errors
+    E401_001: {
+      es: 'Credenciales inválidas',
+    },
+    E409_001: {
+      es: 'Email no disponible',
+    },
+  },
   VALIDATIONS_REQUIRED: { es: 'Campo obligatorio' },
   VALIDATIONS_EMAIL: {
     es: 'Correo electrónico inválido.',
