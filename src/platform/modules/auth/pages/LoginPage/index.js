@@ -5,12 +5,17 @@ import { useCallback } from 'react';
 import LoginForm from '../../forms/LoginForm';
 import authPaths from '../../routes/paths';
 import Link from '../../../../../core/components/navigation/Link';
+import useLoginService from '../../services/useLoginService';
 
 function LoginPage() {
   const { translate } = useLocale();
-  const handleSubmit = useCallback((data) => {
-    //TODO consumir servicio de login
-  }, []);
+  const { login } = useLoginService();
+  const handleSubmit = useCallback(
+    async (data) => {
+      await login({ email: data?.email, password: data?.password });
+    },
+    [login]
+  );
   return (
     <Grid container spacing={2}>
       <Grid item xs={12}>
