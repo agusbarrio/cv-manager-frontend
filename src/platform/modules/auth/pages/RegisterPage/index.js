@@ -5,11 +5,16 @@ import AUTH_TEXTS from '../../constants/texts';
 import { useCallback } from 'react';
 import Link from '../../../../../core/components/navigation/Link';
 import authPaths from '../../routes/paths';
+import useRegisterService from '../../services/useRegisterService';
 function RegisterPage() {
   const { translate } = useLocale();
-  const handleSubmit = useCallback((data) => {
-    //TODO consumir servicio de registración
-  }, []);
+  const { register } = useRegisterService();
+  const handleSubmit = useCallback(
+    async (data) => {
+      await register({ email: data?.email, password: data?.password });
+    },
+    [register]
+  );
   return (
     <Grid container spacing={2}>
       <Grid item xs={12}>
