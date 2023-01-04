@@ -1,11 +1,22 @@
 import { useMemo } from 'react';
 import Redirect from '../../components/Redirect';
-import authPaths from '../../../auth/routes/paths';
-function AccessManager({ children }) {
-  //TODO Definir e implementar los criterios de acceso a las páginas
-  const hasAccess = useMemo(() => true, []);
+import useSecurity from '../../hooks/useSecurity';
+
+function AccessManager({ children, needSession }) {
+  const { getAccess, getRedirectPathOnAccessDenied } = useSecurity();
+
+  const hasAccess = useMemo(
+    () => getAccess({ needSession }),
+    [getAccess, needSession]
+  );
+
+  const redirectPath = useMemo(
+    () => getRedirectPathOnAccessDenied({ needSession }),
+    [getRedirectPathOnAccessDenied, needSession]
+  );
+
   return (
-    <>{!hasAccess ? <Redirect path={authPaths.login}></Redirect> : children}</>
+    <>{!hasAccess ? <Redirect path={redirectPath}></Redirect> : children}</>
   );
 }
 

@@ -3,6 +3,8 @@ import PublicTemplate from '../../../../core/components/templates/PublicTemplate
 import RegisterPage from '../pages/RegisterPage';
 import LoginPage from '../pages/LoginPage';
 import RecoverPasswordPage from '../pages/RecoverPasswordPage';
+import utils from '../../core/routes/utils';
+
 const authRoutes = [
   {
     path: authPaths.login,
@@ -11,6 +13,7 @@ const authRoutes = [
       render: LoginPage,
       Template: PublicTemplate,
     },
+    ...utils.manageAccess({ needSession: false }),
   },
   {
     path: authPaths.register,
@@ -19,6 +22,7 @@ const authRoutes = [
       render: RegisterPage,
       Template: PublicTemplate,
     },
+    ...utils.manageAccess({ needSession: false }),
   },
   {
     path: authPaths.recover,
@@ -27,6 +31,7 @@ const authRoutes = [
       render: RecoverPasswordPage,
       Template: PublicTemplate,
     },
+    ...utils.manageAccess({ needSession: false }),
   },
 ];
 export default authRoutes;

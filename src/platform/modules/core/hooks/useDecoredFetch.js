@@ -5,11 +5,15 @@ import useLocale from '../../../../core/contexts/LocaleContext/useLocale';
 import CORE_TEXTS from '../constants/texts';
 import _ from 'lodash';
 import FETCH_ERROR_TYPES from '../../../../core/constants/fetchErrorTypes';
+import useSessionStore from '../../../app/contexts/SessionStoreContext/useSessionStore';
+import useNavigate from './useNavigate';
+import corePaths from '../routes/paths';
 function useDecoredFetch() {
   const { success: successNotification, error: errorNotification } =
     useSnackbar();
   const { translate } = useLocale();
-
+  const { logout: logoutStore } = useSessionStore();
+  const { go } = useNavigate();
   const defaultConfig = useMemo(
     () => ({
       successMessage: translate(CORE_TEXTS.GENERIC_SUCCESS),
@@ -17,9 +21,12 @@ function useDecoredFetch() {
       showErrorMessage: true,
       errorMessage: null,
       defaultErrorMessage: translate(CORE_TEXTS.GENERIC_ERROR),
+      logout401: true,
     }),
     [translate]
   );
+
+  const defaultReqConfig = useMemo(() => ({ withCredentials: true }), []);
 
   const getHandlers = useCallback(
     (config = {}) => {
@@ -33,6 +40,12 @@ function useDecoredFetch() {
           if (resultConfig?.showErrorMessage) {
             let resultErrorMessage = resultConfig.defaultErrorMessage;
             if (type === FETCH_ERROR_TYPES.SERVER) {
+              const status = _.get(error, 'response.status');
+              if (status === 401 && resultConfig.logout401) {
+                logoutStore();
+                go(corePaths.raiz);
+              }
+
               const errorCode = _.get(error, 'response.data.errorCode');
               if (!!CORE_TEXTS.SERVER_ERRORS[errorCode])
                 resultErrorMessage = translate(
@@ -46,7 +59,14 @@ function useDecoredFetch() {
         },
       };
     },
-    [defaultConfig, errorNotification, successNotification, translate]
+    [
+      defaultConfig,
+      errorNotification,
+      successNotification,
+      translate,
+      go,
+      logoutStore,
+    ]
   );
 
   const {
@@ -56,40 +76,55 @@ function useDecoredFetch() {
     del: coreDel,
   } = useFetch();
 
+  const calcReqConfig = useCallback(
+    (reqConfig) => _.merge(defaultReqConfig, reqConfig),
+    [defaultReqConfig]
+  );
+
   const get = useCallback(
     async (url, reqConfig, config) => {
       const handlers = getHandlers(config);
-      const result = await coreGet(url, reqConfig, handlers);
+      const result = await coreGet(url, calcReqConfig(reqConfig), handlers);
       return result;
     },
-    [coreGet, getHandlers]
+    [coreGet, getHandlers, calcReqConfig]
   );
 
   const post = useCallback(
     async (url, data, reqConfig, config) => {
       const handlers = getHandlers(config);
-      const result = await corePost(url, data, reqConfig, handlers);
+      const result = await corePost(
+        url,
+        data,
+        calcReqConfig(reqConfig),
+        handlers
+      );
       return result;
     },
-    [corePost, getHandlers]
+    [corePost, getHandlers, calcReqConfig]
   );
 
   const put = useCallback(
     async (url, data, reqConfig, config) => {
       const handlers = getHandlers(config);
-      const result = await corePut(url, data, reqConfig, handlers);
+      const result = await corePut(
+        url,
+        data,
+        calcReqConfig(reqConfig),
+        handlers
+      );
       return result;
     },
-    [corePut, getHandlers]
+    [corePut, getHandlers, calcReqConfig]
   );
 
   const del = useCallback(
     async (url, reqConfig, config) => {
       const handlers = getHandlers(config);
-      const result = await coreDel(url, reqConfig, handlers);
+      const result = await coreDel(url, calcReqConfig(reqConfig), handlers);
       return result;
     },
-    [coreDel, getHandlers]
+    [coreDel, getHandlers, calcReqConfig]
   );
 
   return { get, put, post, del };

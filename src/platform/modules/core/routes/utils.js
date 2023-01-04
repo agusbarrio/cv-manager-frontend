@@ -1,10 +1,10 @@
 import AccessManager from '../managers/AccessManager';
 
 const utils = {
-  setAccess: () => ({
+  manageAccess: (props = {}) => ({
     access: {
       render: AccessManager,
-      renderProps: {},
+      renderProps: { ...props },
     },
   }),
 };

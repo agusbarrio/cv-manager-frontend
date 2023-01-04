@@ -17,6 +17,7 @@ function RouterManager({ routes }) {
       <ProtectedRoute
         render={ProtectedComponent}
         renderProps={protectedComponentProps}
+        route={route}
       >
         <Template {...templateProps}>
           <Content {...renderProps}></Content>

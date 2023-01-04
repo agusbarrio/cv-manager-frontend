@@ -5,8 +5,13 @@ function ProtectedRoute({
   children,
   render: ProtectComponent = React.Fragment,
   renderProps = {},
+  route,
 }) {
-  return <ProtectComponent {...renderProps}>{children}</ProtectComponent>;
+  return (
+    <ProtectComponent route={route} {...renderProps}>
+      {children}
+    </ProtectComponent>
+  );
 }
 
 ProtectedRoute.propTypes = {

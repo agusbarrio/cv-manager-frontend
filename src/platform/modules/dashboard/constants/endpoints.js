@@ -1,0 +1,3 @@
+const DASHBOARD_ENDPOINTS = {
+  LOGOUT: '',
+};

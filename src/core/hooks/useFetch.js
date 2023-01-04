@@ -8,6 +8,7 @@ function useFetch() {
     async (axiosFunction, successHandler, errorHandler) => {
       try {
         const response = await axiosFunction();
+
         if (_.isFunction(successHandler)) successHandler(response);
         return response;
       } catch (error) {
@@ -33,7 +34,7 @@ function useFetch() {
 
   const get = useCallback(
     async (url, config, handlers) => {
-      axiosHandler(
+      return await axiosHandler(
         async () => await axios.get(url, config),
         handlers?.successHandler,
         handlers?.errorHandler
@@ -44,7 +45,7 @@ function useFetch() {
 
   const post = useCallback(
     async (url, data, config, handlers) => {
-      axiosHandler(
+      return await axiosHandler(
         async () => await axios.post(url, data, config),
         handlers?.successHandler,
         handlers?.errorHandler
@@ -55,7 +56,7 @@ function useFetch() {
 
   const put = useCallback(
     async (url, data, config, handlers) => {
-      axiosHandler(
+      return await axiosHandler(
         async () => await axios.put(url, data, config),
         handlers?.successHandler,
         handlers?.errorHandler
@@ -66,7 +67,7 @@ function useFetch() {
 
   const del = useCallback(
     async (url, config, handlers) => {
-      axiosHandler(
+      return await axiosHandler(
         async () => await axios.delete(url, config),
         handlers?.successHandler,
         handlers?.errorHandler
