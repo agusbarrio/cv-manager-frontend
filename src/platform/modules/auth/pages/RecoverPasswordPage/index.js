@@ -5,12 +5,18 @@ import { useCallback } from 'react';
 import RecoverPasswordForm from '../../forms/RecoverPasswordForm';
 import authPaths from '../../routes/paths';
 import Link from '../../../../../core/components/navigation/Link';
+import useRequestPasswordRecoveryService from '../../services/useRequestPasswordRecoveryService';
 
 function RecoverPasswordPage() {
   const { translate } = useLocale();
-  const handleSubmit = useCallback((data) => {
-    //TODO consumir servicio de recuperar contraseña
-  }, []);
+  const { requestPasswordRecovery } = useRequestPasswordRecoveryService();
+  const handleSubmit = useCallback(
+    async (data) => {
+      const { email } = data;
+      await requestPasswordRecovery({ email });
+    },
+    [requestPasswordRecovery]
+  );
   return (
     <Grid container spacing={2}>
       <Grid item xs={12}>
