@@ -1,5 +1,5 @@
 import authPaths from './paths';
-import PublicTemplate from '../../../../core/components/templates/PublicTemplate';
+import PublicTemplate from '../../core/components/templates/PublicTemplate';
 import RegisterPage from '../pages/RegisterPage';
 import LoginPage from '../pages/LoginPage';
 import RecoverPasswordPage from '../pages/RecoverPasswordPage';

@@ -1,14 +1,15 @@
 import PropTypes from 'prop-types';
 import { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+
+import useNavigate from '../../../hooks/useNavigate';
 /**
- * Componente To redirect pages
+ * Component to redirect pages
  */
 function Redirect({ path }) {
-  const navigate = useNavigate();
+  const { go } = useNavigate();
   useEffect(() => {
-    navigate(path);
-  }, [path, navigate]);
+    go(path);
+  }, [path, go]);
   return null;
 }
 

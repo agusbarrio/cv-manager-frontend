@@ -1,5 +1,5 @@
 import { useMemo } from 'react';
-import Redirect from '../../components/Redirect';
+import Redirect from '../../components/navigation/Redirect';
 import useSecurity from '../../hooks/useSecurity';
 
 function AccessManager({ children, needSession }) {

@@ -1,4 +1,4 @@
-import PublicTemplate from '../../../../core/components/templates/PublicTemplate';
+import PublicTemplate from '../components/templates/PublicTemplate';
 import Error404Page from '../pages/Error404Page';
 import RaizPage from '../pages/RaizPage';
 import corePaths from './paths';

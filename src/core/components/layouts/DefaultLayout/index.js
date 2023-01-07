@@ -24,7 +24,7 @@ function DefaultLayout({ header, sxHeader = {}, sxChildren = {}, children }) {
   const childrenSx = useMemo(
     () => ({
       width: '100%',
-      height: '100%',
+      height: 'calc(100% - 4rem)',
       flexGrow: 0,
       ...sxChildren,
     }),

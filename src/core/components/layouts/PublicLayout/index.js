@@ -26,7 +26,7 @@ function PublicLayout({ header, sxHeader = {}, sxChildren = {}, children }) {
   const childrenSx = useMemo(
     () => ({
       width: isMobile ? '100%' : '50%',
-      height: '100%',
+      height: isMobile ? 'calc(100% - 4rem)' : '100%',
       flexGrow: isMobile ? 0 : 1,
       ...sxChildren,
     }),

@@ -15,4 +15,6 @@ Example.args = {
   children: <div>Children</div>,
   sxHeader: { backgroundColor: 'blue' },
   sxChildren: { backgroundColor: 'green' },
+  leftContent: 'LEFT',
+  rightContent: 'RIGHT',
 };

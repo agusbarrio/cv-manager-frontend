@@ -2,7 +2,7 @@ import { useMemo } from 'react';
 import useSessionStore from '../../../../app/contexts/SessionStoreContext/useSessionStore';
 import authPaths from '../../../auth/routes/paths';
 import dashboardPaths from '../../../dashboard/routes/paths';
-import Redirect from '../../components/Redirect';
+import Redirect from '../../components/navigation/Redirect';
 
 function RaizPage() {
   const { session } = useSessionStore();

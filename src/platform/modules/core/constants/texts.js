@@ -51,6 +51,10 @@ const CORE_TEXTS = {
   GENERIC_SUCCESS: {
     es: 'Operación exitosa',
   },
+  LOGOUT: {
+    es: 'Cerrar sesión',
+    en: 'Logout',
+  },
 };
 
 export default CORE_TEXTS;

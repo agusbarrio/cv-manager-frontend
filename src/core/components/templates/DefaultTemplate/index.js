@@ -1,29 +1,34 @@
 import { Stack, useTheme } from '@mui/material';
-import Icon from '../../dataDisplay/Icon';
 import DefaultLayout from '../../layouts/DefaultLayout';
 import PropTypes from 'prop-types';
 
-function DefaultTemplate({ children }) {
+function DefaultTemplate({
+  children,
+  rightHeaderContent = [],
+  leftHeaderContent = [],
+  middleHeaderContent,
+}) {
   const theme = useTheme();
   return (
     <DefaultLayout
       header={
         <Stack
           direction="row"
-          justifyContent="center"
+          justifyContent="space-between"
           alignItems="center"
           width="100%"
           height="100%"
+          paddingLeft={2}
+          paddingRight={2}
         >
-          <Stack
-            direction="row"
-            justifyContent="center"
-            alignItems="center"
-            spacing={2}
-          >
-            <Icon color={theme.palette.primary.contrastText} size={'2rem'}>
-              work
-            </Icon>
+          <Stack spacing={2} justifyContent="center" alignItems="center">
+            {leftHeaderContent}
+          </Stack>
+          <Stack spacing={2} justifyContent="center" alignItems="center">
+            {middleHeaderContent}
+          </Stack>
+          <Stack spacing={2} justifyContent="center" alignItems="center">
+            {rightHeaderContent}
           </Stack>
         </Stack>
       }
@@ -42,6 +47,9 @@ function DefaultTemplate({ children }) {
 
 DefaultTemplate.propTypes = {
   children: PropTypes.any,
+  rightHeaderContent: PropTypes.any,
+  leftHeaderContent: PropTypes.any,
+  middleHeaderContent: PropTypes.any,
 };
 
 export default DefaultTemplate;
