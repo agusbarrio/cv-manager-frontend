@@ -50,6 +50,12 @@ const AUTH_TEXTS = {
   RECOVER_PASSWORD_FORM_SUBMIT: {
     es: 'Enviar',
   },
+  RESET_PASSWORD_PAGE_TITLE: {
+    es: 'Reestablecer contraseña',
+  },
+  RESET_PASSWORD_PAGE_GO_LOGIN: {
+    es: 'Volver',
+  },
 };
 
 export default AUTH_TEXTS;

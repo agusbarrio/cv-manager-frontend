@@ -6,5 +6,6 @@ const AUTH_ENDPOINTS = {
   REGISTER: `${baseUrl}/register`,
   LOGOUT: `${baseUrl}/logout`,
   REQUEST_PASSWORD_RECOVERY: `${baseUrl}/requestPasswordRecovery`,
+  RESET_PASSWORD: `${baseUrl}/resetPassword`,
 };
 export default AUTH_ENDPOINTS;
