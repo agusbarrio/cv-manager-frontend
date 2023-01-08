@@ -2,7 +2,7 @@ import { Stack, useTheme } from '@mui/material';
 import PublicLayout from '../../layouts/PublicLayout';
 import PropTypes from 'prop-types';
 
-function PublicTemplate({ children, headerContent }) {
+function PublicTemplate({ children, headerContent, sxHeader, sxChildren }) {
   const theme = useTheme();
   return (
     <PublicLayout
@@ -24,13 +24,14 @@ function PublicTemplate({ children, headerContent }) {
           </Stack>
         </Stack>
       }
-      sxHeader={{ backgroundColor: theme.palette.primary.main }}
+      sxHeader={{ backgroundColor: theme.palette.primary.main, ...sxHeader }}
       sxChildren={{
         backgroundColor: theme.palette.background.default,
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
         p: 2,
+        ...sxChildren,
       }}
     >
       {children}
@@ -40,6 +41,8 @@ function PublicTemplate({ children, headerContent }) {
 
 PublicTemplate.propTypes = {
   children: PropTypes.any,
+  sxHeader: PropTypes.object,
+  sxChildren: PropTypes.object,
 };
 
 export default PublicTemplate;

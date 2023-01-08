@@ -7,6 +7,8 @@ function DefaultTemplate({
   rightHeaderContent = [],
   leftHeaderContent = [],
   middleHeaderContent,
+  sxHeader = {},
+  sxChildren = {},
 }) {
   const theme = useTheme();
   return (
@@ -16,7 +18,6 @@ function DefaultTemplate({
           direction="row"
           justifyContent="space-between"
           alignItems="center"
-          width="100%"
           height="100%"
           paddingLeft={2}
           paddingRight={2}
@@ -32,12 +33,13 @@ function DefaultTemplate({
           </Stack>
         </Stack>
       }
-      sxHeader={{ backgroundColor: theme.palette.primary.main }}
+      sxHeader={{ backgroundColor: theme.palette.primary.main, ...sxHeader }}
       sxChildren={{
         backgroundColor: theme.palette.background.default,
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
+        ...sxChildren,
       }}
     >
       {children}
