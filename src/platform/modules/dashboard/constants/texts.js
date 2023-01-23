@@ -1,9 +1,21 @@
 const DASHBOARD_TEXTS = {
-  DASHBOARD_TITLE: {
-    es: 'Dashboard',
+  INTROS_PAGE_TITLE: {
+    es: 'Introducciones',
   },
-  LOGOUT_BUTTON: {
-    es: 'Cerrar sesion',
+  EXPERIENCES_PAGE_TITLE: {
+    es: 'Experiencia',
+  },
+  SKILLS_PAGE_TITLE: {
+    es: 'Habilidades',
+  },
+  PROJECTS_PAGE_TITLE: {
+    es: 'Proyectos',
+  },
+  EDUCATIONS_PAGE_TITLE: {
+    es: 'Educación',
+  },
+  CONTACTS_PAGE_TITLE: {
+    es: 'Contacto',
   },
 };
 

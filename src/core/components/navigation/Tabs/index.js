@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import React, { useMemo, useState } from 'react';
 
 function Tabs({
-  tabs,
+  tabs = [],
   initial = 0,
   tabsProps = {},
   sxContent = {},
@@ -17,29 +17,18 @@ function Tabs({
 
   const { Component, renderProps } = useMemo(
     () => ({
-      Component: tabs[value].render || React.Fragment,
-      renderProps: tabs[value].renderProps || {},
+      Component: tabs[value]?.render || React.Fragment,
+      renderProps: tabs[value]?.renderProps || {},
     }),
     [value, tabs]
   );
 
   return (
     <Stack direction="column" width="100%" height="100%" {...containerProps}>
-      <MaterialTabs
-        value={value}
-        onChange={handleChange}
-        variant="scrollable"
-        scrollButtons="auto"
-        {...tabsProps}
-      >
+      <MaterialTabs value={value} onChange={handleChange} {...tabsProps}>
         {tabs?.length &&
           tabs.map((tab, index) => (
-            <Tab
-              label={tab.label}
-              value={index}
-              key={`tab--${index}`}
-              {...tab.props}
-            />
+            <Tab value={index} key={`tab--${index}`} {...tab.props} />
           ))}
       </MaterialTabs>
       <Box sx={{ flexGrow: 1, ...sxContent }}>
@@ -52,7 +41,6 @@ function Tabs({
 Tabs.propTypes = {
   tabs: PropTypes.arrayOf(
     PropTypes.shape({
-      label: PropTypes.string.isRequired,
       render: PropTypes.func.isRequired,
       renderProps: PropTypes.object,
       props: PropTypes.object,
