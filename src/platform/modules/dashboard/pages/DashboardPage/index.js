@@ -8,7 +8,7 @@ import EducationsPage from '../EducationsPage';
 import ProjectsPage from '../ProjectsPage';
 import SkillsPage from '../SkillsPage';
 import ContactsPage from '../ContactsPage';
-import { tabsClasses, TabsClasses } from '@mui/material';
+import { tabsClasses } from '@mui/material';
 
 function DashboardPage() {
   const { translate } = useLocale();

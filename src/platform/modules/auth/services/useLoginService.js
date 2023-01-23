@@ -14,7 +14,7 @@ function useLoginService() {
         {
           withCredentials: true,
         },
-        { logout401: false }
+        { logout401: false, showSuccessMessage: false }
       );
       if (!!result) {
         loginStore();
