@@ -8,8 +8,8 @@ const DEFAULT_VALIDATIONS = {
     },
   },
   PASSWORD: {
-    min: { value: 4, message: CORE_TEXTS.VALIDATIONS_PASSWORD_MIN },
-    max: { value: 16, message: CORE_TEXTS.VALIDATIONS_PASSWORD_MAX },
+    min: { value: 4, message: CORE_TEXTS.VALIDATIONS_MIN },
+    max: { value: 16, message: CORE_TEXTS.VALIDATIONS_MAX },
     minUppercase: {
       value: 1,
       message: CORE_TEXTS.VALIDATIONS_PASSWORD_MINUPPERCASE,
@@ -40,11 +40,20 @@ const DEFAULT_VALIDATIONS = {
       message: CORE_TEXTS.VALIDATIONS_EQUAL_TO,
     },
   },
-  PUBLIC_STRING: {
-    required: {
-      value: true,
-      message: CORE_TEXTS.VALIDATIONS_REQUIRED,
-    },
+  TITLE: {
+    required: { value: true, message: CORE_TEXTS.VALIDATIONS_REQUIRED },
+    max: { value: 140, message: CORE_TEXTS.VALIDATIONS_MAX },
+  },
+  DESCRIPTION: {
+    required: { value: false, message: CORE_TEXTS.VALIDATIONS_REQUIRED },
+    max: { value: 500, message: CORE_TEXTS.VALIDATIONS_MAX },
+  },
+  NAME: {
+    required: { value: true, message: CORE_TEXTS.VALIDATIONS_REQUIRED },
+    max: { value: 60, message: CORE_TEXTS.VALIDATIONS_MAX },
+  },
+  DATE: {
+    date: { value: true, message: CORE_TEXTS.VALIDATIONS_DATE },
   },
 };
 

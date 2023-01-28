@@ -3,14 +3,23 @@ import DefaultFormLayout from '../../layouts/DefaultFormLayout';
 import PropTypes from 'prop-types';
 import { useMemo } from 'react';
 
-function DefaultFormTemplate({ children, title, submitButtonProps }) {
+function DefaultFormTemplate({
+  children,
+  title,
+  submitButtonProps,
+  showSubmitButton = true,
+}) {
   const actions = useMemo(
     () => (
-      <Button type="submit" variant="contained" {...submitButtonProps}>
-        {submitButtonProps?.children || 'Submit'}
-      </Button>
+      <>
+        {showSubmitButton && (
+          <Button type="submit" variant="contained" {...submitButtonProps}>
+            {submitButtonProps?.children || 'Submit'}
+          </Button>
+        )}
+      </>
     ),
-    [submitButtonProps]
+    [submitButtonProps, showSubmitButton]
   );
   return (
     <DefaultFormLayout

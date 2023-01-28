@@ -1,6 +1,5 @@
 import { useMemo } from 'react';
 import { useLocation as useLocationRouter } from 'react-router-dom';
-import _ from 'lodash';
 function useLocation() {
   const { search } = useLocationRouter();
 

@@ -11,8 +11,8 @@ function useValidator() {
   const form = useCallback((schema) => Yup.object(schema), []);
 
   const string = useCallback(
-    (yupElement, config) => {
-      let yupString = yupElement || Yup.string();
+    (config) => {
+      let yupString = Yup.string();
       if (config?.required?.value)
         yupString = yupString.required(translate(config.required.message));
       if (config?.nullable?.value)
@@ -21,6 +21,10 @@ function useValidator() {
         const max = config.max.value;
         yupString = yupString.max(max, translate(config.max.message, { max }));
       }
+      if (config?.min?.value) {
+        const min = config.min.value;
+        yupString = yupString.min(min, translate(config.min.message, { min }));
+      }
       return yupString;
     },
     [translate]
@@ -28,7 +32,10 @@ function useValidator() {
 
   const email = useCallback(
     (config) => {
-      const configResult = _.merge(DEFAULT_VALIDATIONS.EMAIL, config);
+      const configResult = _.merge(
+        _.cloneDeep(DEFAULT_VALIDATIONS.EMAIL),
+        config
+      );
       let yupElement = string(null, configResult);
       yupElement = yupElement.email(translate(configResult.email?.message));
       return yupElement;
@@ -38,22 +45,11 @@ function useValidator() {
 
   const password = useCallback(
     (config) => {
-      const configResult = _.merge(DEFAULT_VALIDATIONS.PASSWORD, config);
-      let yupElement = string(null, configResult).password();
-      if (configResult.min?.value) {
-        const min = configResult.min.value;
-        yupElement = yupElement.min(
-          min,
-          translate(configResult.min.message, { min })
-        );
-      }
-      if (configResult.max?.value) {
-        const max = configResult.max.value;
-        yupElement = yupElement.max(
-          max,
-          translate(configResult.max.message, { max })
-        );
-      }
+      const configResult = _.merge(
+        _.cloneDeep(DEFAULT_VALIDATIONS.PASSWORD),
+        config
+      );
+      let yupElement = string(configResult).password();
       if (configResult.minUppercase?.value) {
         const minUppercase = configResult.minUppercase.value;
         yupElement = yupElement.minUppercase(
@@ -89,7 +85,10 @@ function useValidator() {
 
   const equalTo = useCallback(
     (field, config) => {
-      const configResult = _.merge(DEFAULT_VALIDATIONS.EQUAL_TO, config);
+      const configResult = _.merge(
+        _.cloneDeep(DEFAULT_VALIDATIONS.EQUAL_TO),
+        config
+      );
 
       return string(null, configResult).oneOf(
         [Yup.ref(field)],
@@ -99,15 +98,73 @@ function useValidator() {
     [string, translate]
   );
 
-  const publicString = useCallback(
+  const title = useCallback(
     (config) => {
-      const configResult = _.merge(DEFAULT_VALIDATIONS.PUBLIC_STRING, config);
-      let yupElement = string(null, configResult);
-      return yupElement;
+      const configResult = _.merge(
+        _.cloneDeep(DEFAULT_VALIDATIONS.TITLE),
+        config
+      );
+      const yupTitle = string(configResult);
+      return yupTitle;
     },
     [string]
   );
-  return { form, string: publicString, email, password, equalTo };
+
+  const description = useCallback(
+    (config) => {
+      const configResult = _.merge(
+        _.cloneDeep(DEFAULT_VALIDATIONS.DESCRIPTION),
+        config
+      );
+      const yupDescription = string(configResult);
+      return yupDescription;
+    },
+    [string]
+  );
+
+  const name = useCallback(
+    (config) => {
+      const configResult = _.merge(
+        _.cloneDeep(DEFAULT_VALIDATIONS.NAME),
+        config
+      );
+      const yupName = string(configResult);
+      return yupName;
+    },
+    [string]
+  );
+
+  const date = (config = {}) => {
+    const configResult = _.merge(_.cloneDeep(DEFAULT_VALIDATIONS.DATE), config);
+
+    let yupDate = Yup.date().typeError(translate(configResult.date.message));
+    if (configResult.required && configResult.required.value) {
+      yupDate = yupDate.required(translate(configResult.required.message));
+    }
+    if (configResult?.nullable?.value)
+      yupDate = yupDate.nullable(translate(configResult.nullable.message));
+    if (configResult.min && configResult.min.value) {
+      const min = configResult.min.value;
+      yupDate = yupDate.min(min, translate(configResult.min.message, { min }));
+    }
+    if (configResult.max && configResult.max.value) {
+      const max = configResult.max.value;
+      yupDate = yupDate.min(max, translate(configResult.max.message, { max }));
+    }
+    return yupDate;
+  };
+
+  return {
+    form,
+    string,
+    email,
+    password,
+    equalTo,
+    name,
+    title,
+    description,
+    date,
+  };
 }
 
 export default useValidator;

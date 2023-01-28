@@ -6,6 +6,7 @@ import './index.css';
 
 import DefaultFormTemplate from '../../templates/DefaultFormTemplate';
 import DevToolForm from './DevToolForm';
+import { useImperativeHandle } from 'react';
 
 function Form({
   template: Template = DefaultFormTemplate,
@@ -15,6 +16,7 @@ function Form({
   onSubmit = () => {},
   schema,
   config,
+  innerRef,
 }) {
   const methods = useForm({
     defaultValues: { ...defaultValues },
@@ -27,6 +29,15 @@ function Form({
     context: _.get(config, 'context', {}),
     ..._.get(config, 'options', {}),
   });
+
+  useImperativeHandle(
+    innerRef,
+    () => ({
+      ...methods,
+    }),
+    [methods]
+  );
+
   return (
     <FormProvider {...methods}>
       <form
@@ -49,6 +60,7 @@ Form.propTypes = {
   onSubmit: PropTypes.func,
   schema: PropTypes.object,
   config: PropTypes.object,
+  innerRef: PropTypes.any,
 };
 
 export default Form;

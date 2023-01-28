@@ -6,14 +6,12 @@ import CORE_TEXTS from '../constants/texts';
 import _ from 'lodash';
 import FETCH_ERROR_TYPES from '../../../../core/constants/fetchErrorTypes';
 import useSessionStore from '../../../app/contexts/SessionStoreContext/useSessionStore';
-import useNavigate from './useNavigate';
-import corePaths from '../routes/paths';
+
 function useDecoredFetch() {
   const { success: successNotification, error: errorNotification } =
     useSnackbar();
   const { translate } = useLocale();
   const { logout: logoutStore } = useSessionStore();
-  const { go } = useNavigate();
   const defaultConfig = useMemo(
     () => ({
       successMessage: translate(CORE_TEXTS.GENERIC_SUCCESS),
@@ -43,7 +41,6 @@ function useDecoredFetch() {
               const status = _.get(error, 'response.status');
               if (status === 401 && resultConfig.logout401) {
                 logoutStore();
-                go(corePaths.raiz);
               }
 
               const errorCode = _.get(error, 'response.data.errorCode');
@@ -64,7 +61,6 @@ function useDecoredFetch() {
       errorNotification,
       successNotification,
       translate,
-      go,
       logoutStore,
     ]
   );

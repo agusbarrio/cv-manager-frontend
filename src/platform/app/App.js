@@ -1,4 +1,5 @@
 import RouterManager from '../../core/components/managers/RouterManager';
+import DialogProvider from '../../core/contexts/DialogContext/DialogProvider';
 import LocaleProvider from '../../core/contexts/LocaleContext/LocaleProvider';
 import SnackbarProvider from '../../core/contexts/SnackbarContext/SnackbarProvider';
 import './App.css';
@@ -13,7 +14,9 @@ function App() {
           maxSnack={2}
           anchorOrigin={{ horizontal: 'left', vertical: 'bottom' }}
         >
-          <RouterManager routes={routes}></RouterManager>
+          <DialogProvider>
+            <RouterManager routes={routes}></RouterManager>
+          </DialogProvider>
         </SnackbarProvider>
       </LocaleProvider>
     </SessionStoreProvider>

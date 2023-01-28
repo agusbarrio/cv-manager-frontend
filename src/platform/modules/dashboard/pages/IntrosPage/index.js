@@ -1,14 +1,18 @@
-import useLocale from '../../../../../core/contexts/LocaleContext/useLocale';
-import DASHBOARD_TEXTS from '../../constants/texts';
-import React from 'react';
-import { Typography } from '@mui/material';
+import React, { useCallback } from 'react';
+import ABMTemplate from '../../../core/components/templates/ABMTemplate';
+import useDialog from '../../../../../core/contexts/DialogContext/useDialog';
+import AddIntroDialog from '../../components/contents/dialogs/AddIntroDialog';
 
 function IntrosPage() {
-  const { translate } = useLocale();
+  const { openDialog } = useDialog();
+  const handleClickAdd = useCallback(() => {
+    openDialog(AddIntroDialog);
+  }, [openDialog]);
   return (
-    <Typography variant="h3" component="h1" textAlign="center">
-      {translate(DASHBOARD_TEXTS.INTROS_PAGE_TITLE)}
-    </Typography>
+    <ABMTemplate
+      onClickAdd={handleClickAdd}
+      onClickDeleteAll={() => {}}
+    ></ABMTemplate>
   );
 }
 

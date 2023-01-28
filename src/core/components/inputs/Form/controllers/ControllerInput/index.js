@@ -8,7 +8,7 @@ function ControllerInput({
   template: Template = Grid,
   templateProps = { item: true, container: true, xs: 12 },
   disabled,
-  defaultValue,
+  defaultValue = '',
   ...props
 }) {
   const { control, formState } = useFormContext();
@@ -39,7 +39,7 @@ ControllerInput.propTypes = {
   template: PropTypes.func,
   templateProps: PropTypes.object,
   disabled: PropTypes.bool,
-  defaultValue: PropTypes.string.isRequired,
+  defaultValue: PropTypes.any,
 };
 
 export default ControllerInput;

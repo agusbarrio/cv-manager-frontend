@@ -12,6 +12,7 @@ import { tabsClasses } from '@mui/material';
 
 function DashboardPage() {
   const { translate } = useLocale();
+
   const tabs = useMemo(
     () => [
       {
@@ -63,7 +64,9 @@ function DashboardPage() {
           },
         },
       }}
-    ></Tabs>
+      showDivider
+      sxContent={{ m: '0.5rem !important' }}
+    />
   );
 }
 

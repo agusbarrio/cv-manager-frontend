@@ -13,9 +13,9 @@ function Template(args) {
 export const Example = Template.bind({});
 Example.args = {
   tabs: [
-    { label: 'Tab label 0', render: () => <div>Tab 0</div> },
-    { label: 'Tab label 1', render: () => <div>Tab 1</div> },
-    { label: 'Tab label 2', render: () => <div>Tab 2</div> },
-    { label: 'Tab label 3', render: () => <div>Tab 3</div> },
+    { props: { label: 'Tab label 0' }, render: () => <div>Tab 0</div> },
+    { props: { label: 'Tab label 1' }, render: () => <div>Tab 1</div> },
+    { props: { label: 'Tab label 2' }, render: () => <div>Tab 2</div> },
+    { props: { label: 'Tab label 3' }, render: () => <div>Tab 3</div> },
   ],
 };

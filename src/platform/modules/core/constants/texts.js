@@ -20,8 +20,8 @@ const CORE_TEXTS = {
   VALIDATIONS_EMAIL: {
     es: 'Correo electrónico inválido.',
   },
-  VALIDATIONS_PASSWORD_MIN: { es: 'Debe tener al menos {{min}} caracteres' },
-  VALIDATIONS_PASSWORD_MAX: {
+  VALIDATIONS_MIN: { es: 'Debe tener al menos {{min}} caracteres' },
+  VALIDATIONS_MAX: {
     es: 'Debe tener como máximo {{max}} caracteres',
   },
   VALIDATIONS_PASSWORD_MINUPPERCASE: {
@@ -39,6 +39,9 @@ const CORE_TEXTS = {
   VALIDATIONS_EQUAL_TO: {
     es: 'Los datos ingresados no coinciden',
   },
+  VALIDATIONS_DATE: {
+    es: 'Fecha inválida',
+  },
   ERROR_404_TITLE: {
     es: 'Página no encontrada',
   },
@@ -53,7 +56,18 @@ const CORE_TEXTS = {
   },
   LOGOUT: {
     es: 'Cerrar sesión',
-    en: 'Logout',
+  },
+  GENERIC_ADD: {
+    es: 'Crear',
+  },
+  GENERIC_DELETE_ALL: {
+    es: 'Eliminar todo',
+  },
+  GENERIC_CLOSE: {
+    es: 'Cerrar',
+  },
+  GENERIC_CONFIRM: {
+    es: 'Confirmar',
   },
 };
 
