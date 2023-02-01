@@ -1,5 +1,5 @@
 import Icon from '../../../../../../core/components/dataDisplay/Icon';
-import { Box, Button, Divider, Stack } from '@mui/material';
+import { Box, Button, Stack } from '@mui/material';
 import CORE_TEXTS from '../../../constants/texts';
 import useLocale from '../../../../../../core/contexts/LocaleContext/useLocale';
 import { useMemo, useRef } from 'react';
@@ -17,6 +17,7 @@ function ABMTemplate({
     return !!controllsRef?.current
       ? controllsRef.current.getBoundingClientRect().height
       : 0;
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [controllsRef?.current]);
 
   return (

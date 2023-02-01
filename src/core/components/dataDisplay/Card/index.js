@@ -1,12 +1,9 @@
 import {
-  Box,
   Card as CardMaterial,
   CardActions,
   CardContent,
-  CardHeader,
   Divider,
   Stack,
-  Typography,
 } from '@mui/material';
 import { useMemo } from 'react';
 import Truncate from '../Truncate';
