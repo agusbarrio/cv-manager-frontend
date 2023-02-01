@@ -1,4 +1,4 @@
-import { Box, Tab, Tabs as MaterialTabs, Stack, Divider } from '@mui/material';
+import { Box, Tab, Tabs as MaterialTabs, Stack } from '@mui/material';
 import PropTypes from 'prop-types';
 import React, { useMemo, useState } from 'react';
 
@@ -8,8 +8,6 @@ function Tabs({
   tabsProps = {},
   sxContent = {},
   containerProps = {},
-  showDivider,
-  dividerProps = {},
 }) {
   const [value, setValue] = useState(initial);
 
@@ -26,20 +24,13 @@ function Tabs({
   );
 
   return (
-    <Stack
-      direction="column"
-      width="100%"
-      height="100%"
-      spacing={1}
-      {...containerProps}
-    >
+    <Stack direction="column" width="100%" height="100%" {...containerProps}>
       <MaterialTabs value={value} onChange={handleChange} {...tabsProps}>
         {tabs?.length &&
           tabs.map((tab, index) => (
             <Tab value={index} key={`tab--${index}`} {...tab.props} />
           ))}
       </MaterialTabs>
-      {showDivider && <Divider {...dividerProps} />}
       <Box sx={{ flexGrow: 1, ...sxContent }}>
         <Component {...renderProps} />
       </Box>

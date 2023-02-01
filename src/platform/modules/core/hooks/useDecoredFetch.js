@@ -81,7 +81,7 @@ function useDecoredFetch() {
     async (url, reqConfig, config) => {
       const handlers = getHandlers(config);
       const result = await coreGet(url, calcReqConfig(reqConfig), handlers);
-      return result.data;
+      return result?.data;
     },
     [coreGet, getHandlers, calcReqConfig]
   );
@@ -95,7 +95,7 @@ function useDecoredFetch() {
         calcReqConfig(reqConfig),
         handlers
       );
-      return result.data;
+      return result?.data;
     },
     [corePost, getHandlers, calcReqConfig]
   );
@@ -109,7 +109,7 @@ function useDecoredFetch() {
         calcReqConfig(reqConfig),
         handlers
       );
-      return result.data;
+      return result?.data;
     },
     [corePut, getHandlers, calcReqConfig]
   );
@@ -118,7 +118,7 @@ function useDecoredFetch() {
     async (url, reqConfig, config) => {
       const handlers = getHandlers(config);
       const result = await coreDel(url, calcReqConfig(reqConfig), handlers);
-      return result.data;
+      return result?.data;
     },
     [coreDel, getHandlers, calcReqConfig]
   );

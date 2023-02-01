@@ -5,7 +5,7 @@ import ConfirmDialog from '../../../../../core/components/contents/dialogs/Confi
 import DASHBOARD_TEXTS from '../../../../constants/texts';
 import useCreateIntroService from '../../../../services/intros/useCreateIntroService';
 import IntroForm from '../../forms/IntroForm/IntroForm';
-function AddIntroDialog({ open }) {
+function AddIntroDialog({ open, onAdd }) {
   const { translate } = useLocale();
   const { closeDialog } = useDialog();
   const { createIntro } = useCreateIntroService();
@@ -23,8 +23,9 @@ function AddIntroDialog({ open }) {
     if (formRef?.current) {
       const submit = formRef.current.handleSubmit(handleSubmit);
       await submit();
+      await onAdd();
     }
-  }, [handleSubmit]);
+  }, [handleSubmit, onAdd]);
   return (
     <ConfirmDialog
       open={open}

@@ -53,6 +53,7 @@ function DashboardPage() {
         allowScrollButtonsMobile: true,
         scrollButtons: true,
         sx: {
+          height: '3rem',
           [`& .${tabsClasses.scrollButtons}`]: {
             '&.Mui-disabled': { opacity: 0.3 },
           },
@@ -64,8 +65,7 @@ function DashboardPage() {
           },
         },
       }}
-      showDivider
-      sxContent={{ m: '0.5rem !important' }}
+      sxContent={{ height: 'calc(100% - 3rem)' }}
     />
   );
 }

@@ -1,12 +1,15 @@
 import {
+  Box,
   Card as CardMaterial,
   CardActions,
   CardContent,
   CardHeader,
   Divider,
+  Stack,
   Typography,
 } from '@mui/material';
 import { useMemo } from 'react';
+import Truncate from '../Truncate';
 
 function Card({ children, actions, title, ...props }) {
   const showTopDivider = useMemo(
@@ -19,7 +22,11 @@ function Card({ children, actions, title, ...props }) {
   );
   return (
     <CardMaterial {...props}>
-      {!!title && <CardHeader title={title}></CardHeader>}
+      {!!title && (
+        <Stack padding={2}>
+          <Truncate variant="h5">{title}</Truncate>
+        </Stack>
+      )}
       {showTopDivider && <Divider></Divider>}
       <CardContent>{children}</CardContent>
       {!!showBottomDivider && <Divider></Divider>}

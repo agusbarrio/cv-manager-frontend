@@ -2,12 +2,26 @@ import Icon from '../../../../../../core/components/dataDisplay/Icon';
 import { Box, Button, Divider, Stack } from '@mui/material';
 import CORE_TEXTS from '../../../constants/texts';
 import useLocale from '../../../../../../core/contexts/LocaleContext/useLocale';
+import { useMemo, useRef } from 'react';
 
-function ABMTemplate({ children, onClickAdd, onClickDeleteAll }) {
+function ABMTemplate({
+  children,
+  onClickAdd,
+  onClickDeleteAll,
+  columnWidth = '17.5rem',
+}) {
   const { translate } = useLocale();
+  const controllsRef = useRef(null);
+  const controllsHeight = useMemo(() => {
+    console.log();
+    return !!controllsRef?.current
+      ? controllsRef.current.getBoundingClientRect().height
+      : 0;
+  }, [controllsRef?.current]);
+
   return (
-    <Stack spacing={1} height={1}>
-      <Stack direction="row" spacing={2}>
+    <Stack height={1}>
+      <Stack direction="row" spacing={2} padding={1} ref={controllsRef}>
         {onClickAdd && (
           <Button
             variant="contained"
@@ -28,8 +42,18 @@ function ABMTemplate({ children, onClickAdd, onClickDeleteAll }) {
           </Button>
         )}
       </Stack>
-      <Divider></Divider>
-      <Box sx={{ flexGrow: 1 }}>{children}</Box>
+      <Box
+        justifyContent={'center'}
+        height={`calc(100% - ${controllsHeight}px)`}
+        p={1}
+        sx={{ overflowY: 'scroll' }}
+        display="grid"
+        gridTemplateColumns={`repeat(auto-fill, ${columnWidth})`}
+        gridAutoRows="min-content"
+        gap={1}
+      >
+        {children}
+      </Box>
     </Stack>
   );
 }
