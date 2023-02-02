@@ -39,6 +39,7 @@ function TextInput({
     <FormControl sx={{ width: '100%', ...sx }} error={!!errorMessage}>
       <FormLabel>{label}</FormLabel>
       <TextField
+        multiline
         variant={variant}
         inputProps={inputProps}
         error={!!errorMessage}

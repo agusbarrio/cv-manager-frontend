@@ -46,7 +46,7 @@ const DEFAULT_VALIDATIONS = {
   },
   DESCRIPTION: {
     required: { value: false, message: CORE_TEXTS.VALIDATIONS_REQUIRED },
-    max: { value: 500, message: CORE_TEXTS.VALIDATIONS_MAX },
+    max: { value: 255, message: CORE_TEXTS.VALIDATIONS_MAX },
   },
   NAME: {
     required: { value: true, message: CORE_TEXTS.VALIDATIONS_REQUIRED },
