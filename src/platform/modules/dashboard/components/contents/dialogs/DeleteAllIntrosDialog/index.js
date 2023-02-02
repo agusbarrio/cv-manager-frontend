@@ -3,26 +3,30 @@ import useDialog from '../../../../../../../core/contexts/DialogContext/useDialo
 import useLocale from '../../../../../../../core/contexts/LocaleContext/useLocale';
 import ConfirmDialog from '../../../../../core/components/contents/dialogs/ConfirmDialog';
 import DASHBOARD_TEXTS from '../../../../constants/texts';
-import useDeleteIntroService from '../../../../services/intros/useDeleteIntroService';
+
 import _ from 'lodash';
-function DeleteIntroDialog({ open, onDelete, intro }) {
+import useDeleteAllIntrosService from '../../../../services/intros/useDeleteAllIntrosService';
+import CORE_TEXTS from '../../../../../core/constants/texts';
+function DeleteAllIntrosDialog({ open, onDelete }) {
   const { translate } = useLocale();
   const { closeDialog } = useDialog();
-  const { deleteIntro } = useDeleteIntroService();
+  const { deleteAllIntros } = useDeleteAllIntrosService();
 
   const handleConfirm = useCallback(async () => {
-    await deleteIntro(intro.id);
+    await deleteAllIntros();
     closeDialog();
     if (_.isFunction(onDelete)) await onDelete();
-  }, [onDelete, deleteIntro, intro, closeDialog]);
+  }, [onDelete, deleteAllIntros, closeDialog]);
   return (
     <ConfirmDialog
       open={open}
       onConfirm={handleConfirm}
-      title={translate(DASHBOARD_TEXTS.DELETE_INTRO_DIALOG_TITLE)}
-      textContent={translate(DASHBOARD_TEXTS.DELETE_INTRO_DIALOG_DESCRIPTION)}
+      title={translate(CORE_TEXTS.GENERIC_DELETE_ALL)}
+      textContent={translate(
+        DASHBOARD_TEXTS.DELETE_ALL_INTROS_DIALOG_DESCRIPTION
+      )}
     ></ConfirmDialog>
   );
 }
 
-export default DeleteIntroDialog;
+export default DeleteAllIntrosDialog;

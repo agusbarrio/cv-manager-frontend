@@ -62,6 +62,9 @@ const DASHBOARD_TEXTS = {
   DELETE_INTRO_DIALOG_DESCRIPTION: {
     es: '¿Estas seguro de que deseas eliminar esta introducción?',
   },
+  DELETE_ALL_INTROS_DIALOG_DESCRIPTION: {
+    es: '¿Estas seguro de que deseas eliminar todas las introducciones?',
+  },
 };
 
 export default DASHBOARD_TEXTS;

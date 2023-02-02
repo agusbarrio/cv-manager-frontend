@@ -5,6 +5,7 @@ import AddIntroDialog from '../../components/contents/dialogs/AddIntroDialog';
 import useGetIntrosService from '../../services/intros/useGetIntrosService';
 import useService from '../../../core/hooks/useService';
 import IntroCard from '../../components/contents/cards/IntroCard';
+import DeleteAllIntrosDialog from '../../components/contents/dialogs/DeleteAllIntrosDialog';
 
 function IntrosPage() {
   const { openDialog } = useDialog();
@@ -15,8 +16,15 @@ function IntrosPage() {
     openDialog(AddIntroDialog, { onAdd: refresh });
   }, [openDialog, refresh]);
 
+  const handleClickDeleteAll = useCallback(() => {
+    openDialog(DeleteAllIntrosDialog, { onDelete: refresh });
+  }, [openDialog, refresh]);
+
   return (
-    <ABMTemplate onClickAdd={handleClickAdd} onClickDeleteAll={() => {}}>
+    <ABMTemplate
+      onClickAdd={handleClickAdd}
+      onClickDeleteAll={handleClickDeleteAll}
+    >
       {intros.map((intro, index) => (
         <IntroCard
           intro={intro}
