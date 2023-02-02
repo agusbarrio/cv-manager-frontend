@@ -9,6 +9,8 @@ function ABMTemplate({
   onClickAdd,
   onClickDeleteAll,
   columnWidth = '17.5rem',
+  deleteAllButtonDisabled = false,
+  addButtonDisabled = false,
 }) {
   const { translate } = useLocale();
   const controllsRef = useRef(null);
@@ -28,6 +30,7 @@ function ABMTemplate({
             variant="contained"
             startIcon={<Icon>add</Icon>}
             onClick={onClickAdd}
+            disabled={addButtonDisabled}
           >
             {translate(CORE_TEXTS.GENERIC_ADD)}
           </Button>
@@ -38,6 +41,7 @@ function ABMTemplate({
             startIcon={<Icon>delete</Icon>}
             color="error"
             onClick={onClickDeleteAll}
+            disabled={deleteAllButtonDisabled}
           >
             {translate(CORE_TEXTS.GENERIC_DELETE_ALL)}
           </Button>

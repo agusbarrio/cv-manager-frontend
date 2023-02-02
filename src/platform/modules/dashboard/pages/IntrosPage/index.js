@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useMemo } from 'react';
 import ABMTemplate from '../../../core/components/templates/ABMTemplate';
 import useDialog from '../../../../../core/contexts/DialogContext/useDialog';
 import AddIntroDialog from '../../components/contents/dialogs/AddIntroDialog';
@@ -20,10 +20,13 @@ function IntrosPage() {
     openDialog(DeleteAllIntrosDialog, { onDelete: refresh });
   }, [openDialog, refresh]);
 
+  const deleteAllButtonDisabled = useMemo(() => intros.length === 0, [intros]);
+
   return (
     <ABMTemplate
       onClickAdd={handleClickAdd}
       onClickDeleteAll={handleClickDeleteAll}
+      deleteAllButtonDisabled={deleteAllButtonDisabled}
     >
       {intros.map((intro, index) => (
         <IntroCard
