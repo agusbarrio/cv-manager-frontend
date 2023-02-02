@@ -15,9 +15,7 @@ import _ from 'lodash';
 function ConfirmDialog({
   children,
   onClose,
-  onConfirm,
   closeButtonText = 'Close',
-  confirmButtonText = 'Confirm',
   textContent,
   title,
   open = false,
@@ -30,10 +28,6 @@ function ConfirmDialog({
     if (_.isFunction(onClose)) onClose();
     closeDialog();
   }, [closeDialog, onClose]);
-
-  const handleConfirm = useCallback(() => {
-    if (_.isFunction(onConfirm)) onConfirm();
-  }, [onConfirm]);
 
   return (
     <DialogMaterial
@@ -52,9 +46,6 @@ function ConfirmDialog({
       <Divider></Divider>
       <DialogActions>
         <Button onClick={handleClose}>{closeButtonText}</Button>
-        <Button onClick={handleConfirm} variant="contained">
-          {confirmButtonText}
-        </Button>
       </DialogActions>
     </DialogMaterial>
   );
@@ -63,9 +54,7 @@ function ConfirmDialog({
 ConfirmDialog.propTypes = {
   children: PropTypes.any,
   onClose: PropTypes.func,
-  onConfirm: PropTypes.func,
   closeButtonText: PropTypes.string,
-  confirmButtonText: PropTypes.string,
   textContent: PropTypes.string,
   title: PropTypes.string,
   open: PropTypes.bool,

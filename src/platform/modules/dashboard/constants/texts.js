@@ -50,6 +50,9 @@ const DASHBOARD_TEXTS = {
   FORM_ABOUT_PLACEHOLDER: {
     es: 'Escribí algo sobre vos',
   },
+  MORE_INFO_INTRO_DIALOG_TITLE: {
+    es: 'Ver introducción',
+  },
 };
 
 export default DASHBOARD_TEXTS;

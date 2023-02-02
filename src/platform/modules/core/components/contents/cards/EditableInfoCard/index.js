@@ -3,26 +3,51 @@ import { useMemo } from 'react';
 import Card from '../../../../../../../core/components/dataDisplay/Card';
 import DataLine from '../../../../../../../core/components/dataDisplay/DataLine';
 import ButtonIcon from '../../../../../../../core/components/inputs/ButtonIcon';
-
+import _ from 'lodash';
+import useLocale from '../../../../../../../core/contexts/LocaleContext/useLocale';
+import CORE_TEXTS from '../../../../constants/texts';
 function EditableInfoCard({
   title,
   items = [],
   onClickEdit,
   onClickDelete,
+  onClickMoreInfo,
   ...props
 }) {
+  const { translate } = useLocale();
   const actions = useMemo(
     () => (
       <>
-        <ButtonIcon onClick={onClickEdit} color="primary">
-          edit
-        </ButtonIcon>
-        <ButtonIcon onClick={onClickDelete} color="error">
-          delete
-        </ButtonIcon>
+        {_.isFunction(onClickMoreInfo) && (
+          <ButtonIcon
+            onClick={onClickMoreInfo}
+            color="success"
+            tooltip={translate(CORE_TEXTS.GENERIC_MORE_INFO)}
+          >
+            manage_search
+          </ButtonIcon>
+        )}
+        {_.isFunction(onClickEdit) && (
+          <ButtonIcon
+            onClick={onClickEdit}
+            color="primary"
+            tooltip={translate(CORE_TEXTS.GENERIC_EDIT)}
+          >
+            edit
+          </ButtonIcon>
+        )}
+        {_.isFunction(onClickDelete) && (
+          <ButtonIcon
+            onClick={onClickDelete}
+            color="error"
+            tooltip={translate(CORE_TEXTS.GENERIC_DELETE)}
+          >
+            delete
+          </ButtonIcon>
+        )}
       </>
     ),
-    [onClickEdit, onClickDelete]
+    [onClickEdit, onClickDelete, onClickMoreInfo, translate]
   );
 
   return (

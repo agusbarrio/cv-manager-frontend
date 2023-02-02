@@ -69,6 +69,15 @@ const CORE_TEXTS = {
   GENERIC_CONFIRM: {
     es: 'Confirmar',
   },
+  GENERIC_EDIT: {
+    es: 'Editar',
+  },
+  GENERIC_DELETE: {
+    es: 'Eliminar',
+  },
+  GENERIC_MORE_INFO: {
+    es: 'Mas información',
+  },
 };
 
 export default CORE_TEXTS;
