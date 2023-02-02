@@ -53,6 +53,9 @@ const DASHBOARD_TEXTS = {
   MORE_INFO_INTRO_DIALOG_TITLE: {
     es: 'Ver introducción',
   },
+  EDIT_INTRO_DIALOG_TITLE: {
+    es: 'Editar introducción',
+  },
 };
 
 export default DASHBOARD_TEXTS;

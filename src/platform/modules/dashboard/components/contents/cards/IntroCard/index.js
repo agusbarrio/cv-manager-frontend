@@ -3,18 +3,22 @@ import useDialog from '../../../../../../../core/contexts/DialogContext/useDialo
 import useLocale from '../../../../../../../core/contexts/LocaleContext/useLocale';
 import EditableInfoCard from '../../../../../core/components/contents/cards/EditableInfoCard';
 import DASHBOARD_TEXTS from '../../../../constants/texts';
+import EditIntroDialog from '../../dialogs/EditIntroDialog';
 import MoreInfoIntroDialog from '../../dialogs/MoreInfoIntroDialog';
 
-function IntroCard({ intro }) {
+function IntroCard({ intro, onEdit }) {
   const { translate } = useLocale();
   const { openDialog } = useDialog();
   const handleClickMoreInfo = useCallback(() => {
     openDialog(MoreInfoIntroDialog, { intro });
   }, [openDialog, intro]);
+  const handleClickEdit = useCallback(() => {
+    openDialog(EditIntroDialog, { intro, onEdit });
+  }, [openDialog, intro, onEdit]);
   return (
     <EditableInfoCard
       title={intro.headLine}
-      onClickEdit={() => {}}
+      onClickEdit={handleClickEdit}
       onClickDelete={() => {}}
       onClickMoreInfo={handleClickMoreInfo}
       items={[

@@ -6,7 +6,7 @@ import useValidator from '../../../../../core/hooks/useValidator';
 import Form from '../../../../../../../core/components/inputs/Form';
 import DateInput from '../../../../../../../core/components/inputs/DateInput';
 
-function IntroForm({ innerRef }) {
+function IntroForm({ innerRef, defaultValues }) {
   const { translate } = useLocale();
   const validator = useValidator();
   const schema = validator.form({
@@ -22,6 +22,7 @@ function IntroForm({ innerRef }) {
       schema={schema}
       innerRef={innerRef}
       templateProps={{ showSubmitButton: false }}
+      defaultValues={defaultValues}
     >
       <ControllerInput
         render={TextInput}
