@@ -18,7 +18,12 @@ function IntrosPage() {
   return (
     <ABMTemplate onClickAdd={handleClickAdd} onClickDeleteAll={() => {}}>
       {intros.map((intro, index) => (
-        <IntroCard intro={intro} key={index} onEdit={refresh}></IntroCard>
+        <IntroCard
+          intro={intro}
+          key={index}
+          onEdit={refresh}
+          onDelete={refresh}
+        ></IntroCard>
       ))}
     </ABMTemplate>
   );

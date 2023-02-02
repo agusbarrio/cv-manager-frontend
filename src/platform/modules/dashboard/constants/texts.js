@@ -56,6 +56,12 @@ const DASHBOARD_TEXTS = {
   EDIT_INTRO_DIALOG_TITLE: {
     es: 'Editar introducción',
   },
+  DELETE_INTRO_DIALOG_TITLE: {
+    es: 'Eliminar introducción',
+  },
+  DELETE_INTRO_DIALOG_DESCRIPTION: {
+    es: '¿Estas seguro de que deseas eliminar esta introducción?',
+  },
 };
 
 export default DASHBOARD_TEXTS;
