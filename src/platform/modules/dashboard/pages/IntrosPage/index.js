@@ -20,7 +20,7 @@ function IntrosPage() {
     openDialog(DeleteAllIntrosDialog, { onDelete: refresh });
   }, [openDialog, refresh]);
 
-  const deleteAllButtonDisabled = useMemo(() => intros.length === 0, [intros]);
+  const deleteAllButtonDisabled = useMemo(() => intros?.length === 0, [intros]);
 
   return (
     <ABMTemplate
@@ -28,7 +28,7 @@ function IntrosPage() {
       onClickDeleteAll={handleClickDeleteAll}
       deleteAllButtonDisabled={deleteAllButtonDisabled}
     >
-      {intros.map((intro, index) => (
+      {intros?.map((intro, index) => (
         <IntroCard
           intro={intro}
           key={index}

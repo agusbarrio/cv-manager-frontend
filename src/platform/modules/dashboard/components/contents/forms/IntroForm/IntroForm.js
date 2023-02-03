@@ -29,18 +29,21 @@ function IntroForm({ innerRef, defaultValues }) {
         name="headLine"
         label={translate(DASHBOARD_TEXTS.INTRO_HEAD_LINE_LABEL)}
         placeholder={translate(DASHBOARD_TEXTS.FORM_HEAD_LINE_PLACEHOLDER)}
+        multiline
       ></ControllerInput>
       <ControllerInput
         render={TextInput}
         name="firstName"
         label={translate(DASHBOARD_TEXTS.INTRO_FIRST_NAME_LABEL)}
         placeholder={translate(DASHBOARD_TEXTS.FORM_FIRST_NAME_PLACEHOLDER)}
+        multiline
       ></ControllerInput>
       <ControllerInput
         render={TextInput}
         name="lastName"
         label={translate(DASHBOARD_TEXTS.INTRO_LAST_NAME_LABEL)}
         placeholder={translate(DASHBOARD_TEXTS.FORM_LAST_NAME_PLACEHOLDER)}
+        multiline
       ></ControllerInput>
       <ControllerInput
         render={DateInput}
@@ -54,6 +57,7 @@ function IntroForm({ innerRef, defaultValues }) {
         name="about"
         label={translate(DASHBOARD_TEXTS.INTRO_ABOUT_LABEL)}
         placeholder={translate(DASHBOARD_TEXTS.FORM_ABOUT_PLACEHOLDER)}
+        multiline
       ></ControllerInput>
     </Form>
   );
