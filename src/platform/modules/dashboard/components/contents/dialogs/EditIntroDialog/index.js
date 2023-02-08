@@ -5,7 +5,7 @@ import ConfirmDialog from '../../../../../core/components/contents/dialogs/Confi
 import DASHBOARD_TEXTS from '../../../../constants/texts';
 import useEditIntroService from '../../../../services/intros/useEditIntroService';
 import IntroForm from '../../forms/IntroForm/IntroForm';
-
+import _ from 'lodash';
 function EditIntroDialog({ open, onEdit, intro }) {
   const { translate } = useLocale();
   const { closeDialog } = useDialog();
@@ -15,18 +15,18 @@ function EditIntroDialog({ open, onEdit, intro }) {
   const handleSubmit = useCallback(
     async (data) => {
       await editIntro(intro.id, data);
+      if (_.isFunction(onEdit)) onEdit();
       closeDialog();
     },
-    [closeDialog, editIntro, intro]
+    [closeDialog, editIntro, intro, onEdit]
   );
 
   const handleConfirm = useCallback(async () => {
     if (formRef?.current) {
       const submit = formRef.current.handleSubmit(handleSubmit);
       await submit();
-      await onEdit();
     }
-  }, [handleSubmit, onEdit]);
+  }, [handleSubmit]);
   return (
     <ConfirmDialog
       open={open}

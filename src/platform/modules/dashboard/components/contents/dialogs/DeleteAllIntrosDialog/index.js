@@ -14,8 +14,8 @@ function DeleteAllIntrosDialog({ open, onDelete }) {
 
   const handleConfirm = useCallback(async () => {
     await deleteAllIntros();
+    if (_.isFunction(onDelete)) onDelete();
     closeDialog();
-    if (_.isFunction(onDelete)) await onDelete();
   }, [onDelete, deleteAllIntros, closeDialog]);
   return (
     <ConfirmDialog

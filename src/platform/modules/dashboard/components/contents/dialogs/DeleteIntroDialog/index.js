@@ -12,8 +12,8 @@ function DeleteIntroDialog({ open, onDelete, intro }) {
 
   const handleConfirm = useCallback(async () => {
     await deleteIntro(intro.id);
+    if (_.isFunction(onDelete)) onDelete();
     closeDialog();
-    if (_.isFunction(onDelete)) await onDelete();
   }, [onDelete, deleteIntro, intro, closeDialog]);
   return (
     <ConfirmDialog
