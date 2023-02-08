@@ -3,22 +3,22 @@ import useDialog from '../../../../../../../core/contexts/DialogContext/useDialo
 import useLocale from '../../../../../../../core/contexts/LocaleContext/useLocale';
 import ConfirmDialog from '../../../../../core/components/contents/dialogs/ConfirmDialog';
 import DASHBOARD_TEXTS from '../../../../constants/texts';
-import useCreateIntroService from '../../../../services/intros/useCreateIntroService';
+import useAddIntroService from '../../../../services/intros/useAddIntroService';
 import IntroForm from '../../forms/IntroForm/IntroForm';
 import _ from 'lodash';
 function AddIntroDialog({ open, onAdd }) {
   const { translate } = useLocale();
   const { closeDialog } = useDialog();
-  const { createIntro } = useCreateIntroService();
+  const { addIntro } = useAddIntroService();
   const formRef = useRef(null);
 
   const handleSubmit = useCallback(
     async (data) => {
-      await createIntro(data);
+      await addIntro(data);
       if (_.isFunction(onAdd)) onAdd();
       closeDialog();
     },
-    [closeDialog, createIntro, onAdd]
+    [closeDialog, addIntro, onAdd]
   );
 
   const handleConfirm = useCallback(async () => {

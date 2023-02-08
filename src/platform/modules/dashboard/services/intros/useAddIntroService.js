@@ -3,16 +3,16 @@ import useDecoredFetch from '../../../core/hooks/useDecoredFetch';
 
 import DASHBOARD_ENDPOINTS from '../../constants/endpoints';
 
-function useCreateIntroService() {
+function useAddIntroService() {
   const { post } = useDecoredFetch();
-  const createIntro = useCallback(
+  const addIntro = useCallback(
     async (values) => {
       const result = await post(DASHBOARD_ENDPOINTS.INTROS, values);
       return result;
     },
     [post]
   );
-  return { createIntro };
+  return { addIntro };
 }
 
-export default useCreateIntroService;
+export default useAddIntroService;
