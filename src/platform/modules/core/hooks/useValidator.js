@@ -140,9 +140,10 @@ function useValidator() {
     let yupDate = Yup.date().typeError(translate(configResult.date.message));
     if (configResult.required && configResult.required.value) {
       yupDate = yupDate.required(translate(configResult.required.message));
+    } else {
+      yupDate = yupDate.nullable();
     }
-    if (configResult?.nullable?.value)
-      yupDate = yupDate.nullable(translate(configResult.nullable.message));
+
     if (configResult.min && configResult.min.value) {
       const min = configResult.min.value;
       yupDate = yupDate.min(min, translate(configResult.min.message, { min }));

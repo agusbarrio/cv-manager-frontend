@@ -1,14 +1,44 @@
-import useLocale from '../../../../../core/contexts/LocaleContext/useLocale';
-import DASHBOARD_TEXTS from '../../constants/texts';
-import React from 'react';
-import { Typography } from '@mui/material';
-
+import useDialog from '../../../../../core/contexts/DialogContext/useDialog';
+import React, { useCallback, useMemo } from 'react';
+import useGetExperiencesService from '../../services/experiences/useGetExperiencesService';
+import useService from '../../../core/hooks/useService';
+import ABMTemplate from '../../../core/components/templates/ABMTemplate';
+import ExperienceCard from '../../components/contents/cards/ExperienceCard';
+import AddExperienceDialog from '../../components/contents/dialogs/AddExperienceDialog';
+import DeleteAllExperiencesDialog from '../../components/contents/dialogs/DeleteAllExperiencesDialog';
 function ExperiencesPage() {
-  const { translate } = useLocale();
+  const { openDialog } = useDialog();
+  const { getExperiences } = useGetExperiencesService();
+  const { value: experiences, refresh } = useService(getExperiences, null, []);
+
+  const handleClickAdd = useCallback(() => {
+    openDialog(AddExperienceDialog, { onAdd: refresh });
+  }, [openDialog, refresh]);
+
+  const handleClickDeleteAll = useCallback(() => {
+    openDialog(DeleteAllExperiencesDialog, { onDelete: refresh });
+  }, [openDialog, refresh]);
+
+  const deleteAllButtonDisabled = useMemo(
+    () => experiences?.length === 0,
+    [experiences]
+  );
+
   return (
-    <Typography variant="h3" component="h1" textAlign="center">
-      {translate(DASHBOARD_TEXTS.EXPERIENCES_PAGE_TITLE)}
-    </Typography>
+    <ABMTemplate
+      onClickAdd={handleClickAdd}
+      onClickDeleteAll={handleClickDeleteAll}
+      deleteAllButtonDisabled={deleteAllButtonDisabled}
+    >
+      {experiences?.map((experience, index) => (
+        <ExperienceCard
+          experience={experience}
+          key={index}
+          onEdit={refresh}
+          onDelete={refresh}
+        ></ExperienceCard>
+      ))}
+    </ABMTemplate>
   );
 }
 

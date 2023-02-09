@@ -13,7 +13,7 @@ function IntroForm({ innerRef, defaultValues }) {
     firstName: validator.name(),
     lastName: validator.name(),
     headLine: validator.title(),
-    birthday: validator.date({ nullable: { value: true } }),
+    birthday: validator.date(),
     about: validator.description(),
   });
 
