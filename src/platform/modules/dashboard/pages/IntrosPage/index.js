@@ -10,7 +10,11 @@ import DeleteAllIntrosDialog from '../../components/contents/dialogs/DeleteAllIn
 function IntrosPage() {
   const { openDialog } = useDialog();
   const { getIntros } = useGetIntrosService();
-  const { value: intros, runService: refresh } = useService({
+  const {
+    value: intros,
+    loading,
+    runService: refresh,
+  } = useService({
     service: getIntros,
     defaultValue: [],
     loadOnMount: true,
@@ -31,6 +35,7 @@ function IntrosPage() {
       onClickAdd={handleClickAdd}
       onClickDeleteAll={handleClickDeleteAll}
       deleteAllButtonDisabled={deleteAllButtonDisabled}
+      loading={loading}
     >
       {intros?.map((intro, index) => (
         <IntroCard

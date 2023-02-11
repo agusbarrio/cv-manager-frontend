@@ -23,7 +23,11 @@ function ExperiencesPage() {
     []
   );
 
-  const { value: experiences, runService: refresh } = useService({
+  const {
+    value: experiences,
+    runService: refresh,
+    loading,
+  } = useService({
     service: getExperiences,
     defaultValue: [],
     format: formatData,
@@ -48,6 +52,7 @@ function ExperiencesPage() {
       onClickAdd={handleClickAdd}
       onClickDeleteAll={handleClickDeleteAll}
       deleteAllButtonDisabled={deleteAllButtonDisabled}
+      loading={loading}
     >
       {experiences?.map((experience, index) => (
         <ExperienceCard
