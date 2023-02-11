@@ -6,19 +6,22 @@ import DASHBOARD_TEXTS from '../../../../constants/texts';
 import useEditExperienceService from '../../../../services/experiences/useEditExperienceService';
 import ExperienceForm from '../../forms/ExperienceForm';
 import _ from 'lodash';
+import useService from '../../../../../core/hooks/useService';
+
 function EditExperienceDialog({ open, onEdit, experience }) {
   const { translate } = useLocale();
   const { closeDialog } = useDialog();
   const { editExperience } = useEditExperienceService();
+  const { loading, runService } = useService({ service: editExperience });
   const formRef = useRef(null);
 
   const handleSubmit = useCallback(
     async (data) => {
-      await editExperience(experience.id, data);
+      await runService(experience.id, data);
       if (_.isFunction(onEdit)) onEdit();
       closeDialog();
     },
-    [closeDialog, editExperience, experience, onEdit]
+    [closeDialog, runService, experience, onEdit]
   );
 
   const handleConfirm = useCallback(async () => {
@@ -31,6 +34,7 @@ function EditExperienceDialog({ open, onEdit, experience }) {
     <ConfirmDialog
       open={open}
       onConfirm={handleConfirm}
+      confirmButtonProps={{ disabled: loading }}
       title={translate(DASHBOARD_TEXTS.EDIT_EXPERIENCE_DIALOG_TITLE)}
     >
       <ExperienceForm

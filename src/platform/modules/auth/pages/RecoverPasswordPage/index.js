@@ -6,16 +6,21 @@ import RecoverPasswordForm from '../../forms/RecoverPasswordForm';
 import authPaths from '../../routes/paths';
 import Link from '../../../../../core/components/navigation/Link';
 import useRequestPasswordRecoveryService from '../../services/useRequestPasswordRecoveryService';
+import useService from '../../../core/hooks/useService';
 
 function RecoverPasswordPage() {
   const { translate } = useLocale();
   const { requestPasswordRecovery } = useRequestPasswordRecoveryService();
+  const { loading, runService } = useService({
+    service: requestPasswordRecovery,
+  });
+
   const handleSubmit = useCallback(
     async (data) => {
       const { email } = data;
-      await requestPasswordRecovery({ email });
+      await runService({ email });
     },
-    [requestPasswordRecovery]
+    [runService]
   );
   return (
     <Grid container spacing={2}>
@@ -30,7 +35,10 @@ function RecoverPasswordPage() {
         </Typography>
       </Grid>
       <Grid item xs={12}>
-        <RecoverPasswordForm onSubmit={handleSubmit}></RecoverPasswordForm>
+        <RecoverPasswordForm
+          onSubmit={handleSubmit}
+          submitDisabled={loading}
+        ></RecoverPasswordForm>
       </Grid>
       <Grid item xs={12}>
         <Stack spacing={2} alignItems="flex-end">

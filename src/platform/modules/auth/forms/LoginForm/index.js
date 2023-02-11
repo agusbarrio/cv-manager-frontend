@@ -7,7 +7,7 @@ import AUTH_TEXTS from '../../constants/texts';
 import useValidator from '../../../core/hooks/useValidator';
 import CORE_TEXTS from '../../../core/constants/texts';
 
-function LoginForm({ onSubmit }) {
+function LoginForm({ onSubmit, submitDisabled }) {
   const { translate } = useLocale();
   const validator = useValidator();
   const schema = validator.form({
@@ -24,6 +24,7 @@ function LoginForm({ onSubmit }) {
       templateProps={{
         submitButtonProps: {
           children: translate(AUTH_TEXTS.LOGIN_FORM_SUBMIT),
+          disabled: submitDisabled,
         },
       }}
     >

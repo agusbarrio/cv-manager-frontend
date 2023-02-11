@@ -1,12 +1,18 @@
 import { default as ConfirmDialogCore } from '../../../../../../../core/components/dialogs/ConfirmDialog';
 import useLocale from '../../../../../../../core/contexts/LocaleContext/useLocale';
 import CORE_TEXTS from '../../../../constants/texts';
-function ConfirmDialog({ ...props }) {
+function ConfirmDialog({ closeButtonProps, confirmButtonProps, ...props }) {
   const { translate } = useLocale();
   return (
     <ConfirmDialogCore
-      closeButtonText={translate(CORE_TEXTS.GENERIC_CLOSE)}
-      confirmButtonText={translate(CORE_TEXTS.GENERIC_CONFIRM)}
+      closeButtonProps={{
+        children: translate(CORE_TEXTS.GENERIC_CLOSE),
+        ...closeButtonProps,
+      }}
+      confirmButtonProps={{
+        children: translate(CORE_TEXTS.GENERIC_CONFIRM),
+        ...confirmButtonProps,
+      }}
       {...props}
     />
   );

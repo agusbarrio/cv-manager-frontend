@@ -7,19 +7,22 @@ import Link from '../../../../../core/components/navigation/Link';
 import useResetPasswordService from '../../services/useResetPasswordService';
 import useLocation from '../../../core/hooks/useLocation';
 import ResetPasswordForm from '../../forms/ResetPasswordForm';
+import useService from '../../../core/hooks/useService';
 
 function ResetPasswordPage() {
   const { translate } = useLocale();
   const { resetPassword } = useResetPasswordService();
   const { queryParams } = useLocation();
 
+  const { loading, runService } = useService({ service: resetPassword });
+
   const handleSubmit = useCallback(
     async (data) => {
       const { password } = data;
       const { token } = queryParams;
-      await resetPassword({ password, token });
+      await runService({ password, token });
     },
-    [resetPassword, queryParams]
+    [runService, queryParams]
   );
   return (
     <Grid container spacing={2}>
@@ -29,7 +32,10 @@ function ResetPasswordPage() {
         </Typography>
       </Grid>
       <Grid item xs={12}>
-        <ResetPasswordForm onSubmit={handleSubmit}></ResetPasswordForm>
+        <ResetPasswordForm
+          onSubmit={handleSubmit}
+          submitDisabled={loading}
+        ></ResetPasswordForm>
       </Grid>
       <Grid item xs={12}>
         <Stack spacing={2} alignItems="flex-end">

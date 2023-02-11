@@ -16,8 +16,12 @@ function ConfirmDialog({
   children,
   onClose,
   onConfirm,
-  closeButtonText = 'Close',
-  confirmButtonText = 'Confirm',
+  confirmButtonProps = {
+    children: 'Confirm',
+  },
+  closeButtonProps = {
+    children: 'Close',
+  },
   textContent,
   title,
   open = false,
@@ -51,9 +55,15 @@ function ConfirmDialog({
       </DialogContent>
       <Divider></Divider>
       <DialogActions>
-        <Button onClick={handleClose}>{closeButtonText}</Button>
-        <Button onClick={handleConfirm} variant="contained">
-          {confirmButtonText}
+        <Button onClick={handleClose} {...closeButtonProps}>
+          {closeButtonProps.children}
+        </Button>
+        <Button
+          onClick={handleConfirm}
+          variant="contained"
+          {...confirmButtonProps}
+        >
+          {confirmButtonProps.children}
         </Button>
       </DialogActions>
     </DialogMaterial>

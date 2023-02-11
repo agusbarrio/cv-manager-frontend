@@ -23,12 +23,12 @@ function ExperiencesPage() {
     []
   );
 
-  const { value: experiences, refresh } = useService(
-    getExperiences,
-    null,
-    [],
-    formatData
-  );
+  const { value: experiences, runService: refresh } = useService({
+    service: getExperiences,
+    defaultValue: [],
+    format: formatData,
+    loadOnMount: true,
+  });
 
   const handleClickAdd = useCallback(() => {
     openDialog(AddExperienceDialog, { onAdd: refresh });

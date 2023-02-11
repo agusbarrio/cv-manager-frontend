@@ -5,20 +5,23 @@ import ConfirmDialog from '../../../../../core/components/contents/dialogs/Confi
 import DASHBOARD_TEXTS from '../../../../constants/texts';
 import useAddIntroService from '../../../../services/intros/useAddIntroService';
 import IntroForm from '../../forms/IntroForm/IntroForm';
+import useService from '../../../../../core/hooks/useService';
+
 import _ from 'lodash';
 function AddIntroDialog({ open, onAdd }) {
   const { translate } = useLocale();
   const { closeDialog } = useDialog();
   const { addIntro } = useAddIntroService();
+  const { loading, runService } = useService({ service: addIntro });
   const formRef = useRef(null);
 
   const handleSubmit = useCallback(
     async (data) => {
-      await addIntro(data);
+      await runService(data);
       if (_.isFunction(onAdd)) onAdd();
       closeDialog();
     },
-    [closeDialog, addIntro, onAdd]
+    [closeDialog, runService, onAdd]
   );
 
   const handleConfirm = useCallback(async () => {
@@ -31,6 +34,7 @@ function AddIntroDialog({ open, onAdd }) {
     <ConfirmDialog
       open={open}
       onConfirm={handleConfirm}
+      confirmButtonProps={{ disabled: loading }}
       title={translate(DASHBOARD_TEXTS.ADD_INTRO_DIALOG_TITLE)}
     >
       <IntroForm innerRef={formRef}></IntroForm>

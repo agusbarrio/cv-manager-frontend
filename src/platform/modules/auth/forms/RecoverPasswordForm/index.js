@@ -5,7 +5,7 @@ import useLocale from '../../../../../core/contexts/LocaleContext/useLocale';
 import AUTH_TEXTS from '../../constants/texts';
 import useValidator from '../../../core/hooks/useValidator';
 
-function RecoverPasswordForm({ onSubmit }) {
+function RecoverPasswordForm({ onSubmit, submitDisabled }) {
   const { translate } = useLocale();
   const validator = useValidator();
   const schema = validator.form({
@@ -19,6 +19,7 @@ function RecoverPasswordForm({ onSubmit }) {
       templateProps={{
         submitButtonProps: {
           children: translate(AUTH_TEXTS.RECOVER_PASSWORD_FORM_SUBMIT),
+          disabled: submitDisabled,
         },
       }}
     >

@@ -10,7 +10,11 @@ import DeleteAllIntrosDialog from '../../components/contents/dialogs/DeleteAllIn
 function IntrosPage() {
   const { openDialog } = useDialog();
   const { getIntros } = useGetIntrosService();
-  const { value: intros, refresh } = useService(getIntros, null, []);
+  const { value: intros, runService: refresh } = useService({
+    service: getIntros,
+    defaultValue: [],
+    loadOnMount: true,
+  });
 
   const handleClickAdd = useCallback(() => {
     openDialog(AddIntroDialog, { onAdd: refresh });

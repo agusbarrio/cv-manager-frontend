@@ -6,14 +6,17 @@ import { useCallback } from 'react';
 import Link from '../../../../../core/components/navigation/Link';
 import authPaths from '../../routes/paths';
 import useRegisterService from '../../services/useRegisterService';
+import useService from '../../../core/hooks/useService';
 function RegisterPage() {
   const { translate } = useLocale();
   const { register } = useRegisterService();
+  const { loading, runService } = useService({ service: register });
+
   const handleSubmit = useCallback(
     async (data) => {
-      await register({ email: data?.email, password: data?.password });
+      await runService({ email: data?.email, password: data?.password });
     },
-    [register]
+    [runService]
   );
   return (
     <Grid container spacing={2}>
@@ -23,7 +26,10 @@ function RegisterPage() {
         </Typography>
       </Grid>
       <Grid item xs={12}>
-        <RegisterForm onSubmit={handleSubmit}></RegisterForm>
+        <RegisterForm
+          onSubmit={handleSubmit}
+          submitDisabled={loading}
+        ></RegisterForm>
       </Grid>
       <Grid item xs={12}>
         <Stack spacing={2} alignItems="flex-end">

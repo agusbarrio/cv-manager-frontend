@@ -4,7 +4,7 @@ import PasswordInput from '../../../../../core/components/inputs/PasswordInput';
 import useLocale from '../../../../../core/contexts/LocaleContext/useLocale';
 import AUTH_TEXTS from '../../constants/texts';
 import useValidator from '../../../core/hooks/useValidator';
-function ResetPasswordForm({ onSubmit }) {
+function ResetPasswordForm({ onSubmit, submitDisabled }) {
   const { translate } = useLocale();
   const validator = useValidator();
   const schema = validator.form({
@@ -19,6 +19,7 @@ function ResetPasswordForm({ onSubmit }) {
       templateProps={{
         submitButtonProps: {
           children: translate(AUTH_TEXTS.REGISTER_FORM_SUBMIT),
+          disabled: submitDisabled,
         },
       }}
     >

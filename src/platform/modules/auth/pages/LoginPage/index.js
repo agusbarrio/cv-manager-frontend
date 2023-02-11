@@ -6,16 +6,19 @@ import LoginForm from '../../forms/LoginForm';
 import authPaths from '../../routes/paths';
 import Link from '../../../../../core/components/navigation/Link';
 import useLoginService from '../../services/useLoginService';
-
+import useService from '../../../core/hooks/useService';
 function LoginPage() {
   const { translate } = useLocale();
   const { login } = useLoginService();
+  const { loading, runService } = useService({ service: login });
+
   const handleSubmit = useCallback(
     async (data) => {
-      await login({ email: data?.email, password: data?.password });
+      await runService({ email: data?.email, password: data?.password });
     },
-    [login]
+    [runService]
   );
+
   return (
     <Grid container spacing={2}>
       <Grid item xs={12}>
@@ -24,7 +27,7 @@ function LoginPage() {
         </Typography>
       </Grid>
       <Grid item xs={12}>
-        <LoginForm onSubmit={handleSubmit}></LoginForm>
+        <LoginForm onSubmit={handleSubmit} submitDisabled={loading}></LoginForm>
       </Grid>
       <Grid item xs={12}>
         <Stack spacing={2} alignItems="flex-end">

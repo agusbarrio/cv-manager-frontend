@@ -5,20 +5,23 @@ import ConfirmDialog from '../../../../../core/components/contents/dialogs/Confi
 import DASHBOARD_TEXTS from '../../../../constants/texts';
 import useEditIntroService from '../../../../services/intros/useEditIntroService';
 import IntroForm from '../../forms/IntroForm/IntroForm';
+import useService from '../../../../../core/hooks/useService';
+
 import _ from 'lodash';
 function EditIntroDialog({ open, onEdit, intro }) {
   const { translate } = useLocale();
   const { closeDialog } = useDialog();
   const { editIntro } = useEditIntroService();
+  const { loading, runService } = useService({ service: editIntro });
   const formRef = useRef(null);
 
   const handleSubmit = useCallback(
     async (data) => {
-      await editIntro(intro.id, data);
+      await runService(intro.id, data);
       if (_.isFunction(onEdit)) onEdit();
       closeDialog();
     },
-    [closeDialog, editIntro, intro, onEdit]
+    [closeDialog, runService, intro, onEdit]
   );
 
   const handleConfirm = useCallback(async () => {
@@ -31,6 +34,7 @@ function EditIntroDialog({ open, onEdit, intro }) {
     <ConfirmDialog
       open={open}
       onConfirm={handleConfirm}
+      confirmButtonProps={{ disabled: loading }}
       title={translate(DASHBOARD_TEXTS.EDIT_INTRO_DIALOG_TITLE)}
     >
       <IntroForm innerRef={formRef} defaultValues={intro}></IntroForm>
