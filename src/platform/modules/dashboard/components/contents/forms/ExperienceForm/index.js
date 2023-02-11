@@ -5,7 +5,10 @@ import useLocale from '../../../../../../../core/contexts/LocaleContext/useLocal
 import useValidator from '../../../../../core/hooks/useValidator';
 import Form from '../../../../../../../core/components/inputs/Form';
 import DateInput from '../../../../../../../core/components/inputs/DateInput';
-
+import SelectInput from '../../../../../../../core/components/inputs/SelectInput';
+import _ from 'lodash';
+import { EMPLOYMENT_TYPES } from '../../../../constants/experiences';
+import { useMemo } from 'react';
 function ExperienceForm({ innerRef, defaultValues }) {
   const { translate } = useLocale();
   const validator = useValidator();
@@ -17,8 +20,27 @@ function ExperienceForm({ innerRef, defaultValues }) {
     endDate: validator.date(),
     industry: validator.title({ required: { value: false } }),
     description: validator.description({ required: { value: false } }),
-    //TODO agregar employmentType
+    employmentType: validator
+      .oneOf([..._.values(EMPLOYMENT_TYPES), null])
+      .transform((value) => (value === '' ? null : value)),
   });
+
+  const employmentTypesList = useMemo(() => {
+    const list = _.map(_.values(EMPLOYMENT_TYPES), (employmentType) => ({
+      value: employmentType,
+      children: translate(
+        DASHBOARD_TEXTS[`EXPERIENCE_EMPLOYMENT_TYPE_${employmentType}_LABEL`]
+      ),
+    }));
+
+    return [
+      {
+        value: '',
+        children: translate(DASHBOARD_TEXTS.FORM_EMPLOYMENT_TYPE_PLACEHOLDER),
+      },
+      ...list,
+    ];
+  }, [translate]);
 
   return (
     <Form
@@ -74,7 +96,13 @@ function ExperienceForm({ innerRef, defaultValues }) {
         label={translate(DASHBOARD_TEXTS.EXPERIENCE_DESCRIPTION_LABEL)}
         placeholder={translate(DASHBOARD_TEXTS.FORM_DESCRIPTION_PLACEHOLDER)}
       ></ControllerInput>
-      {/* TODO Agregar employmentType */}
+      <ControllerInput
+        render={SelectInput}
+        name="employmentType"
+        displayEmpty
+        label={translate(DASHBOARD_TEXTS.EXPERIENCE_EMPLOYMENT_TYPE_LABEL)}
+        list={employmentTypesList}
+      ></ControllerInput>
     </Form>
   );
 }

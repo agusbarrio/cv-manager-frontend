@@ -54,6 +54,7 @@ const DEFAULT_VALIDATIONS = {
   },
   DATE: {
     date: { value: true, message: CORE_TEXTS.VALIDATIONS_DATE },
+    required: { value: false, message: CORE_TEXTS.VALIDATIONS_REQUIRED },
   },
 };
 

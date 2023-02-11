@@ -55,7 +55,13 @@ function ExperienceCard({ experience, onEdit, onDelete }) {
         },
         {
           label: translate(DASHBOARD_TEXTS.EXPERIENCE_EMPLOYMENT_TYPE_LABEL),
-          value: experience.employmentType,
+          value: !!experience.employmentType
+            ? translate(
+                DASHBOARD_TEXTS[
+                  `EXPERIENCE_EMPLOYMENT_TYPE_${experience.employmentType}_LABEL`
+                ]
+              )
+            : '',
         },
       ]}
     />

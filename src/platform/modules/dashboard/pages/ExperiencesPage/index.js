@@ -6,10 +6,29 @@ import ABMTemplate from '../../../core/components/templates/ABMTemplate';
 import ExperienceCard from '../../components/contents/cards/ExperienceCard';
 import AddExperienceDialog from '../../components/contents/dialogs/AddExperienceDialog';
 import DeleteAllExperiencesDialog from '../../components/contents/dialogs/DeleteAllExperiencesDialog';
+import _ from 'lodash';
 function ExperiencesPage() {
   const { openDialog } = useDialog();
   const { getExperiences } = useGetExperiencesService();
-  const { value: experiences, refresh } = useService(getExperiences, null, []);
+
+  const formatData = useCallback(
+    (data) =>
+      _.map(data, (item) => {
+        const employmentType = !!item.employmentType ? item.employmentType : '';
+        return {
+          ...item,
+          employmentType,
+        };
+      }),
+    []
+  );
+
+  const { value: experiences, refresh } = useService(
+    getExperiences,
+    null,
+    [],
+    formatData
+  );
 
   const handleClickAdd = useCallback(() => {
     openDialog(AddExperienceDialog, { onAdd: refresh });

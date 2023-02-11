@@ -13,10 +13,12 @@ function useValidator() {
   const string = useCallback(
     (config) => {
       let yupString = Yup.string();
-      if (config?.required?.value)
+      if (config?.required?.value) {
         yupString = yupString.required(translate(config.required.message));
-      if (config?.nullable?.value)
-        yupString = yupString.nullable(translate(config.nullable.message));
+      } else {
+        yupString = yupString.nullable();
+      }
+
       if (config?.max?.value) {
         const max = config.max.value;
         yupString = yupString.max(max, translate(config.max.message, { max }));
@@ -140,10 +142,8 @@ function useValidator() {
     let yupDate = Yup.date().typeError(translate(configResult.date.message));
     if (configResult.required && configResult.required.value) {
       yupDate = yupDate.required(translate(configResult.required.message));
-    } else {
-      yupDate = yupDate.nullable();
     }
-
+    yupDate = yupDate.nullable();
     if (configResult.min && configResult.min.value) {
       const min = configResult.min.value;
       yupDate = yupDate.min(min, translate(configResult.min.message, { min }));
@@ -153,6 +153,11 @@ function useValidator() {
       yupDate = yupDate.min(max, translate(configResult.max.message, { max }));
     }
     return yupDate;
+  };
+
+  const oneOf = (values, config = {}) => {
+    const yupOneOf = string(config).oneOf(values);
+    return yupOneOf;
   };
 
   return {
@@ -165,6 +170,7 @@ function useValidator() {
     title,
     description,
     date,
+    oneOf,
   };
 }
 

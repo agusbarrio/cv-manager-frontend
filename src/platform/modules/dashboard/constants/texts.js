@@ -91,6 +91,18 @@ const DASHBOARD_TEXTS = {
   FORM_INDUSTRY_PLACEHOLDER: { es: 'Escribí la industria' },
   FORM_DESCRIPTION_PLACEHOLDER: { es: 'Escribí la descripción' },
   FORM_EMPLOYMENT_TYPE_PLACEHOLDER: { es: 'Elegí el tipo de empleo' },
+  EXPERIENCE_EMPLOYMENT_TYPE_FULL_TIME_LABEL: { es: 'Jornada completa' },
+  EXPERIENCE_EMPLOYMENT_TYPE_PART_TIME_LABEL: { es: 'Jornada parcial' },
+  EXPERIENCE_EMPLOYMENT_TYPE_SELF_EMPLOYED_LABEL: { es: 'Autónomo' },
+  EXPERIENCE_EMPLOYMENT_TYPE_FREELANCE_LABEL: {
+    es: 'Profesional independiente',
+  },
+  EXPERIENCE_EMPLOYMENT_TYPE_CONTRACT_LABEL: { es: 'Contrato temporal' },
+  EXPERIENCE_EMPLOYMENT_TYPE_INTERNSHIP_LABEL: { es: 'Contrato de prácticas' },
+  EXPERIENCE_EMPLOYMENT_TYPE_APPRENTICENSHIP_LABEL: {
+    es: 'Contrato de formación',
+  },
+  EXPERIENCE_EMPLOYMENT_TYPE_SEASONAL_LABEL: { es: 'Seasonal' },
 };
 
 export default DASHBOARD_TEXTS;
