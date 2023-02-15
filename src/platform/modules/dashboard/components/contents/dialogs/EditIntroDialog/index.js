@@ -17,7 +17,6 @@ function EditIntroDialog({ open, onEdit, intro }) {
 
   const handleSubmit = useCallback(
     async (data) => {
-      debugger;
       await runService(intro.id, data);
       if (_.isFunction(onEdit)) onEdit();
       closeDialog();

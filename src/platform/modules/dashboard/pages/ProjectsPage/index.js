@@ -44,7 +44,6 @@ function IntrosPage() {
       deleteAllButtonDisabled={deleteAllButtonDisabled}
       loading={loading}
     >
-      {console.log(projects)}
       {projects?.map((project, index) => (
         <ProjectCard
           project={project}

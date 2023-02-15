@@ -16,7 +16,6 @@ function ABMTemplate({
   const { translate } = useLocale();
   const controllsRef = useRef(null);
   const controllsHeight = useMemo(() => {
-    console.log();
     return !!controllsRef?.current
       ? controllsRef.current.getBoundingClientRect().height
       : 0;
