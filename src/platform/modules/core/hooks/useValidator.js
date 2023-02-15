@@ -160,6 +160,12 @@ function useValidator() {
     return yupOneOf;
   };
 
+  const url = (config = {}) => {
+    const configResult = _.merge(_.cloneDeep(DEFAULT_VALIDATIONS.URL), config);
+    const yupUrl = string(configResult).url();
+    return yupUrl;
+  };
+
   return {
     form,
     string,
@@ -171,6 +177,7 @@ function useValidator() {
     description,
     date,
     oneOf,
+    url,
   };
 }
 

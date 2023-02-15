@@ -3,26 +3,24 @@ import useDialog from '../../../../../../../core/contexts/DialogContext/useDialo
 import useLocale from '../../../../../../../core/contexts/LocaleContext/useLocale';
 import ConfirmDialog from '../../../../../core/components/contents/dialogs/ConfirmDialog';
 import DASHBOARD_TEXTS from '../../../../constants/texts';
-import useEditIntroService from '../../../../services/intros/useEditIntroService';
-import IntroForm from '../../forms/IntroForm/IntroForm';
+import useAddProjectService from '../../../../services/projects/useAddProjectService';
+import ProjectForm from '../../forms/ProjectForm';
 import useService from '../../../../../core/hooks/useService';
-
 import _ from 'lodash';
-function EditIntroDialog({ open, onEdit, intro }) {
+function AddProjectDialog({ open, onAdd }) {
   const { translate } = useLocale();
   const { closeDialog } = useDialog();
-  const { editIntro } = useEditIntroService();
-  const { loading, runService } = useService({ service: editIntro });
+  const { addProject } = useAddProjectService();
   const formRef = useRef(null);
+  const { loading, runService } = useService({ service: addProject });
 
   const handleSubmit = useCallback(
     async (data) => {
-      debugger;
-      await runService(intro.id, data);
-      if (_.isFunction(onEdit)) onEdit();
+      await runService(data);
+      if (_.isFunction(onAdd)) onAdd();
       closeDialog();
     },
-    [closeDialog, runService, intro, onEdit]
+    [closeDialog, runService, onAdd]
   );
 
   const handleConfirm = useCallback(async () => {
@@ -36,11 +34,11 @@ function EditIntroDialog({ open, onEdit, intro }) {
       open={open}
       onConfirm={handleConfirm}
       confirmButtonProps={{ disabled: loading }}
-      title={translate(DASHBOARD_TEXTS.EDIT_INTRO_DIALOG_TITLE)}
+      title={translate(DASHBOARD_TEXTS.ADD_PROJECT_DIALOG_TITLE)}
     >
-      <IntroForm innerRef={formRef} defaultValues={intro}></IntroForm>
+      <ProjectForm innerRef={formRef}></ProjectForm>
     </ConfirmDialog>
   );
 }
 
-export default EditIntroDialog;
+export default AddProjectDialog;

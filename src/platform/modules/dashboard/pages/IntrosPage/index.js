@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo } from 'react';
+import React, { useCallback, useEffect, useMemo } from 'react';
 import ABMTemplate from '../../../core/components/templates/ABMTemplate';
 import useDialog from '../../../../../core/contexts/DialogContext/useDialog';
 import AddIntroDialog from '../../components/contents/dialogs/AddIntroDialog';
@@ -6,7 +6,7 @@ import useGetIntrosService from '../../services/intros/useGetIntrosService';
 import useService from '../../../core/hooks/useService';
 import IntroCard from '../../components/contents/cards/IntroCard';
 import DeleteAllIntrosDialog from '../../components/contents/dialogs/DeleteAllIntrosDialog';
-
+import _ from 'lodash';
 function IntrosPage() {
   const { openDialog } = useDialog();
   const { getIntros } = useGetIntrosService();
@@ -17,8 +17,11 @@ function IntrosPage() {
   } = useService({
     service: getIntros,
     defaultValue: [],
-    loadOnMount: true,
   });
+
+  useEffect(() => {
+    if (_.isFunction(refresh)) refresh();
+  }, [refresh]);
 
   const handleClickAdd = useCallback(() => {
     openDialog(AddIntroDialog, { onAdd: refresh });

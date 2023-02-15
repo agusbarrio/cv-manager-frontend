@@ -56,6 +56,10 @@ const DEFAULT_VALIDATIONS = {
     date: { value: true, message: CORE_TEXTS.VALIDATIONS_DATE },
     required: { value: false, message: CORE_TEXTS.VALIDATIONS_REQUIRED },
   },
+  URL: {
+    required: { value: false, message: CORE_TEXTS.VALIDATIONS_URL },
+    max: { value: 2083 },
+  },
 };
 
 export default DEFAULT_VALIDATIONS;

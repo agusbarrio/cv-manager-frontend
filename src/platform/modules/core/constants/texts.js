@@ -42,6 +42,9 @@ const CORE_TEXTS = {
   VALIDATIONS_DATE: {
     es: 'Fecha inválida',
   },
+  VALIDATIONS_URL: {
+    es: 'Url inválida',
+  },
   ERROR_404_TITLE: {
     es: 'Página no encontrada',
   },

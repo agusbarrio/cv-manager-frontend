@@ -103,6 +103,22 @@ const DASHBOARD_TEXTS = {
     es: 'Contrato de formación',
   },
   EXPERIENCE_EMPLOYMENT_TYPE_SEASONAL_LABEL: { es: 'Seasonal' },
+  PROJECT_NAME_LABEL: { es: 'Nombre' },
+  PROJECT_DESCRIPTION_LABEL: { es: 'Descripción' },
+  PROJECT_START_DATE_LABEL: { es: 'Fecha de inicio' },
+  PROJECT_END_DATE_LABEL: { es: 'Fecha de finalización' },
+  PROJECT_URL_LABEL: { es: 'Url' },
+  ADD_PROJECT_DIALOG_TITLE: { es: 'Agregar proyecto' },
+  DELETE_ALL_PROJECTS_DIALOG_DESCRIPTION: {
+    es: '¿Estas seguro de que deseas eliminar todos los proyectos?',
+  },
+  DELETE_PROJECT_DIALOG_TITLE: { es: 'Eliminar proyecto' },
+  DELETE_PROJECT_DIALOG_DESCRIPTION: {
+    es: '¿Estas seguro de que deseas eliminar este proyecto?',
+  },
+  EDIT_PROJECT_DIALOG_TITLE: { es: 'Editar proyecto' },
+  FORM_NAME_PLACEHOLDER: { es: 'Escribí el nombre' },
+  FORM_URL_PLACEHOLDER: { es: 'Escribí la url' },
 };
 
 export default DASHBOARD_TEXTS;

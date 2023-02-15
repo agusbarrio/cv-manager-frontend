@@ -1,5 +1,5 @@
 import useDialog from '../../../../../core/contexts/DialogContext/useDialog';
-import React, { useCallback, useMemo } from 'react';
+import React, { useCallback, useEffect, useMemo } from 'react';
 import useGetExperiencesService from '../../services/experiences/useGetExperiencesService';
 import useService from '../../../core/hooks/useService';
 import ABMTemplate from '../../../core/components/templates/ABMTemplate';
@@ -31,9 +31,11 @@ function ExperiencesPage() {
     service: getExperiences,
     defaultValue: [],
     format: formatData,
-    loadOnMount: true,
   });
 
+  useEffect(() => {
+    if (_.isFunction(refresh)) refresh();
+  }, [refresh]);
   const handleClickAdd = useCallback(() => {
     openDialog(AddExperienceDialog, { onAdd: refresh });
   }, [openDialog, refresh]);

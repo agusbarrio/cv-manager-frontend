@@ -1,24 +1,23 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useState } from 'react';
 import _ from 'lodash';
-function useService({ service, params, defaultValue, format, loadOnMount }) {
+function useService({ service, defaultValue, format }) {
   const [value, setValue] = useState(defaultValue);
-  const [loading, setLoading] = useState(loadOnMount ? true : false);
-  const getServerData = useCallback(
-    async (variables) => {
+  const [loading, setLoading] = useState(false);
+
+  const runService = useCallback(
+    async (...variables) => {
       setLoading(true);
-      const data = await service(variables || params);
+      const data = await service(...variables);
       const formatData = _.isFunction(format) ? format(data) : data;
-      setLoading(false);
       setValue(formatData);
+      setLoading(false);
     },
-    [service, params, format]
+    [service, format]
   );
 
-  useEffect(() => {
-    if (_.isFunction(getServerData) && loadOnMount) getServerData();
-  }, [getServerData, loadOnMount]);
+  //TODO llamar manualmente el loadOnMOunt
 
-  return { value, loading: loading, runService: getServerData };
+  return { value, loading, runService };
 }
 
 export default useService;
