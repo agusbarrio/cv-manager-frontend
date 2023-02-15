@@ -17,7 +17,7 @@ function EditProjectDialog({ open, onEdit, project }) {
 
   const handleSubmit = useCallback(
     async (data) => {
-      await runService({ id: project.id, ...data });
+      await runService(project.id, data);
       if (_.isFunction(onEdit)) onEdit();
       closeDialog();
     },
