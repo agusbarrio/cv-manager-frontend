@@ -17,21 +17,19 @@ function DashboardPage() {
     () => [
       {
         render: IntrosPage,
-        props: {
-          label: translate(DASHBOARD_TEXTS.INTROS_PAGE_TITLE),
-        },
+        props: { label: translate(DASHBOARD_TEXTS.INTROS_PAGE_TITLE) },
       },
       {
         render: ExperiencesPage,
         props: { label: translate(DASHBOARD_TEXTS.EXPERIENCES_PAGE_TITLE) },
       },
       {
-        render: EducationsPage,
-        props: { label: translate(DASHBOARD_TEXTS.EDUCATIONS_PAGE_TITLE) },
-      },
-      {
         render: ProjectsPage,
         props: { label: translate(DASHBOARD_TEXTS.PROJECTS_PAGE_TITLE) },
+      },
+      {
+        render: EducationsPage,
+        props: { label: translate(DASHBOARD_TEXTS.EDUCATIONS_PAGE_TITLE) },
       },
       {
         render: SkillsPage,

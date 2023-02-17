@@ -1,70 +1,36 @@
-import useDialog from '../../../../../core/contexts/DialogContext/useDialog';
-import React, { useCallback, useEffect, useMemo } from 'react';
+import ABMTemplateV2 from '../../../core/components/templates/ABMTemplateV2';
+import useAddExperienceService from '../../services/experiences/useAddExperienceService';
+import ExperienceForm from '../../components/contents/forms/ExperienceForm';
+import useDeleteAllExperiencesService from '../../services/experiences/useDeleteAllExperiencesService';
 import useGetExperiencesService from '../../services/experiences/useGetExperiencesService';
-import useService from '../../../core/hooks/useService';
-import ABMTemplate from '../../../core/components/templates/ABMTemplate';
-import ExperienceCard from '../../components/contents/cards/ExperienceCard';
-import AddExperienceDialog from '../../components/contents/dialogs/AddExperienceDialog';
-import DeleteAllExperiencesDialog from '../../components/contents/dialogs/DeleteAllExperiencesDialog';
-import _ from 'lodash';
+import useDeleteExperienceService from '../../services/experiences/useDeleteExperienceService';
+import useEditExperienceService from '../../services/experiences/useEditExperienceService';
+import useDisplayMoreInfoDialogItems from './hooks/useDisplayMoreInfoDialogItems';
+import useDisplayCardItems from './hooks/useDisplayCardItems';
+import useFormatItems from './hooks/useFormatItems';
+
 function ExperiencesPage() {
-  const { openDialog } = useDialog();
+  const { addExperience } = useAddExperienceService();
+  const { deleteAllExperiences } = useDeleteAllExperiencesService();
   const { getExperiences } = useGetExperiencesService();
-
-  const formatData = useCallback(
-    (data) =>
-      _.map(data, (item) => {
-        const employmentType = !!item.employmentType ? item.employmentType : '';
-        return {
-          ...item,
-          employmentType,
-        };
-      }),
-    []
-  );
-
-  const {
-    value: experiences,
-    runService: refresh,
-    loading,
-  } = useService({
-    service: getExperiences,
-    defaultValue: [],
-    format: formatData,
-  });
-
-  useEffect(() => {
-    if (_.isFunction(refresh)) refresh();
-  }, [refresh]);
-  const handleClickAdd = useCallback(() => {
-    openDialog(AddExperienceDialog, { onAdd: refresh });
-  }, [openDialog, refresh]);
-
-  const handleClickDeleteAll = useCallback(() => {
-    openDialog(DeleteAllExperiencesDialog, { onDelete: refresh });
-  }, [openDialog, refresh]);
-
-  const deleteAllButtonDisabled = useMemo(
-    () => experiences?.length === 0,
-    [experiences]
-  );
-
+  const { deleteExperience } = useDeleteExperienceService();
+  const { editExperience } = useEditExperienceService();
+  const { displayMoreInfoDialogItems } = useDisplayMoreInfoDialogItems();
+  const { displayCardItems } = useDisplayCardItems();
+  const { formatItems } = useFormatItems();
   return (
-    <ABMTemplate
-      onClickAdd={handleClickAdd}
-      onClickDeleteAll={handleClickDeleteAll}
-      deleteAllButtonDisabled={deleteAllButtonDisabled}
-      loading={loading}
-    >
-      {experiences?.map((experience, index) => (
-        <ExperienceCard
-          experience={experience}
-          key={index}
-          onEdit={refresh}
-          onDelete={refresh}
-        ></ExperienceCard>
-      ))}
-    </ABMTemplate>
+    <ABMTemplateV2
+      add={{ service: addExperience, form: ExperienceForm }}
+      deleteAll={{ service: deleteAllExperiences }}
+      getAll={{ service: getExperiences, format: formatItems }}
+      deleteOne={{ service: deleteExperience }}
+      editOne={{ service: editExperience, form: ExperienceForm }}
+      viewOne={{
+        displayTitle: (experience) => experience.title,
+        displayMoreInfoDialogItems,
+        displayCardItems,
+      }}
+    ></ABMTemplateV2>
   );
 }
 

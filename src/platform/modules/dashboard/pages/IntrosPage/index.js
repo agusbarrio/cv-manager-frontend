@@ -1,54 +1,35 @@
-import React, { useCallback, useEffect, useMemo } from 'react';
-import ABMTemplate from '../../../core/components/templates/ABMTemplate';
-import useDialog from '../../../../../core/contexts/DialogContext/useDialog';
-import AddIntroDialog from '../../components/contents/dialogs/AddIntroDialog';
+import ABMTemplateV2 from '../../../core/components/templates/ABMTemplateV2';
+import useAddIntroService from '../../services/intros/useAddIntroService';
+import IntroForm from '../../components/contents/forms/IntroForm';
+import useDeleteAllIntrosService from '../../services/intros/useDeleteAllIntrosService';
 import useGetIntrosService from '../../services/intros/useGetIntrosService';
-import useService from '../../../core/hooks/useService';
-import IntroCard from '../../components/contents/cards/IntroCard';
-import DeleteAllIntrosDialog from '../../components/contents/dialogs/DeleteAllIntrosDialog';
-import _ from 'lodash';
+import useDeleteIntroService from '../../services/intros/useDeleteIntroService';
+import useEditIntroService from '../../services/intros/useEditIntroService';
+import useDisplayMoreInfoDialogItems from './hooks/useDisplayMoreInfoDialogItems';
+import useDisplayCardItems from './hooks/useDisplayCardItems';
+
 function IntrosPage() {
-  const { openDialog } = useDialog();
+  const { addIntro } = useAddIntroService();
+  const { deleteAllIntros } = useDeleteAllIntrosService();
   const { getIntros } = useGetIntrosService();
-  const {
-    value: intros,
-    loading,
-    runService: refresh,
-  } = useService({
-    service: getIntros,
-    defaultValue: [],
-  });
-
-  useEffect(() => {
-    if (_.isFunction(refresh)) refresh();
-  }, [refresh]);
-
-  const handleClickAdd = useCallback(() => {
-    openDialog(AddIntroDialog, { onAdd: refresh });
-  }, [openDialog, refresh]);
-
-  const handleClickDeleteAll = useCallback(() => {
-    openDialog(DeleteAllIntrosDialog, { onDelete: refresh });
-  }, [openDialog, refresh]);
-
-  const deleteAllButtonDisabled = useMemo(() => intros?.length === 0, [intros]);
+  const { deleteIntro } = useDeleteIntroService();
+  const { editIntro } = useEditIntroService();
+  const { displayMoreInfoDialogItems } = useDisplayMoreInfoDialogItems();
+  const { displayCardItems } = useDisplayCardItems();
 
   return (
-    <ABMTemplate
-      onClickAdd={handleClickAdd}
-      onClickDeleteAll={handleClickDeleteAll}
-      deleteAllButtonDisabled={deleteAllButtonDisabled}
-      loading={loading}
-    >
-      {intros?.map((intro, index) => (
-        <IntroCard
-          intro={intro}
-          key={index}
-          onEdit={refresh}
-          onDelete={refresh}
-        ></IntroCard>
-      ))}
-    </ABMTemplate>
+    <ABMTemplateV2
+      add={{ service: addIntro, form: IntroForm }}
+      deleteAll={{ service: deleteAllIntros }}
+      getAll={{ service: getIntros, format: (intros) => intros }}
+      deleteOne={{ service: deleteIntro }}
+      editOne={{ service: editIntro, form: IntroForm }}
+      viewOne={{
+        displayTitle: (intro) => intro.headLine,
+        displayMoreInfoDialogItems,
+        displayCardItems,
+      }}
+    ></ABMTemplateV2>
   );
 }
 

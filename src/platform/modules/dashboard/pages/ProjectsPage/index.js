@@ -1,59 +1,36 @@
-import React, { useCallback, useMemo } from 'react';
-import ABMTemplate from '../../../core/components/templates/ABMTemplate';
-import useDialog from '../../../../../core/contexts/DialogContext/useDialog';
-import AddProjectDialog from '../../components/contents/dialogs/AddProjectDialog';
+import ABMTemplateV2 from '../../../core/components/templates/ABMTemplateV2';
+import useAddProjectService from '../../services/projects/useAddProjectService';
+import ProjectForm from '../../components/contents/forms/ProjectForm';
+import useDeleteAllProjectsService from '../../services/projects/useDeleteAllProjectsService';
 import useGetProjectsService from '../../services/projects/useGetProjectsService';
-import useService from '../../../core/hooks/useService';
-import ProjectCard from '../../components/contents/cards/ProjectCard';
-import DeleteAllProjectsDialog from '../../components/contents/dialogs/DeleteAllProjectsDialog';
-import { useEffect } from 'react';
-import _ from 'lodash';
-function IntrosPage() {
-  const { openDialog } = useDialog();
+import useDeleteProjectService from '../../services/projects/useDeleteProjectService';
+import useEditProjectService from '../../services/projects/useEditProjectService';
+import useDisplayMoreInfoDialogItems from './hooks/useDisplayMoreInfoDialogItems';
+import useDisplayCardItems from './hooks/useDisplayCardItems';
+
+function ProjectsPage() {
+  const { addProject } = useAddProjectService();
+  const { deleteAllProjects } = useDeleteAllProjectsService();
   const { getProjects } = useGetProjectsService();
-  const {
-    value: projects,
-    loading,
-    runService: refresh,
-  } = useService({
-    service: getProjects,
-    defaultValue: [],
-  });
-
-  useEffect(() => {
-    if (_.isFunction(refresh)) refresh();
-  }, [refresh]);
-
-  const handleClickAdd = useCallback(() => {
-    openDialog(AddProjectDialog, { onAdd: refresh });
-  }, [openDialog, refresh]);
-
-  const handleClickDeleteAll = useCallback(() => {
-    openDialog(DeleteAllProjectsDialog, { onDelete: refresh });
-  }, [openDialog, refresh]);
-
-  const deleteAllButtonDisabled = useMemo(
-    () => projects?.length === 0,
-    [projects]
-  );
+  const { deleteProject } = useDeleteProjectService();
+  const { editProject } = useEditProjectService();
+  const { displayMoreInfoDialogItems } = useDisplayMoreInfoDialogItems();
+  const { displayCardItems } = useDisplayCardItems();
 
   return (
-    <ABMTemplate
-      onClickAdd={handleClickAdd}
-      onClickDeleteAll={handleClickDeleteAll}
-      deleteAllButtonDisabled={deleteAllButtonDisabled}
-      loading={loading}
-    >
-      {projects?.map((project, index) => (
-        <ProjectCard
-          project={project}
-          key={index}
-          onEdit={refresh}
-          onDelete={refresh}
-        ></ProjectCard>
-      ))}
-    </ABMTemplate>
+    <ABMTemplateV2
+      add={{ service: addProject, form: ProjectForm }}
+      deleteAll={{ service: deleteAllProjects }}
+      getAll={{ service: getProjects, format: (projects) => projects }}
+      deleteOne={{ service: deleteProject }}
+      editOne={{ service: editProject, form: ProjectForm }}
+      viewOne={{
+        displayTitle: (project) => project.name,
+        displayMoreInfoDialogItems,
+        displayCardItems,
+      }}
+    ></ABMTemplateV2>
   );
 }
 
-export default IntrosPage;
+export default ProjectsPage;
