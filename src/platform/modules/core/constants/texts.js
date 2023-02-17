@@ -81,6 +81,12 @@ const CORE_TEXTS = {
   GENERIC_MORE_INFO: {
     es: 'Mas información',
   },
+  GENERIC_DELETE_DESCRIPTION_CONFIRM: {
+    es: '¿Estas seguro de que deseas eliminar esto?',
+  },
+  GENERIC_DELETE_ALL_DESCRIPTION_CONFIRM: {
+    es: '¿Estas seguro de que deseas eliminar todo?',
+  },
 };
 
 export default CORE_TEXTS;
