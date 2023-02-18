@@ -1,6 +1,6 @@
-import { Box, Tab, Tabs as MaterialTabs, Stack } from '@mui/material';
+import { Tab, Tabs as MaterialTabs } from '@mui/material';
 import PropTypes from 'prop-types';
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import { useCallback } from 'react';
 import _ from 'lodash';
 function NavTabs({ tabs = [], navigate, ...props }) {

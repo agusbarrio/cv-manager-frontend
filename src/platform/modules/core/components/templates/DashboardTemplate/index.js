@@ -1,4 +1,4 @@
-import { Box, Stack } from '@mui/material';
+import { Box } from '@mui/material';
 import { useMemo } from 'react';
 import NavTabs from '../../../../../../core/components/navigation/NavTabs';
 import useLocale from '../../../../../../core/contexts/LocaleContext/useLocale';
