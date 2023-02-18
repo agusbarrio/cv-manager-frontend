@@ -1,11 +1,8 @@
 import { useCallback } from 'react';
-import useLocale from '../../../../../../core/contexts/LocaleContext/useLocale';
-import DASHBOARD_TEXTS from '../../../constants/texts';
 import useLabels from './useLabels';
 
 function useDisplayCardItems() {
   const { labels } = useLabels();
-  const { translate } = useLocale();
   const displayCardItems = useCallback(
     (experience) => [
       {
