@@ -1,14 +1,34 @@
-import useLocale from '../../../../../core/contexts/LocaleContext/useLocale';
-import DASHBOARD_TEXTS from '../../constants/texts';
-import React from 'react';
-import { Typography } from '@mui/material';
+import ABMTemplateV2 from '../../../core/components/templates/ABMTemplateV2';
+import useAddContactService from '../../services/contacts/useAddContactService';
+import ContactForm from '../../components/contents/forms/ContactForm';
+import useDeleteAllContactsService from '../../services/contacts/useDeleteAllContactsService';
+import useGetContactsService from '../../services/contacts/useGetContactsService';
+import useDeleteContactService from '../../services/contacts/useDeleteContactService';
+import useEditContactService from '../../services/contacts/useEditContactService';
+import useDisplayMoreInfoDialogItems from './hooks/useDisplayMoreInfoDialogItems';
+import useDisplayCardItems from './hooks/useDisplayCardItems';
 
 function ContactsPage() {
-  const { translate } = useLocale();
+  const { addContact } = useAddContactService();
+  const { deleteAllContacts } = useDeleteAllContactsService();
+  const { getContacts } = useGetContactsService();
+  const { deleteContact } = useDeleteContactService();
+  const { editContact } = useEditContactService();
+  const { displayMoreInfoDialogItems } = useDisplayMoreInfoDialogItems();
+  const { displayCardItems } = useDisplayCardItems();
   return (
-    <Typography variant="h3" component="h1" textAlign="center">
-      {translate(DASHBOARD_TEXTS.CONTACTS_PAGE_TITLE)}
-    </Typography>
+    <ABMTemplateV2
+      add={{ service: addContact, form: ContactForm }}
+      deleteAll={{ service: deleteAllContacts }}
+      getAll={{ service: getContacts }}
+      deleteOne={{ service: deleteContact }}
+      editOne={{ service: editContact, form: ContactForm }}
+      viewOne={{
+        displayTitle: (contact) => contact.title,
+        displayMoreInfoDialogItems,
+        displayCardItems,
+      }}
+    ></ABMTemplateV2>
   );
 }
 
