@@ -21,7 +21,7 @@ function ProjectsPage() {
     <ABMTemplateV2
       add={{ service: addProject, form: ProjectForm }}
       deleteAll={{ service: deleteAllProjects }}
-      getAll={{ service: getProjects, format: (projects) => projects }}
+      getAll={{ service: getProjects }}
       deleteOne={{ service: deleteProject }}
       editOne={{ service: editProject, form: ProjectForm }}
       viewOne={{

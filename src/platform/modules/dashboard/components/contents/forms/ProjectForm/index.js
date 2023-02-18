@@ -28,35 +28,41 @@ function ProjectForm({ innerRef, defaultValues }) {
         render={TextInput}
         name="name"
         label={translate(DASHBOARD_TEXTS.PROJECT_NAME_LABEL)}
-        placeholder={translate(DASHBOARD_TEXTS.FORM_NAME_PLACEHOLDER)}
+        placeholder={translate(DASHBOARD_TEXTS.PROJECT_FORM_NAME_PLACEHOLDER)}
         multiline
       ></ControllerInput>
       <ControllerInput
         render={TextInput}
         name="description"
         label={translate(DASHBOARD_TEXTS.PROJECT_DESCRIPTION_LABEL)}
-        placeholder={translate(DASHBOARD_TEXTS.FORM_DESCRIPTION_PLACEHOLDER)}
+        placeholder={translate(
+          DASHBOARD_TEXTS.PROJECT_FORM_DESCRIPTION_PLACEHOLDER
+        )}
         multiline
       ></ControllerInput>
       <ControllerInput
         render={DateInput}
         name="startDate"
         label={translate(DASHBOARD_TEXTS.PROJECT_START_DATE_LABEL)}
-        placeholder={translate(DASHBOARD_TEXTS.FORM_START_DATE_PLACEHOLDER)}
+        placeholder={translate(
+          DASHBOARD_TEXTS.PROJECT_FORM_START_DATE_PLACEHOLDER
+        )}
         defaultValue={null}
       ></ControllerInput>
       <ControllerInput
         render={DateInput}
         name="endDate"
         label={translate(DASHBOARD_TEXTS.PROJECT_END_DATE_LABEL)}
-        placeholder={translate(DASHBOARD_TEXTS.FORM_END_DATE_PLACEHOLDER)}
+        placeholder={translate(
+          DASHBOARD_TEXTS.PROJECT_FORM_END_DATE_PLACEHOLDER
+        )}
         defaultValue={null}
       ></ControllerInput>
       <ControllerInput
         render={TextInput}
         name="url"
         label={translate(DASHBOARD_TEXTS.PROJECT_URL_LABEL)}
-        placeholder={translate(DASHBOARD_TEXTS.FORM_URL_PLACEHOLDER)}
+        placeholder={translate(DASHBOARD_TEXTS.PROJECT_FORM_URL_PLACEHOLDER)}
       ></ControllerInput>
     </Form>
   );

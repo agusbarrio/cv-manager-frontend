@@ -25,7 +25,7 @@ function Card({ children, actions, title, ...props }) {
         </Stack>
       )}
       {showTopDivider && <Divider></Divider>}
-      <CardContent>{children}</CardContent>
+      {children && <CardContent>{children}</CardContent>}
       {!!showBottomDivider && <Divider></Divider>}
       {!!actions && <CardActions>{actions}</CardActions>}
     </CardMaterial>

@@ -103,14 +103,33 @@ function ABMTemplateV2({
   );
 
   //View one entity
-  const displayTitle = useMemo(
-    () => viewOne?.displayTitle,
-    [viewOne?.displayTitle]
+  const getCardTitle = useCallback(
+    (entity) => {
+      if (_.isFunction(viewOne?.displayTitle))
+        return viewOne.displayTitle(entity);
+      return null;
+    },
+    [viewOne]
   );
-  const displayCardItems = useMemo(
-    () => viewOne?.displayCardItems,
-    [viewOne?.displayCardItems]
+
+  const getCardItems = useCallback(
+    (entity) => {
+      if (_.isFunction(viewOne?.displayCardItems))
+        return viewOne.displayCardItems(entity);
+      return null;
+    },
+    [viewOne]
   );
+
+  const getMoreInfoDialogItems = useCallback(
+    (entity) => {
+      if (_.isFunction(viewOne?.displayMoreInfoDialogItems))
+        return viewOne.displayMoreInfoDialogItems(entity);
+      return null;
+    },
+    [viewOne]
+  );
+
   const displayMoreInfoDialogItems = useMemo(
     () => viewOne?.displayMoreInfoDialogItems,
     [viewOne?.displayMoreInfoDialogItems]
@@ -165,9 +184,9 @@ function ABMTemplateV2({
         {entities.map((entity) => (
           <EditableInfoCardV2
             key={entity.id}
-            title={displayTitle(entity)}
-            cardItems={displayCardItems(entity)}
-            moreInfoDialogItems={displayMoreInfoDialogItems(entity)}
+            title={getCardTitle(entity)}
+            cardItems={getCardItems(entity)}
+            moreInfoDialogItems={getMoreInfoDialogItems(entity)}
             entity={entity}
             edit={editOneProps}
             delete={deleteOneProps}

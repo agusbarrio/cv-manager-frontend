@@ -63,13 +63,15 @@ function EditableInfoCardV2({
   const actions = useMemo(
     () => (
       <>
-        <ButtonIcon
-          onClick={handleClickMoreInfo}
-          color="success"
-          tooltip={translate(CORE_TEXTS.GENERIC_MORE_INFO)}
-        >
-          manage_search
-        </ButtonIcon>
+        {moreInfoDialogItems && (
+          <ButtonIcon
+            onClick={handleClickMoreInfo}
+            color="success"
+            tooltip={translate(CORE_TEXTS.GENERIC_MORE_INFO)}
+          >
+            manage_search
+          </ButtonIcon>
+        )}
         <ButtonIcon
           onClick={handleClickEdit}
           color="primary"
@@ -96,15 +98,17 @@ function EditableInfoCardV2({
       {...props}
       sx={{ width: '17.5rem', ...props.sx }}
     >
-      <Stack>
-        {cardItems.map((item, index) => {
-          const cardRenderProps = _.get(item, 'renderProps', {});
-          const CardRender = _.get(item, 'render', (props) => (
-            <DataLine line={1} {...props} />
-          ));
-          return <CardRender key={index} {...cardRenderProps} />;
-        })}
-      </Stack>
+      {_.isArray(cardItems) && (
+        <Stack>
+          {cardItems.map((item, index) => {
+            const cardRenderProps = _.get(item, 'renderProps', {});
+            const CardRender = _.get(item, 'render', (props) => (
+              <DataLine line={1} {...props} />
+            ));
+            return <CardRender key={index} {...cardRenderProps} />;
+          })}
+        </Stack>
+      )}
     </Card>
   );
 }

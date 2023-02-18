@@ -23,31 +23,31 @@ const DASHBOARD_TEXTS = {
   INTRO_FIRST_NAME_LABEL: {
     es: 'Nombre',
   },
-  FORM_FIRST_NAME_PLACEHOLDER: {
+  INTRO_FORM_FIRST_NAME_PLACEHOLDER: {
     es: 'Escribí tu nombre',
   },
   INTRO_LAST_NAME_LABEL: {
     es: 'Apellido',
   },
-  FORM_LAST_NAME_PLACEHOLDER: {
+  INTRO_FORM_LAST_NAME_PLACEHOLDER: {
     es: 'Escribí tu apellido',
   },
   INTRO_HEAD_LINE_LABEL: {
     es: 'Titular',
   },
-  FORM_HEAD_LINE_PLACEHOLDER: {
+  INTRO_FORM_HEAD_LINE_PLACEHOLDER: {
     es: 'Escribí tu titular',
   },
   INTRO_BIRTHDAY_LABEL: {
     es: 'Fecha de nacimiento',
   },
-  FORM_BIRTHDARY_PLACEHOLDER: {
+  INTRO_FORM_BIRTHDARY_PLACEHOLDER: {
     es: 'Escribí tu fecha de nacimiento',
   },
   INTRO_ABOUT_LABEL: {
     es: 'Sobre mi',
   },
-  FORM_ABOUT_PLACEHOLDER: {
+  INTRO_FORM_ABOUT_PLACEHOLDER: {
     es: 'Escribí algo sobre vos',
   },
   MORE_INFO_INTRO_DIALOG_TITLE: {
@@ -83,14 +83,20 @@ const DASHBOARD_TEXTS = {
   },
   EDIT_EXPERIENCE_DIALOG_TITLE: { es: 'Editar experiencia' },
   MORE_INFO_EXPERIENCE_DIALOG_TITLE: { es: 'Ver experiencia' },
-  FORM_TITLE_PLACEHOLDER: { es: 'Escribí el título' },
-  FORM_COMPANY_NAME_PLACEHOLDER: { es: 'Escribí el nombre de la empresa' },
-  FORM_LOCATION_PLACEHOLDER: { es: 'Escribí la ubicación' },
-  FORM_START_DATE_PLACEHOLDER: { es: 'Escribí la fecha de inicio' },
-  FORM_END_DATE_PLACEHOLDER: { es: 'Escribí la fecha de finalización' },
-  FORM_INDUSTRY_PLACEHOLDER: { es: 'Escribí la industria' },
-  FORM_DESCRIPTION_PLACEHOLDER: { es: 'Escribí la descripción' },
-  FORM_EMPLOYMENT_TYPE_PLACEHOLDER: { es: 'Elegí el tipo de empleo' },
+  EXPERIENCE_FORM_TITLE_PLACEHOLDER: { es: 'Escribí el título' },
+  EXPERIENCE_FORM_COMPANY_NAME_PLACEHOLDER: {
+    es: 'Escribí el nombre de la empresa',
+  },
+  EXPERIENCE_FORM_LOCATION_PLACEHOLDER: { es: 'Escribí la ubicación' },
+  EXPERIENCE_FORM_START_DATE_PLACEHOLDER: { es: 'Escribí la fecha de inicio' },
+  EXPERIENCE_FORM_END_DATE_PLACEHOLDER: {
+    es: 'Escribí la fecha de finalización',
+  },
+  EXPERIENCE_FORM_INDUSTRY_PLACEHOLDER: { es: 'Escribí la industria' },
+  EXPERIENCE_FORM_DESCRIPTION_PLACEHOLDER: { es: 'Escribí la descripción' },
+  EXPERIENCE_FORM_EMPLOYMENT_TYPE_PLACEHOLDER: {
+    es: 'Elegí el tipo de empleo',
+  },
   EXPERIENCE_EMPLOYMENT_TYPE_FULL_TIME_LABEL: { es: 'Jornada completa' },
   EXPERIENCE_EMPLOYMENT_TYPE_PART_TIME_LABEL: { es: 'Jornada parcial' },
   EXPERIENCE_EMPLOYMENT_TYPE_SELF_EMPLOYED_LABEL: { es: 'Autónomo' },
@@ -117,8 +123,13 @@ const DASHBOARD_TEXTS = {
     es: '¿Estas seguro de que deseas eliminar este proyecto?',
   },
   EDIT_PROJECT_DIALOG_TITLE: { es: 'Editar proyecto' },
-  FORM_NAME_PLACEHOLDER: { es: 'Escribí el nombre' },
-  FORM_URL_PLACEHOLDER: { es: 'Escribí la url' },
+  PROJECT_FORM_NAME_PLACEHOLDER: { es: 'Escribí el nombre' },
+  PROJECT_FORM_URL_PLACEHOLDER: { es: 'Escribí la url' },
+  PROJECT_FORM_DESCRIPTION_PLACEHOLDER: { es: 'Escribí la descripción' },
+  PROJECT_FORM_START_DATE_PLACEHOLDER: { es: 'Escribí la fecha de inicio' },
+  PROJECT_FORM_END_DATE_PLACEHOLDER: { es: 'Escribí la fecha de finalización' },
+  SKILL_NAME_LABEL: { es: 'Nombre' },
+  SKILL_FORM_NAME_PLACEHOLDER: { es: 'Escribí el nombre de la habilidad' },
 };
 
 export default DASHBOARD_TEXTS;

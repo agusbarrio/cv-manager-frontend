@@ -21,7 +21,7 @@ function IntrosPage() {
     <ABMTemplateV2
       add={{ service: addIntro, form: IntroForm }}
       deleteAll={{ service: deleteAllIntros }}
-      getAll={{ service: getIntros, format: (intros) => intros }}
+      getAll={{ service: getIntros }}
       deleteOne={{ service: deleteIntro }}
       editOne={{ service: editIntro, form: IntroForm }}
       viewOne={{

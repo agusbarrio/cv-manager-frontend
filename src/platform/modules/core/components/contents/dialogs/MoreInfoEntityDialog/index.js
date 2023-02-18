@@ -9,13 +9,15 @@ function MoreInfoEntityDialog({ open, items }) {
 
   return (
     <AlertDialog open={open} title={translate(CORE_TEXTS.GENERIC_MORE_INFO)}>
-      <Stack spacing={1}>
-        {_.map(items, (item, index) => {
-          const dialogRenderProps = _.get(item, 'renderProps', {});
-          const DialogRender = _.get(item, 'render', FullTextInfo);
-          return <DialogRender key={index} {...dialogRenderProps} />;
-        })}
-      </Stack>
+      {_.isArray(items) && (
+        <Stack spacing={1}>
+          {_.map(items, (item, index) => {
+            const dialogRenderProps = _.get(item, 'renderProps', {});
+            const DialogRender = _.get(item, 'render', FullTextInfo);
+            return <DialogRender key={index} {...dialogRenderProps} />;
+          })}
+        </Stack>
+      )}
     </AlertDialog>
   );
 }

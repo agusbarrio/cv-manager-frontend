@@ -28,12 +28,12 @@ function DashboardPage() {
         props: { label: translate(DASHBOARD_TEXTS.PROJECTS_PAGE_TITLE) },
       },
       {
-        render: EducationsPage,
-        props: { label: translate(DASHBOARD_TEXTS.EDUCATIONS_PAGE_TITLE) },
-      },
-      {
         render: SkillsPage,
         props: { label: translate(DASHBOARD_TEXTS.SKILLS_PAGE_TITLE) },
+      },
+      {
+        render: EducationsPage,
+        props: { label: translate(DASHBOARD_TEXTS.EDUCATIONS_PAGE_TITLE) },
       },
       {
         render: ContactsPage,
