@@ -26,7 +26,11 @@ function PlatformTemplate({ children }) {
         </Icon>
       }
     >
-      <Stack width={1} height={1}>
+      <Stack
+        width={1}
+        height={1}
+        data-component="PLATFORM_TEMPLATE_CHILDREN_CONTAINER"
+      >
         {children}
       </Stack>
     </DefaultTemplate>

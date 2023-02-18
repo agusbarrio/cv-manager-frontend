@@ -18,7 +18,7 @@ function useSecurity() {
   const getRedirectPathOnAccessDenied = useCallback(
     ({ needSession }) => {
       if (needSession && !session?.logged) return authPaths.login;
-      if (!needSession && session?.logged) return dashboardPaths.dashboard;
+      if (!needSession && session?.logged) return dashboardPaths.intros;
       return authPaths.login;
     },
     [session]

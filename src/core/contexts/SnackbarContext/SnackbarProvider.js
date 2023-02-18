@@ -1,7 +1,5 @@
-import { createContext } from 'react';
 import { SnackbarProvider as SnackbarProviderNotistack } from 'notistack';
 import PropTypes from 'prop-types';
-export const SnackbarContext = createContext();
 
 function SnackbarProvider({
   maxSnack: maxSnackProps = 3,

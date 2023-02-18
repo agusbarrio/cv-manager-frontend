@@ -31,7 +31,7 @@ function DefaultLayout({ header, sxHeader = {}, sxChildren = {}, children }) {
     [sxChildren]
   );
   return (
-    <Stack {...containerProps}>
+    <Stack {...containerProps} data-component="DEFAULT_LAYOUT">
       <Box sx={headerSx}>{header}</Box>
       <Box sx={childrenSx}>{children}</Box>
     </Stack>

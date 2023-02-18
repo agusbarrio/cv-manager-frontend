@@ -1,14 +1,64 @@
 import dashboardPaths from './paths';
-import DashboardPage from '../pages/DashboardPage';
 import utils from '../../core/routes/utils';
-import PlatformTemplate from '../../core/components/templates/PlatformTemplate';
+import IntrosPage from '../pages/IntrosPage';
+import DashboardTemplate from '../../core/components/templates/DashboardTemplate';
+import ExperiencesPage from '../pages/ExperiencesPage';
+import ProjectsPage from '../pages/ProjectsPage';
+import SkillsPage from '../pages/SkillsPage';
+import EducationsPage from '../pages/EducationsPage';
+import ContactsPage from '../pages/ContactsPage';
 const dashboardRoutes = [
   {
-    path: dashboardPaths.dashboard,
+    path: dashboardPaths.intros,
     exact: true,
     content: {
-      render: DashboardPage,
-      Template: PlatformTemplate,
+      render: IntrosPage,
+      Template: DashboardTemplate,
+    },
+    ...utils.manageAccess({ needSession: true }),
+  },
+  {
+    path: dashboardPaths.experiences,
+    exact: true,
+    content: {
+      render: ExperiencesPage,
+      Template: DashboardTemplate,
+    },
+    ...utils.manageAccess({ needSession: true }),
+  },
+  {
+    path: dashboardPaths.projects,
+    exact: true,
+    content: {
+      render: ProjectsPage,
+      Template: DashboardTemplate,
+    },
+    ...utils.manageAccess({ needSession: true }),
+  },
+  {
+    path: dashboardPaths.skills,
+    exact: true,
+    content: {
+      render: SkillsPage,
+      Template: DashboardTemplate,
+    },
+    ...utils.manageAccess({ needSession: true }),
+  },
+  {
+    path: dashboardPaths.educations,
+    exact: true,
+    content: {
+      render: EducationsPage,
+      Template: DashboardTemplate,
+    },
+    ...utils.manageAccess({ needSession: true }),
+  },
+  {
+    path: dashboardPaths.contacts,
+    exact: true,
+    content: {
+      render: ContactsPage,
+      Template: DashboardTemplate,
     },
     ...utils.manageAccess({ needSession: true }),
   },

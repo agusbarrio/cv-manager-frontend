@@ -1,6 +1,7 @@
 import { Box, Tab, Tabs as MaterialTabs, Stack } from '@mui/material';
 import PropTypes from 'prop-types';
 import React, { useMemo, useState } from 'react';
+import { useCallback } from 'react';
 
 function Tabs({
   tabs = [],
@@ -11,9 +12,9 @@ function Tabs({
 }) {
   const [value, setValue] = useState(initial);
 
-  const handleChange = (event, newValue) => {
+  const handleChange = useCallback((event, newValue) => {
     setValue(newValue);
-  };
+  }, []);
 
   const { Component, renderProps } = useMemo(
     () => ({
@@ -50,7 +51,6 @@ Tabs.propTypes = {
   sxTabsContainer: PropTypes.object,
   sxContentContainer: PropTypes.object,
   containerProps: PropTypes.object,
-  showDivider: PropTypes.bool,
   dividerProps: PropTypes.object,
 };
 

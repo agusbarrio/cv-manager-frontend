@@ -7,7 +7,7 @@ import Redirect from '../../components/navigation/Redirect';
 function RaizPage() {
   const { session } = useSessionStore();
   const redirectPath = useMemo(() => {
-    return !!session?.logged ? dashboardPaths.dashboard : authPaths.login;
+    return !!session?.logged ? dashboardPaths.intros : authPaths.login;
   }, [session]);
   return <Redirect path={redirectPath}></Redirect>;
 }
