@@ -4,7 +4,7 @@ const dashboardPaths = {
   projects: '/projects',
   skills: '/skills',
   educations: '/educations',
-  contacts: '/contact',
+  contacts: '/contacts',
 };
 
 export default dashboardPaths;
