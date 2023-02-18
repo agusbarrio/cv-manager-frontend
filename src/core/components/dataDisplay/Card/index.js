@@ -9,10 +9,7 @@ import { useMemo } from 'react';
 import Truncate from '../Truncate';
 
 function Card({ children, actions, title, ...props }) {
-  const showTopDivider = useMemo(
-    () => !!title && !!children,
-    [children, title]
-  );
+  const showTopDivider = useMemo(() => !!title, [title]);
   const showBottomDivider = useMemo(
     () => !!children && !!actions,
     [children, actions]

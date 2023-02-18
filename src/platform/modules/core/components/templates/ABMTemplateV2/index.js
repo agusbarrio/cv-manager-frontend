@@ -130,10 +130,6 @@ function ABMTemplateV2({
     [viewOne]
   );
 
-  const displayMoreInfoDialogItems = useMemo(
-    () => viewOne?.displayMoreInfoDialogItems,
-    [viewOne?.displayMoreInfoDialogItems]
-  );
   return (
     <Stack height={1}>
       <Stack direction="row" spacing={2} padding={1} ref={controllsRef}>

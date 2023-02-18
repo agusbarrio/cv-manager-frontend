@@ -88,7 +88,13 @@ function EditableInfoCardV2({
         </ButtonIcon>
       </>
     ),
-    [handleClickEdit, handleClickDelete, handleClickMoreInfo, translate]
+    [
+      handleClickEdit,
+      handleClickDelete,
+      handleClickMoreInfo,
+      moreInfoDialogItems,
+      translate,
+    ]
   );
 
   return (
