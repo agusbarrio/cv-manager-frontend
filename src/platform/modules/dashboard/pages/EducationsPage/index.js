@@ -1,14 +1,34 @@
-import useLocale from '../../../../../core/contexts/LocaleContext/useLocale';
-import DASHBOARD_TEXTS from '../../constants/texts';
-import React from 'react';
-import { Typography } from '@mui/material';
+import ABMTemplateV2 from '../../../core/components/templates/ABMTemplateV2';
+import useAddEducationService from '../../services/educations/useAddEducationService';
+import EducationForm from '../../components/contents/forms/EducationForm';
+import useDeleteAllEducationsService from '../../services/educations/useDeleteAllEducationsService';
+import useGetEducationsService from '../../services/educations/useGetEducationsService';
+import useDeleteEducationService from '../../services/educations/useDeleteEducationService';
+import useEditEducationService from '../../services/educations/useEditEducationService';
+import useDisplayMoreInfoDialogItems from './hooks/useDisplayMoreInfoDialogItems';
+import useDisplayCardItems from './hooks/useDisplayCardItems';
 
 function EducationsPage() {
-  const { translate } = useLocale();
+  const { addEducation } = useAddEducationService();
+  const { deleteAllEducations } = useDeleteAllEducationsService();
+  const { getEducations } = useGetEducationsService();
+  const { deleteEducation } = useDeleteEducationService();
+  const { editEducation } = useEditEducationService();
+  const { displayMoreInfoDialogItems } = useDisplayMoreInfoDialogItems();
+  const { displayCardItems } = useDisplayCardItems();
   return (
-    <Typography variant="h3" component="h1" textAlign="center">
-      {translate(DASHBOARD_TEXTS.EDUCATIONS_PAGE_TITLE)}
-    </Typography>
+    <ABMTemplateV2
+      add={{ service: addEducation, form: EducationForm }}
+      deleteAll={{ service: deleteAllEducations }}
+      getAll={{ service: getEducations }}
+      deleteOne={{ service: deleteEducation }}
+      editOne={{ service: editEducation, form: EducationForm }}
+      viewOne={{
+        displayTitle: (education) => education.school,
+        displayMoreInfoDialogItems,
+        displayCardItems,
+      }}
+    ></ABMTemplateV2>
   );
 }
 

@@ -130,6 +130,26 @@ const DASHBOARD_TEXTS = {
   PROJECT_FORM_END_DATE_PLACEHOLDER: { es: 'Escribí la fecha de finalización' },
   SKILL_NAME_LABEL: { es: 'Nombre' },
   SKILL_FORM_NAME_PLACEHOLDER: { es: 'Escribí el nombre de la habilidad' },
+  EDUCATION_SCHOOL_LABEL: { es: 'Institución educativa' },
+  EDUCATION_FORM_SCHOOL_PLACEHOLDER: { es: 'Escribí la institución educativa' },
+  EDUCATION_DEGREE_LABEL: { es: 'Título' },
+  EDUCATION_FORM_DEGREE_PLACEHOLDER: { es: 'Escribí el título' },
+  EDUCATION_FIELD_OF_STUDY_LABEL: { es: 'Campo de estudio' },
+  EDUCATION_FORM_FIELD_OF_STUDY_PLACEHOLDER: {
+    es: 'Escribí el campo de estudio',
+  },
+  EDUCATION_START_DATE_LABEL: { es: 'Fecha de inicio' },
+  EDUCATION_FORM_START_DATE_PLACEHOLDER: { es: 'Escribí la fecha de inicio' },
+  EDUCATION_END_DATE_LABEL: { es: 'Fecha de finalización' },
+  EDUCATION_FORM_END_DATE_PLACEHOLDER: {
+    es: 'Escribí la fecha de finalización',
+  },
+  EDUCATION_GRADE_LABEL: { es: 'Calificación' },
+  EDUCATION_FORM_GRADE_PLACEHOLDER: { es: 'Escribí la calificación' },
+  EDUCATION_ACTIVITIES_LABEL: { es: 'Actividades' },
+  EDUCATION_FORM_ACTIVITIES_PLACEHOLDER: { es: 'Escribí las actividades' },
+  EDUCATION_DESCRIPTION_LABEL: { es: 'Descripción' },
+  EDUCATION_FORM_DESCRIPTION_PLACEHOLDER: { es: 'Escribí la descripción' },
 };
 
 export default DASHBOARD_TEXTS;

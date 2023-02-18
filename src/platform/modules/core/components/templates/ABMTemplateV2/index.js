@@ -177,7 +177,7 @@ function ABMTemplateV2({
         >
           <CircularProgress></CircularProgress>
         </Backdrop>
-        {entities.map((entity) => (
+        {entities?.map((entity) => (
           <EditableInfoCardV2
             key={entity.id}
             title={getCardTitle(entity)}
