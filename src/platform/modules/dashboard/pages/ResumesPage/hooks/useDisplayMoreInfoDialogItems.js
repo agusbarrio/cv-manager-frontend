@@ -1,4 +1,6 @@
 import { useCallback } from 'react';
+import Chip from '../../../../../../core/components/dataDisplay/Chip';
+import DataList from '../../../../../../core/components/dataDisplay/DataList';
 import useLabels from './useLabels';
 
 function useDisplayMoreInfoDialogItems() {
@@ -26,33 +28,46 @@ function useDisplayMoreInfoDialogItems() {
         },
       },
       {
+        render: DataList,
         renderProps: {
           title: labels.experiences,
-          children: resume.experiences
-            .map((experience) => experience.title)
-            .join(' - '),
+          items: resume.experiences.map((experience) => ({
+            render: Chip,
+            renderProps: { label: experience.title },
+          })),
         },
       },
       {
+        render: DataList,
         renderProps: {
           title: labels.skills,
-          children: resume.skills.map((skill) => skill.name).join(' - '),
+          items: resume.skills.map((skill) => {
+            console.log(skill.name);
+            return {
+              render: Chip,
+              renderProps: { label: skill.name },
+            };
+          }),
         },
       },
       {
+        render: DataList,
         renderProps: {
           title: labels.educations,
-          children: resume.educations
-            .map((education) => education.school)
-            .join(' - '),
+          items: resume.educations.map((education) => ({
+            render: Chip,
+            renderProps: { label: education.school },
+          })),
         },
       },
       {
+        render: DataList,
         renderProps: {
           title: labels.projects,
-          children: resume.projects
-            .map((projects) => projects.name)
-            .join(' - '),
+          items: resume.projects.map((projects) => ({
+            render: Chip,
+            renderProps: { label: projects.name },
+          })),
         },
       },
     ],
