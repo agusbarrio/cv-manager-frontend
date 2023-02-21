@@ -7,7 +7,17 @@ import ProjectsPage from '../pages/ProjectsPage';
 import SkillsPage from '../pages/SkillsPage';
 import EducationsPage from '../pages/EducationsPage';
 import ContactsPage from '../pages/ContactsPage';
+import ResumesPage from '../pages/ResumesPage';
 const dashboardRoutes = [
+  {
+    path: dashboardPaths.resumes,
+    exact: true,
+    content: {
+      render: ResumesPage,
+      Template: DashboardTemplate,
+    },
+    ...utils.manageAccess({ needSession: true }),
+  },
   {
     path: dashboardPaths.intros,
     exact: true,

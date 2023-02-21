@@ -45,6 +45,18 @@ const CORE_TEXTS = {
   VALIDATIONS_URL: {
     es: 'Url inválida',
   },
+  VALIDATIONS_NUMBER: {
+    es: 'Número inválido',
+  },
+  VALIDATIONS_MIN_NUMBER: { es: 'El valor mínimo es {{min}}' },
+  VALIDATIONS_MAX_NUMBER: { es: 'El valor máximo es {{max}}' },
+  VALIDATIONS_MORE_THAN_NUMBER: {
+    es: 'El valor debe ser mayor que {{moreThan}}',
+  },
+  VALIDATIONS_LESS_THAN_NUMBER: {
+    es: 'El valor debe ser menor que {{lessThan}}',
+  },
+  VALIDATIONS_INTEGER: { es: 'El valor debe ser un número entero' },
   ERROR_404_TITLE: {
     es: 'Página no encontrada',
   },

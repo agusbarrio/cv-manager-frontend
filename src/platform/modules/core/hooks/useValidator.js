@@ -136,35 +136,132 @@ function useValidator() {
     [string]
   );
 
-  const date = (config = {}) => {
-    const configResult = _.merge(_.cloneDeep(DEFAULT_VALIDATIONS.DATE), config);
+  const date = useCallback(
+    (config = {}) => {
+      const configResult = _.merge(
+        _.cloneDeep(DEFAULT_VALIDATIONS.DATE),
+        config
+      );
 
-    let yupDate = Yup.date().typeError(translate(configResult.date.message));
-    if (configResult.required && configResult.required.value) {
-      yupDate = yupDate.required(translate(configResult.required.message));
-    }
-    yupDate = yupDate.nullable();
-    if (configResult.min && configResult.min.value) {
-      const min = configResult.min.value;
-      yupDate = yupDate.min(min, translate(configResult.min.message, { min }));
-    }
-    if (configResult.max && configResult.max.value) {
-      const max = configResult.max.value;
-      yupDate = yupDate.min(max, translate(configResult.max.message, { max }));
-    }
-    return yupDate;
-  };
+      let yupDate = Yup.date().typeError(translate(configResult.date.message));
+      if (configResult.required && configResult.required.value) {
+        yupDate = yupDate.required(translate(configResult.required.message));
+      }
+      yupDate = yupDate.nullable();
+      if (configResult.min && configResult.min.value) {
+        const min = configResult.min.value;
+        yupDate = yupDate.min(
+          min,
+          translate(configResult.min.message, { min })
+        );
+      }
+      if (configResult.max && configResult.max.value) {
+        const max = configResult.max.value;
+        yupDate = yupDate.min(
+          max,
+          translate(configResult.max.message, { max })
+        );
+      }
+      return yupDate;
+    },
+    [translate]
+  );
 
-  const oneOf = (values, config = {}) => {
-    const yupOneOf = string(config).oneOf(values);
-    return yupOneOf;
-  };
+  const oneOf = useCallback(
+    (values, config = {}) => {
+      const yupOneOf = string(config).oneOf(values);
+      return yupOneOf;
+    },
+    [string]
+  );
 
-  const url = (config = {}) => {
-    const configResult = _.merge(_.cloneDeep(DEFAULT_VALIDATIONS.URL), config);
-    const yupUrl = string(configResult).url();
-    return yupUrl;
-  };
+  const url = useCallback(
+    (config = {}) => {
+      const configResult = _.merge(
+        _.cloneDeep(DEFAULT_VALIDATIONS.URL),
+        config
+      );
+      const yupUrl = string(configResult).url(configResult);
+      return yupUrl;
+    },
+    [string]
+  );
+
+  const number = useCallback(
+    (config = {}) => {
+      const configResult = _.merge(
+        _.cloneDeep(DEFAULT_VALIDATIONS.NUMBER),
+        config
+      );
+
+      let yupNumber = Yup.number().typeError(
+        translate(configResult.number.message)
+      );
+      if (configResult.required && configResult.required.value) {
+        yupNumber = yupNumber.required(
+          translate(configResult.required.message)
+        );
+      } else {
+        yupNumber = yupNumber.nullable();
+      }
+      if (configResult.integer && configResult.integer.value) {
+        yupNumber = yupNumber.integer(translate(configResult.integer.message));
+      }
+      if (configResult.min && configResult.min.value) {
+        const min = configResult.min.value;
+        yupNumber = yupNumber.min(
+          min,
+          translate(configResult.min.message, { min })
+        );
+      }
+      if (configResult.max && configResult.max.value) {
+        const max = configResult.max.value;
+        yupNumber = yupNumber.max(
+          max,
+          translate(configResult.max.message, { max })
+        );
+      }
+      if (configResult.moreThan && configResult.moreThan.value) {
+        const moreThan = configResult.moreThan.value;
+        yupNumber = yupNumber.moreThan(
+          moreThan,
+          translate(configResult.moreThan.message, { moreThan })
+        );
+      }
+      if (configResult.lessThan && configResult.lessThan.value) {
+        const lessThan = configResult.lessThan.value;
+        yupNumber = yupNumber.lessThan(
+          lessThan,
+          translate(configResult.lessThan.message, { lessThan })
+        );
+      }
+      return yupNumber;
+    },
+    [translate]
+  );
+
+  const id = useCallback(
+    (config = {}) => {
+      const resultConfig = _.merge(_.cloneDeep(DEFAULT_VALIDATIONS.ID), config);
+      const yupId = number(resultConfig).transform((value) =>
+        isNaN(value) ? undefined : value
+      );
+      return yupId;
+    },
+    [number]
+  );
+  const array = useCallback((_config = {}) => {
+    const yupArray = Yup.array();
+    return yupArray;
+  }, []);
+
+  const ids = useCallback(
+    (config = {}) => {
+      const yupIds = array().of(id());
+      return yupIds;
+    },
+    [array, id]
+  );
 
   return {
     form,
@@ -178,6 +275,8 @@ function useValidator() {
     date,
     oneOf,
     url,
+    id,
+    ids,
   };
 }
 

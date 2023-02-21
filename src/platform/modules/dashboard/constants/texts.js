@@ -176,6 +176,21 @@ const DASHBOARD_TEXTS = {
   CONTACT_FORM_CITY_PLACEHOLDER: { es: 'Ingresá tu ciudad' },
   CONTACT_WEBSITE_LABEL: { es: 'Sitio web' },
   CONTACT_FORM_WEBSITE_PLACEHOLDER: { es: 'Ingresa la URL de tu sitio web' },
+  RESUME_TITLE_LABEL: { es: 'Título' },
+  RESUME_INTRO_LABEL: { es: 'Introducción' },
+  RESUME_CONTACT_LABEL: { es: 'Contacto' },
+  RESUME_EXPERIENCES_LABEL: { es: 'Experiencias' },
+  RESUME_SKILLS_LABEL: { es: 'Habilidades' },
+  RESUME_EDUCATIONS_LABEL: { es: 'Educaciones' },
+  RESUME_PROJECTS_LABEL: { es: 'Proyectos' },
+  RESUME_FORM_TITLE_PLACEHOLDER: { es: 'Ingresá el título' },
+  RESUME_FORM_INTRO_PLACEHOLDER: { es: 'Elegí una introducción' },
+  RESUME_FORM_CONTACT_PLACEHOLDER: { es: 'Elegí tu información de contacto' },
+  RESUME_FORM_EXPERIENCES_PLACEHOLDER: { es: 'Elegí algunas experiencias' },
+  RESUME_FORM_SKILLS_PLACEHOLDER: { es: 'Elegí algunas Habilidades' },
+  RESUME_FORM_EDUCATIONS_PLACEHOLDER: { es: 'Elegí algunas educaciones' },
+  RESUME_FORM_PROJECTS_PLACEHOLDER: { es: 'Elegí algunos proyectos' },
+  RESUMES_PAGE_TITLE: { es: 'Currículums' },
 };
 
 export default DASHBOARD_TEXTS;

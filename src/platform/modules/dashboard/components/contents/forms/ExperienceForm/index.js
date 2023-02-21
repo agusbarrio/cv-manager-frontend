@@ -22,26 +22,16 @@ function ExperienceForm({ innerRef, defaultValues }) {
     description: validator.description({ required: { value: false } }),
     employmentType: validator
       .oneOf([..._.values(EMPLOYMENT_TYPES), null])
-      .transform((value) => (value === '' ? null : value)),
+      .transform((value) => (!!value ? null : value)),
   });
 
   const employmentTypesList = useMemo(() => {
-    const list = _.map(_.values(EMPLOYMENT_TYPES), (employmentType) => ({
+    return _.map(_.values(EMPLOYMENT_TYPES), (employmentType) => ({
       value: employmentType,
       children: translate(
         DASHBOARD_TEXTS[`EXPERIENCE_EMPLOYMENT_TYPE_${employmentType}_LABEL`]
       ),
     }));
-
-    return [
-      {
-        value: '',
-        children: translate(
-          DASHBOARD_TEXTS.EXPERIENCE_FORM_EMPLOYMENT_TYPE_PLACEHOLDER
-        ),
-      },
-      ...list,
-    ];
   }, [translate]);
 
   return (
@@ -116,6 +106,9 @@ function ExperienceForm({ innerRef, defaultValues }) {
         render={SelectInput}
         name="employmentType"
         displayEmpty
+        placeholder={translate(
+          DASHBOARD_TEXTS.EXPERIENCE_FORM_EMPLOYMENT_TYPE_PLACEHOLDER
+        )}
         label={translate(DASHBOARD_TEXTS.EXPERIENCE_EMPLOYMENT_TYPE_LABEL)}
         list={employmentTypesList}
       ></ControllerInput>

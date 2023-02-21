@@ -13,6 +13,10 @@ function DashboardTemplate({ children }) {
   const tabs = useMemo(
     () => [
       {
+        props: { label: translate(DASHBOARD_TEXTS.RESUMES_PAGE_TITLE) },
+        path: dashboardPaths.resumes,
+      },
+      {
         props: { label: translate(DASHBOARD_TEXTS.INTROS_PAGE_TITLE) },
         path: dashboardPaths.intros,
       },

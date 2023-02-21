@@ -57,8 +57,24 @@ const DEFAULT_VALIDATIONS = {
     required: { value: false, message: CORE_TEXTS.VALIDATIONS_REQUIRED },
   },
   URL: {
-    required: { value: false, message: CORE_TEXTS.VALIDATIONS_URL },
+    url: { value: true, message: CORE_TEXTS.VALIDATIONS_URL },
+    required: { value: false, message: CORE_TEXTS.VALIDATIONS_REQUIRED },
     max: { value: 2083 },
+  },
+  NUMBER: {
+    number: { value: true, message: CORE_TEXTS.VALIDATIONS_NUMBER },
+    required: { value: false, message: CORE_TEXTS.VALIDATIONS_REQUIRED },
+    integer: { value: true, message: CORE_TEXTS.VALIDATIONS_INTEGER },
+    min: { message: CORE_TEXTS.VALIDATIONS_MIN_NUMBER },
+    max: { message: CORE_TEXTS.VALIDATIONS_MAX_NUMBER },
+    moreThan: { message: CORE_TEXTS.VALIDATIONS_MORE_THAN_NUMBER },
+    lessThan: { message: CORE_TEXTS.VALIDATIONS_LESS_THAN_NUMBER },
+  },
+
+  ID: {
+    integer: { value: true, message: CORE_TEXTS.VALIDATIONS_INTEGER },
+    required: { value: true, message: CORE_TEXTS.VALIDATIONS_REQUIRED },
+    moreThan: { value: 0, message: CORE_TEXTS.VALIDATIONS_MIN_NUMBER },
   },
 };
 
