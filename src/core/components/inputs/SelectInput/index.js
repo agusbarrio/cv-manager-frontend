@@ -1,10 +1,4 @@
-import {
-  FormControl,
-  FormLabel,
-  Select,
-  MenuItem,
-  Skeleton,
-} from '@mui/material';
+import { FormControl, FormLabel, Select, MenuItem } from '@mui/material';
 import PropTypes from 'prop-types';
 import { useCallback, useMemo } from 'react';
 import FormHelperError from '../Form/FormHelperError';
