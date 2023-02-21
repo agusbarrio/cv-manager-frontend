@@ -22,8 +22,7 @@ function ExperienceForm({ innerRef, defaultValues }) {
     description: validator.description({ required: { value: false } }),
     employmentType: validator
       .oneOf([..._.values(EMPLOYMENT_TYPES), null])
-      .transform((value) => (!value ? null : value))
-      .nullable(),
+      .transform((value) => (!value ? null : value)),
   });
 
   const employmentTypesList = useMemo(() => {
