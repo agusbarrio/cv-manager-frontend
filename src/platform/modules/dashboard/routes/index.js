@@ -8,7 +8,17 @@ import SkillsPage from '../pages/SkillsPage';
 import EducationsPage from '../pages/EducationsPage';
 import ContactsPage from '../pages/ContactsPage';
 import ResumesPage from '../pages/ResumesPage';
+import Apikeyspage from '../pages/ApikeysPage';
 const dashboardRoutes = [
+  {
+    path: dashboardPaths.apikeys,
+    exact: true,
+    content: {
+      render: Apikeyspage,
+      Template: DashboardTemplate,
+    },
+    ...utils.manageAccess({ needSession: true }),
+  },
   {
     path: dashboardPaths.resumes,
     exact: true,

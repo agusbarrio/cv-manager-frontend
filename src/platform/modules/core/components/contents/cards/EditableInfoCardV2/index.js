@@ -72,13 +72,15 @@ function EditableInfoCardV2({
             manage_search
           </ButtonIcon>
         )}
-        <ButtonIcon
-          onClick={handleClickEdit}
-          color="primary"
-          tooltip={translate(CORE_TEXTS.GENERIC_EDIT)}
-        >
-          edit
-        </ButtonIcon>
+        {!!edit && (
+          <ButtonIcon
+            onClick={handleClickEdit}
+            color="primary"
+            tooltip={translate(CORE_TEXTS.GENERIC_EDIT)}
+          >
+            edit
+          </ButtonIcon>
+        )}
         <ButtonIcon
           onClick={handleClickDelete}
           color="error"

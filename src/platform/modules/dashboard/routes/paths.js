@@ -1,4 +1,5 @@
 const dashboardPaths = {
+  apikeys: '/apikeys',
   resumes: '/resumes',
   intros: '/intros',
   experiences: '/experiences',

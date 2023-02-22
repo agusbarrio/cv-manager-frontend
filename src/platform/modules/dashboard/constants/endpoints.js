@@ -8,6 +8,7 @@ const DASHBOARD_ENDPOINTS = {
   EDUCATIONS: `${URLS.API_BASE_URL}/educations`,
   CONTACTS: `${URLS.API_BASE_URL}/contacts`,
   RESUMES: `${URLS.API_BASE_URL}/resumes`,
+  APIKEYS: `${URLS.API_BASE_URL}/apikeys`,
 };
 
 export default DASHBOARD_ENDPOINTS;

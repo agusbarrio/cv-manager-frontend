@@ -86,10 +86,13 @@ function ABMTemplateV2({
 
   //Edit one entity
   const editOneProps = useMemo(
-    () => ({
-      ...editOne,
-      onEdit: getData,
-    }),
+    () =>
+      !!editOne
+        ? {
+            ...editOne,
+            onEdit: getData,
+          }
+        : null,
     [editOne, getData]
   );
 

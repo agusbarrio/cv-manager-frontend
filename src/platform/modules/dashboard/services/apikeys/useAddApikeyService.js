@@ -3,16 +3,16 @@ import useDecoredFetch from '../../../core/hooks/useDecoredFetch';
 
 import DASHBOARD_ENDPOINTS from '../../constants/endpoints';
 
-function useAddSkillService() {
+function useAddApikeyService() {
   const { post } = useDecoredFetch();
-  const addSkill = useCallback(
+  const addApikey = useCallback(
     async (values) => {
-      const result = await post(DASHBOARD_ENDPOINTS.SKILLS, values);
+      const result = await post(DASHBOARD_ENDPOINTS.APIKEYS, values);
       return result;
     },
     [post]
   );
-  return { addSkill };
+  return { addApikey };
 }
 
-export default useAddSkillService;
+export default useAddApikeyService;

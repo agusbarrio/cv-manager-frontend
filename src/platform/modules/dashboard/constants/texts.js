@@ -17,6 +17,7 @@ const DASHBOARD_TEXTS = {
   CONTACTS_PAGE_TITLE: {
     es: 'Contacto',
   },
+  APIKEYS_PAGE_TITLE: { es: 'Apikeys' },
   ADD_INTRO_DIALOG_TITLE: {
     es: 'Agregar introducción',
   },
@@ -191,6 +192,11 @@ const DASHBOARD_TEXTS = {
   RESUME_FORM_EDUCATIONS_PLACEHOLDER: { es: 'Elegí algunas educaciones' },
   RESUME_FORM_PROJECTS_PLACEHOLDER: { es: 'Elegí algunos proyectos' },
   RESUMES_PAGE_TITLE: { es: 'Currículums' },
+  APIKEY_TITLE_LABEL: { es: 'Título' },
+  APIKEY_FORM_TITLE_PLACEHOLDER: { es: 'Escribí el título' },
+  APIKEY_RESUME_LABEL: { es: 'Curriculum' },
+  APIKEY_FORM_RESUME_PLACEHOLDER: { es: 'Elegí un curriculum' },
+  APIKEY_ID_LABEL: { es: 'Clave apikey' },
 };
 
 export default DASHBOARD_TEXTS;
