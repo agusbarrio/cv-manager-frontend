@@ -42,7 +42,6 @@ function useDisplayMoreInfoDialogItems() {
         renderProps: {
           title: labels.skills,
           items: resume.skills.map((skill) => {
-            console.log(skill.name);
             return {
               render: Chip,
               renderProps: { label: skill.name },

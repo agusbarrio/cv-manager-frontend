@@ -96,6 +96,7 @@ function EditableInfoCardV2({
       handleClickMoreInfo,
       moreInfoDialogItems,
       translate,
+      edit,
     ]
   );
 

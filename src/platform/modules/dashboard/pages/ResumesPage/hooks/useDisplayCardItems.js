@@ -5,7 +5,6 @@ function useDisplayCardItems() {
   const { labels } = useLabels();
   const displayCardItems = useCallback(
     (resume) => {
-      console.log(resume);
       return [
         {
           renderProps: {
