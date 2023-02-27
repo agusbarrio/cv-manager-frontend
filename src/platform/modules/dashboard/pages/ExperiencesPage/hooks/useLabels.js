@@ -21,6 +21,7 @@ function useLabels() {
         translate(
           DASHBOARD_TEXTS[`EXPERIENCE_EMPLOYMENT_TYPE_${employmentType}_LABEL`]
         ),
+      skills: translate(DASHBOARD_TEXTS.SKILLS_LABEL),
     }),
     [translate]
   );

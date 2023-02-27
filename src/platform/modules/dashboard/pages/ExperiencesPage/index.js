@@ -1,6 +1,6 @@
 import ABMTemplateV2 from '../../../core/components/templates/ABMTemplateV2';
 import useAddExperienceService from '../../services/experiences/useAddExperienceService';
-import ExperienceForm from '../../components/contents/forms/ExperienceForm';
+import ExperienceForm from './components/ExperienceForm';
 import useDeleteAllExperiencesService from '../../services/experiences/useDeleteAllExperiencesService';
 import useGetExperiencesService from '../../services/experiences/useGetExperiencesService';
 import useDeleteExperienceService from '../../services/experiences/useDeleteExperienceService';

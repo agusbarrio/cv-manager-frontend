@@ -1,5 +1,7 @@
 import { useCallback } from 'react';
 import useLabels from './useLabels';
+import DataList from '../../../../../../core/components/dataDisplay/DataList';
+import Chip from '../../../../../../core/components/dataDisplay/Chip';
 
 function useDisplayMoreInfoDialogItems() {
   const { labels } = useLabels();
@@ -53,6 +55,16 @@ function useDisplayMoreInfoDialogItems() {
         renderProps: {
           title: labels.employmentType,
           children: labels.getEmploymentTypeLabel(experience.employmentType),
+        },
+      },
+      {
+        render: DataList,
+        renderProps: {
+          title: labels.skills,
+          items: experience.skills.map((skill) => ({
+            render: Chip,
+            renderProps: { label: skill.name },
+          })),
         },
       },
     ],

@@ -5,6 +5,7 @@ import useLocale from '../../../../../../../core/contexts/LocaleContext/useLocal
 import useValidator from '../../../../../core/hooks/useValidator';
 import Form from '../../../../../../../core/components/inputs/Form';
 import DateInput from '../../../../../../../core/components/inputs/DateInput';
+import SkillsSelectInput from '../../../../components/inputs/SkillsSelectInput';
 
 function EducationForm({ innerRef, defaultValues }) {
   const { translate } = useLocale();
@@ -18,6 +19,7 @@ function EducationForm({ innerRef, defaultValues }) {
     grade: validator.name({ required: { value: false } }),
     activities: validator.description(),
     description: validator.description(),
+    skillsIds: validator.ids(),
   });
 
   return (
@@ -98,6 +100,15 @@ function EducationForm({ innerRef, defaultValues }) {
           DASHBOARD_TEXTS.EDUCATION_FORM_DESCRIPTION_PLACEHOLDER
         )}
         multiline
+      ></ControllerInput>
+      <ControllerInput
+        render={SkillsSelectInput}
+        name="skillsIds"
+        multiple
+        defaultValue={[]}
+        label={translate(DASHBOARD_TEXTS.SKILLS_LABEL)}
+        placeholder={translate(DASHBOARD_TEXTS.FORM_SKILLS_PLACEHOLDER)}
+        placeholderProps={{ disabled: true }}
       ></ControllerInput>
     </Form>
   );

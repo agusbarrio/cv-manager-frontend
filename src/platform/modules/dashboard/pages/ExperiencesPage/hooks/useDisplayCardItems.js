@@ -47,6 +47,12 @@ function useDisplayCardItems() {
           value: labels.getEmploymentTypeLabel(experience.employmentType),
         },
       },
+      {
+        renderProps: {
+          label: labels.skills,
+          value: experience.skills.map((skill) => skill.name).join(' - '),
+        },
+      },
     ],
     [labels]
   );

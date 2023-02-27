@@ -1,12 +1,13 @@
 import ABMTemplateV2 from '../../../core/components/templates/ABMTemplateV2';
 import useAddEducationService from '../../services/educations/useAddEducationService';
-import EducationForm from '../../components/contents/forms/EducationForm';
+
 import useDeleteAllEducationsService from '../../services/educations/useDeleteAllEducationsService';
 import useGetEducationsService from '../../services/educations/useGetEducationsService';
 import useDeleteEducationService from '../../services/educations/useDeleteEducationService';
 import useEditEducationService from '../../services/educations/useEditEducationService';
 import useDisplayMoreInfoDialogItems from './hooks/useDisplayMoreInfoDialogItems';
 import useDisplayCardItems from './hooks/useDisplayCardItems';
+import EducationForm from './components/EducationForm';
 
 function EducationsPage() {
   const { addEducation } = useAddEducationService();

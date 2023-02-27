@@ -10,7 +10,7 @@ function useLabels() {
       intro: translate(DASHBOARD_TEXTS.RESUME_INTRO_LABEL),
       contact: translate(DASHBOARD_TEXTS.RESUME_CONTACT_LABEL),
       experiences: translate(DASHBOARD_TEXTS.RESUME_EXPERIENCES_LABEL),
-      skills: translate(DASHBOARD_TEXTS.RESUME_SKILLS_LABEL),
+      skills: translate(DASHBOARD_TEXTS.SKILLS_LABEL),
       educations: translate(DASHBOARD_TEXTS.RESUME_EDUCATIONS_LABEL),
       projects: translate(DASHBOARD_TEXTS.RESUME_PROJECTS_LABEL),
     }),

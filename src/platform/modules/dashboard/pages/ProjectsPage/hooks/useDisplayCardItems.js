@@ -30,6 +30,12 @@ function useDisplayCardItems() {
           value: project.url,
         },
       },
+      {
+        renderProps: {
+          label: labels.skills,
+          value: project.skills.map((skill) => skill.name).join(' - '),
+        },
+      },
     ],
     [labels]
   );

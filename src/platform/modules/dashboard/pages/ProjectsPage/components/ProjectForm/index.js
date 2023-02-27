@@ -5,7 +5,7 @@ import useLocale from '../../../../../../../core/contexts/LocaleContext/useLocal
 import useValidator from '../../../../../core/hooks/useValidator';
 import Form from '../../../../../../../core/components/inputs/Form';
 import DateInput from '../../../../../../../core/components/inputs/DateInput';
-
+import SkillsSelectInput from '../../../../components/inputs/SkillsSelectInput';
 function ProjectForm({ innerRef, defaultValues }) {
   const { translate } = useLocale();
   const validator = useValidator();
@@ -15,6 +15,7 @@ function ProjectForm({ innerRef, defaultValues }) {
     startDate: validator.date({ required: { value: true } }),
     endDate: validator.date(),
     url: validator.url(),
+    skillsIds: validator.ids(),
   });
 
   return (
@@ -63,6 +64,15 @@ function ProjectForm({ innerRef, defaultValues }) {
         name="url"
         label={translate(DASHBOARD_TEXTS.PROJECT_URL_LABEL)}
         placeholder={translate(DASHBOARD_TEXTS.PROJECT_FORM_URL_PLACEHOLDER)}
+      ></ControllerInput>
+      <ControllerInput
+        render={SkillsSelectInput}
+        name="skillsIds"
+        multiple
+        defaultValue={[]}
+        label={translate(DASHBOARD_TEXTS.SKILLS_LABEL)}
+        placeholder={translate(DASHBOARD_TEXTS.FORM_SKILLS_PLACEHOLDER)}
+        placeholderProps={{ disabled: true }}
       ></ControllerInput>
     </Form>
   );

@@ -9,6 +9,7 @@ import SelectInput from '../../../../../../../core/components/inputs/SelectInput
 import _ from 'lodash';
 import { EMPLOYMENT_TYPES } from '../../../../constants/experiences';
 import { useMemo } from 'react';
+import SkillsSelectInput from '../../../../components/inputs/SkillsSelectInput';
 function ExperienceForm({ innerRef, defaultValues }) {
   const { translate } = useLocale();
   const validator = useValidator();
@@ -23,6 +24,7 @@ function ExperienceForm({ innerRef, defaultValues }) {
     employmentType: validator
       .oneOf([..._.values(EMPLOYMENT_TYPES), null])
       .transform((value) => (!value ? null : value)),
+    skillsIds: validator.ids(),
   });
 
   const employmentTypesList = useMemo(() => {
@@ -111,6 +113,15 @@ function ExperienceForm({ innerRef, defaultValues }) {
         )}
         label={translate(DASHBOARD_TEXTS.EXPERIENCE_EMPLOYMENT_TYPE_LABEL)}
         list={employmentTypesList}
+      ></ControllerInput>
+      <ControllerInput
+        render={SkillsSelectInput}
+        name="skillsIds"
+        multiple
+        defaultValue={[]}
+        label={translate(DASHBOARD_TEXTS.SKILLS_LABEL)}
+        placeholder={translate(DASHBOARD_TEXTS.FORM_SKILLS_PLACEHOLDER)}
+        placeholderProps={{ disabled: true }}
       ></ControllerInput>
     </Form>
   );

@@ -79,8 +79,8 @@ function ResumeForm({ innerRef, defaultValues }) {
         name="skillsIds"
         defaultValue={[]}
         multiple
-        label={translate(DASHBOARD_TEXTS.RESUME_SKILLS_LABEL)}
-        placeholder={translate(DASHBOARD_TEXTS.RESUME_FORM_SKILLS_PLACEHOLDER)}
+        label={translate(DASHBOARD_TEXTS.SKILLS_LABEL)}
+        placeholder={translate(DASHBOARD_TEXTS.FORM_SKILLS_PLACEHOLDER)}
         placeholderProps={{ disabled: true }}
       ></ControllerInput>
       <ControllerInput

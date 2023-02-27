@@ -1,5 +1,7 @@
 import { useCallback } from 'react';
 import useLabels from './useLabels';
+import DataList from '../../../../../../core/components/dataDisplay/DataList';
+import Chip from '../../../../../../core/components/dataDisplay/Chip';
 
 function useDisplayMoreInfoDialogItems() {
   const { labels } = useLabels();
@@ -61,6 +63,16 @@ school: translate(DASHBOARD_TEXTS.EDUCATION_SCHOOL_LABEL),
         renderProps: {
           title: labels.description,
           children: education.description,
+        },
+      },
+      {
+        render: DataList,
+        renderProps: {
+          title: labels.skills,
+          items: education.skills.map((skill) => ({
+            render: Chip,
+            renderProps: { label: skill.name },
+          })),
         },
       },
     ],
