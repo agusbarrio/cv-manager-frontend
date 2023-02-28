@@ -48,6 +48,18 @@ function useDisplayMoreInfoDialogItems() {
           })),
         },
       },
+      {
+        renderProps: {
+          title: labels.education,
+          children: project.education?.degree,
+        },
+      },
+      {
+        renderProps: {
+          title: labels.experience,
+          children: project.experience?.title,
+        },
+      },
     ],
     [labels]
   );

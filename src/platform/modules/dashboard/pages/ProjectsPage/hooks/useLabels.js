@@ -12,6 +12,8 @@ function useLabels() {
       endDate: translate(DASHBOARD_TEXTS.PROJECT_END_DATE_LABEL),
       url: translate(DASHBOARD_TEXTS.PROJECT_URL_LABEL),
       skills: translate(DASHBOARD_TEXTS.SKILLS_LABEL),
+      education: translate(DASHBOARD_TEXTS.PROJECT_EDUCATION_LABEL),
+      experience: translate(DASHBOARD_TEXTS.PROJECT_EXPERIENCE_LABEL),
     }),
     [translate]
   );

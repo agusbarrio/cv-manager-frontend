@@ -7,6 +7,8 @@ function useFormatItems() {
         return {
           ...item,
           skillsIds: _.get(item, 'skills', []).map((skill) => skill.id),
+          experienceId: !!item?.experienceId ? item.experienceId : '',
+          educationId: !!item?.educationId ? item.educationId : '',
         };
       }),
     []

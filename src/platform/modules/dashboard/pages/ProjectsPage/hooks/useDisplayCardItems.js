@@ -36,6 +36,18 @@ function useDisplayCardItems() {
           value: project.skills.map((skill) => skill.name).join(' - '),
         },
       },
+      {
+        renderProps: {
+          label: labels.education,
+          value: project.education?.degree,
+        },
+      },
+      {
+        renderProps: {
+          label: labels.experience,
+          value: project.experience?.title,
+        },
+      },
     ],
     [labels]
   );

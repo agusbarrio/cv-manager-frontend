@@ -6,6 +6,8 @@ import useValidator from '../../../../../core/hooks/useValidator';
 import Form from '../../../../../../../core/components/inputs/Form';
 import DateInput from '../../../../../../../core/components/inputs/DateInput';
 import SkillsSelectInput from '../../../../components/inputs/SkillsSelectInput';
+import EducationsSelectInput from '../../../../components/inputs/EducationsSelectInput';
+import ExperiencesSelectInput from '../../../../components/inputs/ExperiencesSelectInput';
 function ProjectForm({ innerRef, defaultValues }) {
   const { translate } = useLocale();
   const validator = useValidator();
@@ -16,6 +18,8 @@ function ProjectForm({ innerRef, defaultValues }) {
     endDate: validator.date(),
     url: validator.url(),
     skillsIds: validator.ids(),
+    educationId: validator.id({ required: { value: false } }),
+    experienceId: validator.id({ required: { value: false } }),
   });
 
   return (
@@ -73,6 +77,22 @@ function ProjectForm({ innerRef, defaultValues }) {
         label={translate(DASHBOARD_TEXTS.SKILLS_LABEL)}
         placeholder={translate(DASHBOARD_TEXTS.FORM_SKILLS_PLACEHOLDER)}
         placeholderProps={{ disabled: true }}
+      ></ControllerInput>
+      <ControllerInput
+        render={EducationsSelectInput}
+        name="educationId"
+        label={translate(DASHBOARD_TEXTS.PROJECT_EDUCATION_LABEL)}
+        placeholder={translate(
+          DASHBOARD_TEXTS.PROJECT_FORM_EDUCATION_PLACEHOLDER
+        )}
+      ></ControllerInput>
+      <ControllerInput
+        render={ExperiencesSelectInput}
+        name="experienceId"
+        label={translate(DASHBOARD_TEXTS.PROJECT_EXPERIENCE_LABEL)}
+        placeholder={translate(
+          DASHBOARD_TEXTS.PROJECT_FORM_EXPERIENCE_PLACEHOLDER
+        )}
       ></ControllerInput>
     </Form>
   );
