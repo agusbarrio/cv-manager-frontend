@@ -12,6 +12,12 @@ function useDisplayMoreInfoDialogItems() {
           children: skill.name,
         },
       },
+      {
+        renderProps: {
+          title: labels.imgSrc,
+          children: skill.imgSrc,
+        },
+      },
     ],
     [labels]
   );

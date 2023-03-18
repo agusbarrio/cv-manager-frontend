@@ -1,6 +1,6 @@
 import ABMTemplateV2 from '../../../core/components/templates/ABMTemplateV2';
 import useAddContactService from '../../services/contacts/useAddContactService';
-import ContactForm from '../../components/contents/forms/ContactForm';
+import ContactForm from './components/ContactForm';
 import useDeleteAllContactsService from '../../services/contacts/useDeleteAllContactsService';
 import useGetContactsService from '../../services/contacts/useGetContactsService';
 import useDeleteContactService from '../../services/contacts/useDeleteContactService';

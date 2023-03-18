@@ -48,6 +48,12 @@ function useDisplayCardItems() {
           value: project.experience?.title,
         },
       },
+      {
+        renderProps: {
+          label: labels.imgSrc,
+          value: project.imgSrc,
+        },
+      },
     ],
     [labels]
   );

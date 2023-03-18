@@ -25,6 +25,7 @@ function ExperienceForm({ innerRef, defaultValues }) {
       .oneOf([..._.values(EMPLOYMENT_TYPES), null])
       .transform((value) => (!value ? null : value)),
     skillsIds: validator.ids(),
+    imgSrc: validator.url(),
   });
 
   const employmentTypesList = useMemo(() => {
@@ -122,6 +123,14 @@ function ExperienceForm({ innerRef, defaultValues }) {
         label={translate(DASHBOARD_TEXTS.SKILLS_LABEL)}
         placeholder={translate(DASHBOARD_TEXTS.FORM_SKILLS_PLACEHOLDER)}
         placeholderProps={{ disabled: true }}
+      ></ControllerInput>
+      <ControllerInput
+        render={TextInput}
+        name="imgSrc"
+        label={translate(DASHBOARD_TEXTS.EXPERIENCE_IMG_SRC_LABEL)}
+        placeholder={translate(
+          DASHBOARD_TEXTS.EXPERIENCE_FORM_IMG_SRC_PLACEHOLDER
+        )}
       ></ControllerInput>
     </Form>
   );

@@ -67,6 +67,12 @@ function useDisplayMoreInfoDialogItems() {
           })),
         },
       },
+      {
+        renderProps: {
+          title: labels.imgSrc,
+          children: experience.imgSrc,
+        },
+      },
     ],
     [labels]
   );

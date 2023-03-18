@@ -20,6 +20,7 @@ function ProjectForm({ innerRef, defaultValues }) {
     skillsIds: validator.ids(),
     educationId: validator.id({ required: { value: false } }),
     experienceId: validator.id({ required: { value: false } }),
+    imgSrc: validator.url(),
   });
 
   return (
@@ -92,6 +93,14 @@ function ProjectForm({ innerRef, defaultValues }) {
         label={translate(DASHBOARD_TEXTS.PROJECT_EXPERIENCE_LABEL)}
         placeholder={translate(
           DASHBOARD_TEXTS.PROJECT_FORM_EXPERIENCE_PLACEHOLDER
+        )}
+      ></ControllerInput>
+      <ControllerInput
+        render={TextInput}
+        name="imgSrc"
+        label={translate(DASHBOARD_TEXTS.PROJECT_IMG_SRC_LABEL)}
+        placeholder={translate(
+          DASHBOARD_TEXTS.PROJECT_FORM_IMG_SRC_PLACEHOLDER
         )}
       ></ControllerInput>
     </Form>

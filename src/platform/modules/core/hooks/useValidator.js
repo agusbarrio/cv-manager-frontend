@@ -27,6 +27,9 @@ function useValidator() {
         const min = config.min.value;
         yupString = yupString.min(min, translate(config.min.message, { min }));
       }
+      if (config?.url?.value) {
+        yupString = yupString.url(translate(config.url.message));
+      }
       return yupString;
     },
     [translate]
@@ -181,7 +184,7 @@ function useValidator() {
         _.cloneDeep(DEFAULT_VALIDATIONS.URL),
         config
       );
-      const yupUrl = string(configResult).url(configResult);
+      const yupUrl = string(configResult);
       return yupUrl;
     },
     [string]

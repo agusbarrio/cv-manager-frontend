@@ -60,6 +60,12 @@ function useDisplayMoreInfoDialogItems() {
           children: project.experience?.title,
         },
       },
+      {
+        renderProps: {
+          title: labels.imgSrc,
+          children: project.imgSrc,
+        },
+      },
     ],
     [labels]
   );

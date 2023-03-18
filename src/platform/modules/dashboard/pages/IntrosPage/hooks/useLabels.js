@@ -11,6 +11,7 @@ function useLabels() {
       headLine: translate(DASHBOARD_TEXTS.INTRO_HEAD_LINE_LABEL),
       birthday: translate(DASHBOARD_TEXTS.INTRO_BIRTHDAY_LABEL),
       about: translate(DASHBOARD_TEXTS.INTRO_ABOUT_LABEL),
+      imgSrc: translate(DASHBOARD_TEXTS.INTRO_IMG_SRC_LABEL),
     }),
     [translate]
   );

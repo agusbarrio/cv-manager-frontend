@@ -37,6 +37,12 @@ function useDisplayMoreInfoDialogItems() {
           children: intro.about,
         },
       },
+      {
+        renderProps: {
+          title: labels.imgSrc,
+          children: intro.imgSrc,
+        },
+      },
     ],
     [labels]
   );

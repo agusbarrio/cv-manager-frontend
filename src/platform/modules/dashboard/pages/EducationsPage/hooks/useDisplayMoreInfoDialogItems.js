@@ -75,6 +75,12 @@ school: translate(DASHBOARD_TEXTS.EDUCATION_SCHOOL_LABEL),
           })),
         },
       },
+      {
+        renderProps: {
+          title: labels.imgSrc,
+          children: education.imgSrc,
+        },
+      },
     ],
     [labels]
   );

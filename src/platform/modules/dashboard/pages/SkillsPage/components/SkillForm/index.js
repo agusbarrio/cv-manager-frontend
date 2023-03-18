@@ -10,6 +10,7 @@ function SkillForm({ innerRef, defaultValues }) {
   const validator = useValidator();
   const schema = validator.form({
     name: validator.name(),
+    imgSrc: validator.url(),
   });
 
   return (
@@ -25,6 +26,12 @@ function SkillForm({ innerRef, defaultValues }) {
         label={translate(DASHBOARD_TEXTS.SKILL_NAME_LABEL)}
         placeholder={translate(DASHBOARD_TEXTS.SKILL_FORM_NAME_PLACEHOLDER)}
         multiline
+      ></ControllerInput>
+      <ControllerInput
+        render={TextInput}
+        name="imgSrc"
+        label={translate(DASHBOARD_TEXTS.SKILL_IMG_SRC_LABEL)}
+        placeholder={translate(DASHBOARD_TEXTS.SKILL_FORM_IMG_SRC_PLACEHOLDER)}
       ></ControllerInput>
     </Form>
   );

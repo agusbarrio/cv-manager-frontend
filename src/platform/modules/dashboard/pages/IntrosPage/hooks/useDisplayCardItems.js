@@ -30,6 +30,12 @@ function useDisplayCardItems() {
           value: intro.about,
         },
       },
+      {
+        renderProps: {
+          label: labels.imgSrc,
+          value: intro.imgSrc,
+        },
+      },
     ],
     [labels]
   );

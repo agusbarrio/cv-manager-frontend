@@ -1,6 +1,6 @@
 import ABMTemplateV2 from '../../../core/components/templates/ABMTemplateV2';
 import useAddIntroService from '../../services/intros/useAddIntroService';
-import IntroForm from '../../components/contents/forms/IntroForm';
+import IntroForm from './components/IntroForm';
 import useDeleteAllIntrosService from '../../services/intros/useDeleteAllIntrosService';
 import useGetIntrosService from '../../services/intros/useGetIntrosService';
 import useDeleteIntroService from '../../services/intros/useDeleteIntroService';

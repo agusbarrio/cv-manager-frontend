@@ -7,6 +7,7 @@ function useLabels() {
   const labels = useMemo(
     () => ({
       name: translate(DASHBOARD_TEXTS.SKILL_NAME_LABEL),
+      imgSrc: translate(DASHBOARD_TEXTS.SKILL_IMG_SRC_LABEL),
     }),
     [translate]
   );

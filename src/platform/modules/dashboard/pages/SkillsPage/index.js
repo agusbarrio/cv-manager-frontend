@@ -1,11 +1,12 @@
 import ABMTemplateV2 from '../../../core/components/templates/ABMTemplateV2';
 import useAddSkillService from '../../services/skills/useAddSkillService';
-import SkillForm from '../../components/contents/forms/SkillForm';
+import SkillForm from './components/SkillForm';
 import useDeleteAllSkillsService from '../../services/skills/useDeleteAllSkillsService';
 import useGetSkillsService from '../../services/skills/useGetSkillsService';
 import useDeleteSkillService from '../../services/skills/useDeleteSkillService';
 import useEditSkillService from '../../services/skills/useEditSkillService';
 import useDisplayMoreInfoDialogItems from './hooks/useDisplayMoreInfoDialogItems';
+import useDisplayCardItems from './hooks/useDisplayCardItems';
 
 function SkillsPage() {
   const { addSkill } = useAddSkillService();
@@ -14,7 +15,7 @@ function SkillsPage() {
   const { deleteSkill } = useDeleteSkillService();
   const { editSkill } = useEditSkillService();
   const { displayMoreInfoDialogItems } = useDisplayMoreInfoDialogItems();
-
+  const { displayCardItems } = useDisplayCardItems();
   return (
     <ABMTemplateV2
       add={{ service: addSkill, form: SkillForm }}
@@ -25,6 +26,7 @@ function SkillsPage() {
       viewOne={{
         displayTitle: (skill) => skill.name,
         displayMoreInfoDialogItems,
+        displayCardItems,
       }}
     ></ABMTemplateV2>
   );

@@ -15,6 +15,7 @@ function useLabels() {
       activities: translate(DASHBOARD_TEXTS.EDUCATION_ACTIVITIES_LABEL),
       description: translate(DASHBOARD_TEXTS.EDUCATION_DESCRIPTION_LABEL),
       skills: translate(DASHBOARD_TEXTS.SKILLS_LABEL),
+      imgSrc: translate(DASHBOARD_TEXTS.EDUCATION_IMG_SRC_LABEL),
     }),
     [translate]
   );

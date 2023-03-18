@@ -15,6 +15,7 @@ function IntroForm({ innerRef, defaultValues }) {
     headLine: validator.title(),
     birthday: validator.date(),
     about: validator.description(),
+    imgSrc: validator.url(),
   });
 
   return (
@@ -66,6 +67,12 @@ function IntroForm({ innerRef, defaultValues }) {
         label={translate(DASHBOARD_TEXTS.INTRO_ABOUT_LABEL)}
         placeholder={translate(DASHBOARD_TEXTS.INTRO_FORM_ABOUT_PLACEHOLDER)}
         multiline
+      ></ControllerInput>
+      <ControllerInput
+        render={TextInput}
+        name="imgSrc"
+        label={translate(DASHBOARD_TEXTS.INTRO_IMG_SRC_LABEL)}
+        placeholder={translate(DASHBOARD_TEXTS.INTRO_FORM_IMG_SRC_PLACEHOLDER)}
       ></ControllerInput>
     </Form>
   );

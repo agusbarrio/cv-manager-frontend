@@ -53,6 +53,12 @@ function useDisplayCardItems() {
           value: experience.skills.map((skill) => skill.name).join(' - '),
         },
       },
+      {
+        renderProps: {
+          label: labels.imgSrc,
+          value: experience.imgSrc,
+        },
+      },
     ],
     [labels]
   );

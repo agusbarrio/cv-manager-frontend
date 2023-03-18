@@ -14,6 +14,7 @@ function useLabels() {
       skills: translate(DASHBOARD_TEXTS.SKILLS_LABEL),
       education: translate(DASHBOARD_TEXTS.PROJECT_EDUCATION_LABEL),
       experience: translate(DASHBOARD_TEXTS.PROJECT_EXPERIENCE_LABEL),
+      imgSrc: translate(DASHBOARD_TEXTS.PROJECT_IMG_SRC_LABEL),
     }),
     [translate]
   );

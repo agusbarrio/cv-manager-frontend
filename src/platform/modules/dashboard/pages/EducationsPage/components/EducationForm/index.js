@@ -20,6 +20,7 @@ function EducationForm({ innerRef, defaultValues }) {
     activities: validator.description(),
     description: validator.description(),
     skillsIds: validator.ids(),
+    imgSrc: validator.url(),
   });
 
   return (
@@ -109,6 +110,14 @@ function EducationForm({ innerRef, defaultValues }) {
         label={translate(DASHBOARD_TEXTS.SKILLS_LABEL)}
         placeholder={translate(DASHBOARD_TEXTS.FORM_SKILLS_PLACEHOLDER)}
         placeholderProps={{ disabled: true }}
+      ></ControllerInput>
+      <ControllerInput
+        render={TextInput}
+        name="imgSrc"
+        label={translate(DASHBOARD_TEXTS.EDUCATION_IMG_SRC_LABEL)}
+        placeholder={translate(
+          DASHBOARD_TEXTS.EDUCATION_FORM_IMG_SRC_PLACEHOLDER
+        )}
       ></ControllerInput>
     </Form>
   );

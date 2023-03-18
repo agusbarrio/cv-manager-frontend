@@ -203,6 +203,16 @@ const DASHBOARD_TEXTS = {
   APIKEY_RESUME_LABEL: { es: 'Curriculum' },
   APIKEY_FORM_RESUME_PLACEHOLDER: { es: 'Elegí un curriculum' },
   APIKEY_ID_LABEL: { es: 'Clave apikey' },
+  PROJECT_IMG_SRC_LABEL: { es: 'Imagen' },
+  PROJECT_FORM_IMG_SRC_PLACEHOLDER: { es: 'Ingresá la URL de la imagen' },
+  EXPERIENCE_IMG_SRC_LABEL: { es: 'Imagen' },
+  EXPERIENCE_FORM_IMG_SRC_PLACEHOLDER: { es: 'Ingresá la URL de la imagen' },
+  EDUCATION_IMG_SRC_LABEL: { es: 'Imagen' },
+  EDUCATION_FORM_IMG_SRC_PLACEHOLDER: { es: 'Ingresá la URL de la imagen' },
+  INTRO_IMG_SRC_LABEL: { es: 'Imagen' },
+  INTRO_FORM_IMG_SRC_PLACEHOLDER: { es: 'Ingresá la URL de la imagen' },
+  SKILL_IMG_SRC_LABEL: { es: 'Imagen' },
+  SKILL_FORM_IMG_SRC_PLACEHOLDER: { es: 'Ingresá la URL de la imagen' },
 };
 
 export default DASHBOARD_TEXTS;
