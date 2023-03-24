@@ -15,8 +15,6 @@ function useService({ service, defaultValue, format }) {
     [service, format]
   );
 
-  //TODO llamar manualmente el loadOnMOunt
-
   return { value, loading, runService };
 }
 
