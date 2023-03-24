@@ -3,10 +3,11 @@ import RegisterForm from '../../forms/RegisterForm';
 import useLocale from '../../../../../core/contexts/LocaleContext/useLocale';
 import AUTH_TEXTS from '../../constants/texts';
 import { useCallback } from 'react';
-import Link from '../../../../../core/components/navigation/Link';
+
 import authPaths from '../../routes/paths';
 import useRegisterService from '../../services/useRegisterService';
 import useService from '../../../core/hooks/useService';
+import Link from '../../../core/components/navigation/Link';
 function RegisterPage() {
   const { translate } = useLocale();
   const { register } = useRegisterService();
@@ -33,7 +34,7 @@ function RegisterPage() {
       </Grid>
       <Grid item xs={12}>
         <Stack spacing={2} alignItems="flex-end">
-          <Link href={authPaths.login}>
+          <Link to={authPaths.login}>
             {translate(AUTH_TEXTS.REGISTER_PAGE_GO_LOGIN)}
           </Link>
         </Stack>

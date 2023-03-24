@@ -3,11 +3,12 @@ import useLocale from '../../../../../core/contexts/LocaleContext/useLocale';
 import AUTH_TEXTS from '../../constants/texts';
 import { useCallback } from 'react';
 import authPaths from '../../routes/paths';
-import Link from '../../../../../core/components/navigation/Link';
+
 import useResetPasswordService from '../../services/useResetPasswordService';
 import useLocation from '../../../core/hooks/useLocation';
 import ResetPasswordForm from '../../forms/ResetPasswordForm';
 import useService from '../../../core/hooks/useService';
+import Link from '../../../core/components/navigation/Link';
 
 function ResetPasswordPage() {
   const { translate } = useLocale();
@@ -39,7 +40,7 @@ function ResetPasswordPage() {
       </Grid>
       <Grid item xs={12}>
         <Stack spacing={2} alignItems="flex-end">
-          <Link href={authPaths.login}>
+          <Link to={authPaths.login}>
             {translate(AUTH_TEXTS.RESET_PASSWORD_PAGE_GO_LOGIN)}
           </Link>
         </Stack>

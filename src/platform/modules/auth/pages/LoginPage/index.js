@@ -4,9 +4,10 @@ import AUTH_TEXTS from '../../constants/texts';
 import { useCallback } from 'react';
 import LoginForm from '../../forms/LoginForm';
 import authPaths from '../../routes/paths';
-import Link from '../../../../../core/components/navigation/Link';
+
 import useLoginService from '../../services/useLoginService';
 import useService from '../../../core/hooks/useService';
+import Link from '../../../core/components/navigation/Link';
 function LoginPage() {
   const { translate } = useLocale();
   const { login } = useLoginService();
@@ -31,10 +32,10 @@ function LoginPage() {
       </Grid>
       <Grid item xs={12}>
         <Stack spacing={2} alignItems="flex-end">
-          <Link href={authPaths.recover}>
+          <Link to={authPaths.recover}>
             {translate(AUTH_TEXTS.LOGIN_PAGE_GO_RECOVER_PASSWORD)}
           </Link>
-          <Link href={authPaths.register}>
+          <Link to={authPaths.register}>
             {translate(AUTH_TEXTS.LOGIN_PAGE_GO_REGISTER)}
           </Link>
         </Stack>

@@ -4,9 +4,10 @@ import AUTH_TEXTS from '../../constants/texts';
 import { useCallback } from 'react';
 import RecoverPasswordForm from '../../forms/RecoverPasswordForm';
 import authPaths from '../../routes/paths';
-import Link from '../../../../../core/components/navigation/Link';
+
 import useRequestPasswordRecoveryService from '../../services/useRequestPasswordRecoveryService';
 import useService from '../../../core/hooks/useService';
+import Link from '../../../core/components/navigation/Link';
 
 function RecoverPasswordPage() {
   const { translate } = useLocale();
@@ -42,7 +43,7 @@ function RecoverPasswordPage() {
       </Grid>
       <Grid item xs={12}>
         <Stack spacing={2} alignItems="flex-end">
-          <Link href={authPaths.login}>
+          <Link to={authPaths.login}>
             {translate(AUTH_TEXTS.RECOVER_PAGE_GO_LOGIN)}
           </Link>
         </Stack>
