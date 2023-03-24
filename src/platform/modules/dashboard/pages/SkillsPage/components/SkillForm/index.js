@@ -9,7 +9,7 @@ function SkillForm({ innerRef, defaultValues }) {
   const { translate } = useLocale();
   const validator = useValidator();
   const schema = validator.form({
-    name: validator.name(),
+    name: validator.text({ required: { value: true } }),
     imgSrc: validator.url(),
   });
 

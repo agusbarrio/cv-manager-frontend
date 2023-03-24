@@ -103,10 +103,10 @@ function useValidator() {
     [string, translate]
   );
 
-  const title = useCallback(
+  const text = useCallback(
     (config) => {
       const configResult = _.merge(
-        _.cloneDeep(DEFAULT_VALIDATIONS.TITLE),
+        _.cloneDeep(DEFAULT_VALIDATIONS.TEXT),
         config
       );
       const yupTitle = string(configResult);
@@ -123,18 +123,6 @@ function useValidator() {
       );
       const yupDescription = string(configResult);
       return yupDescription;
-    },
-    [string]
-  );
-
-  const name = useCallback(
-    (config) => {
-      const configResult = _.merge(
-        _.cloneDeep(DEFAULT_VALIDATIONS.NAME),
-        config
-      );
-      const yupName = string(configResult);
-      return yupName;
     },
     [string]
   );
@@ -272,8 +260,7 @@ function useValidator() {
     email,
     password,
     equalTo,
-    name,
-    title,
+    text,
     description,
     date,
     oneOf,

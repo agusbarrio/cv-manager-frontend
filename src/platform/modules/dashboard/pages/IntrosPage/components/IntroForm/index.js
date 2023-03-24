@@ -10,9 +10,9 @@ function IntroForm({ innerRef, defaultValues }) {
   const { translate } = useLocale();
   const validator = useValidator();
   const schema = validator.form({
-    firstName: validator.name(),
-    lastName: validator.name(),
-    headLine: validator.title(),
+    firstName: validator.text(),
+    lastName: validator.text(),
+    headLine: validator.text({ required: { value: true } }),
     birthday: validator.date(),
     about: validator.description(),
     imgSrc: validator.url(),

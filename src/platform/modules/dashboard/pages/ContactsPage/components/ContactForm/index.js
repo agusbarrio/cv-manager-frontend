@@ -9,18 +9,18 @@ function ContactForm({ innerRef, defaultValues }) {
   const { translate } = useLocale();
   const validator = useValidator();
   const schema = validator.form({
-    title: validator.title(),
+    title: validator.text({ required: { value: true } }),
     linkedin: validator.url(),
     facebook: validator.url(),
     twitter: validator.url(),
     email: validator.email(),
-    phone: validator.name({ required: { value: false } }),
-    mobilePhone: validator.name({ required: { value: false } }),
-    address: validator.name({ required: { value: false } }),
+    phone: validator.text(),
+    mobilePhone: validator.text(),
+    address: validator.text(),
     github: validator.url(),
-    country: validator.name({ required: { value: false } }),
-    postalCode: validator.name({ required: { value: false } }),
-    city: validator.name({ required: { value: false } }),
+    country: validator.text(),
+    postalCode: validator.text(),
+    city: validator.text(),
     website: validator.url(),
   });
 

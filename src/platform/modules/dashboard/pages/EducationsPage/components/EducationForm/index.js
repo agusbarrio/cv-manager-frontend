@@ -11,12 +11,12 @@ function EducationForm({ innerRef, defaultValues }) {
   const { translate } = useLocale();
   const validator = useValidator();
   const schema = validator.form({
-    school: validator.title(),
-    degree: validator.title(),
-    fieldOfStudy: validator.name({ required: { value: false } }),
-    startDate: validator.date({ required: { value: true } }),
+    school: validator.text({ required: { value: true } }),
+    degree: validator.text(),
+    fieldOfStudy: validator.text(),
+    startDate: validator.date(),
     endDate: validator.date(),
-    grade: validator.name({ required: { value: false } }),
+    grade: validator.text(),
     activities: validator.description(),
     description: validator.description(),
     skillsIds: validator.ids(),

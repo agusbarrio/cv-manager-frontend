@@ -14,8 +14,7 @@ function ResumeForm({ innerRef, defaultValues }) {
   const { translate } = useLocale();
   const validator = useValidator();
   const schema = validator.form({
-    title: validator.title(),
-    //TODO ver  como hacer que al submitear diga que es requerido
+    title: validator.text({ required: { value: true } }),
     introId: validator.id(),
     contactId: validator.id(),
     experiencesIds: validator.ids(),

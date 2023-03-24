@@ -14,13 +14,13 @@ function ExperienceForm({ innerRef, defaultValues }) {
   const { translate } = useLocale();
   const validator = useValidator();
   const schema = validator.form({
-    title: validator.title(),
-    companyName: validator.name(),
-    location: validator.title({ required: { value: false } }),
-    startDate: validator.date({ required: { value: true } }),
+    title: validator.text({ required: { value: true } }),
+    companyName: validator.text(),
+    location: validator.text(),
+    startDate: validator.date(),
     endDate: validator.date(),
-    industry: validator.title({ required: { value: false } }),
-    description: validator.description({ required: { value: false } }),
+    industry: validator.text(),
+    description: validator.description(),
     employmentType: validator
       .oneOf([..._.values(EMPLOYMENT_TYPES), null])
       .transform((value) => (!value ? null : value)),

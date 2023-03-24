@@ -10,7 +10,7 @@ function ApikeyForm({ innerRef, defaultValues }) {
   const { translate } = useLocale();
   const validator = useValidator();
   const schema = validator.form({
-    title: validator.title(),
+    title: validator.text({ required: { value: true } }),
     resumeId: validator.id(),
   });
 

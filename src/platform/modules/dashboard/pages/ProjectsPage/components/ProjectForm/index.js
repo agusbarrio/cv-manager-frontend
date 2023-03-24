@@ -12,9 +12,9 @@ function ProjectForm({ innerRef, defaultValues }) {
   const { translate } = useLocale();
   const validator = useValidator();
   const schema = validator.form({
-    name: validator.name(),
-    description: validator.description({ required: { value: true } }),
-    startDate: validator.date({ required: { value: true } }),
+    name: validator.text({ required: { value: true } }),
+    description: validator.description(),
+    startDate: validator.date(),
     endDate: validator.date(),
     url: validator.url(),
     skillsIds: validator.ids(),

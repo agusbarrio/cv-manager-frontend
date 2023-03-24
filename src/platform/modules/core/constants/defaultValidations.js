@@ -40,17 +40,13 @@ const DEFAULT_VALIDATIONS = {
       message: CORE_TEXTS.VALIDATIONS_EQUAL_TO,
     },
   },
-  TITLE: {
-    required: { value: true, message: CORE_TEXTS.VALIDATIONS_REQUIRED },
-    max: { value: 140, message: CORE_TEXTS.VALIDATIONS_MAX },
-  },
-  DESCRIPTION: {
+  TEXT: {
     required: { value: false, message: CORE_TEXTS.VALIDATIONS_REQUIRED },
     max: { value: 255, message: CORE_TEXTS.VALIDATIONS_MAX },
   },
-  NAME: {
-    required: { value: true, message: CORE_TEXTS.VALIDATIONS_REQUIRED },
-    max: { value: 60, message: CORE_TEXTS.VALIDATIONS_MAX },
+  DESCRIPTION: {
+    required: { value: false, message: CORE_TEXTS.VALIDATIONS_REQUIRED },
+    max: { value: 1000, message: CORE_TEXTS.VALIDATIONS_MAX },
   },
   DATE: {
     date: { value: true, message: CORE_TEXTS.VALIDATIONS_DATE },
