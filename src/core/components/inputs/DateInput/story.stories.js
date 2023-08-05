@@ -7,7 +7,7 @@ export default {
 };
 
 function Template(args) {
-  return <DateInput {...args} />;
+  return <DateInput {...args} onChange={() => { }} />;
 }
 
 export const Example = Template.bind({});
